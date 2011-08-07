@@ -28,10 +28,10 @@
 <!ENTITY gcc-md5 "c57a9170c677bf795bdc04ed796ca491">
 <!ENTITY gcc-home "http://gcc.gnu.org">
 
-<!ENTITY gmp-version "5.0.1">
-<!ENTITY gmp-size "1,960 KB">
+<!ENTITY gmp-version "5.0.2">
+<!ENTITY gmp-size "1,978 KB">
 <!ENTITY gmp-url "&gnu;gmp/gmp-&gmp-version;.tar.bz2">
-<!ENTITY gmp-md5 "6bac6df75c192a13419dfd71d19240a7">
+<!ENTITY gmp-md5 "0bbaedc82fb30315b06b1588b9077cd3">
 <!ENTITY gmp-home "http://gmplib.org/">
 
 <!ENTITY iana-etc-version "2.30">
