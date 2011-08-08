@@ -1,5 +1,5 @@
 Submitted By: Andrew Bradford <bradfa@gmail.com>
-Date: 2011-03-31
+Date: 2011-08-08
 Initial Package Version: 1.18.4
 Origin: Andrew Bradford, Joe Ciccone
 Upstream Status: None - CLFS Specific
@@ -8,12 +8,12 @@ Description: Default configuration for CLFS builds of BusyBox.
 
 diff -Naur busybox-1.18.4.orig/clfs/config busybox-1.18.4/clfs/config
 --- busybox-1.18.4.orig/clfs/config	1969-12-31 19:00:00.000000000 -0500
-+++ busybox-1.18.4/clfs/config	2011-03-31 07:04:13.000000000 -0400
++++ busybox-1.18.4/clfs/config	2011-08-08 16:28:38.000000000 -0400
 @@ -0,0 +1,990 @@
 +#
 +# Automatically generated make config: don't edit
 +# Busybox version: 1.18.4
-+# Thu Mar 31 06:49:24 2011
++# Mon Aug  8 16:27:17 2011
 +#
 +CONFIG_HAVE_DOT_CONFIG=y
 +
@@ -832,11 +832,11 @@ diff -Naur busybox-1.18.4.orig/clfs/config busybox-1.18.4/clfs/config
 +# CONFIG_FEATURE_TRACEROUTE_USE_ICMP is not set
 +CONFIG_TUNCTL=y
 +# CONFIG_FEATURE_TUNCTL_UG is not set
-+# CONFIG_UDHCPD is not set
-+# CONFIG_DHCPRELAY is not set
-+# CONFIG_DUMPLEASES is not set
-+# CONFIG_FEATURE_UDHCPD_WRITE_LEASES_EARLY is not set
-+CONFIG_DHCPD_LEASES_FILE=""
++CONFIG_UDHCPD=y
++CONFIG_DHCPRELAY=y
++CONFIG_DUMPLEASES=y
++CONFIG_FEATURE_UDHCPD_WRITE_LEASES_EARLY=y
++CONFIG_DHCPD_LEASES_FILE="/var/lib/misc/udhcpd.leases"
 +CONFIG_UDHCPC=y
 +CONFIG_FEATURE_UDHCPC_ARPING=y
 +CONFIG_FEATURE_UDHCP_PORT=y
