@@ -267,7 +267,7 @@ diff -Naur uClibc-0.9.32.orig/clfs/config.arm.big uClibc-0.9.32/clfs/config.arm.
 +#
 +# uClibc development/debugging options
 +#
-+CROSS_COMPILER_PREFIX=""
++CROSS_COMPILER_PREFIX="${CLFS_TARGET}-"
 +UCLIBC_EXTRA_CFLAGS=""
 +# DODEBUG is not set
 +DOSTRIP=y
@@ -525,7 +525,7 @@ diff -Naur uClibc-0.9.32.orig/clfs/config.arm.little uClibc-0.9.32/clfs/config.a
 +#
 +# uClibc development/debugging options
 +#
-+CROSS_COMPILER_PREFIX=""
++CROSS_COMPILER_PREFIX="${CLFS_TARGET}-"
 +UCLIBC_EXTRA_CFLAGS=""
 +# DODEBUG is not set
 +DOSTRIP=y
@@ -781,7 +781,7 @@ diff -Naur uClibc-0.9.32.orig/clfs/config.i386.little uClibc-0.9.32/clfs/config.
 +#
 +# uClibc development/debugging options
 +#
-+CROSS_COMPILER_PREFIX=""
++CROSS_COMPILER_PREFIX="${CLFS_TARGET}-"
 +UCLIBC_EXTRA_CFLAGS=""
 +# DODEBUG is not set
 +DOSTRIP=y
@@ -1029,7 +1029,7 @@ diff -Naur uClibc-0.9.32.orig/clfs/config.mips.big uClibc-0.9.32/clfs/config.mip
 +#
 +# uClibc development/debugging options
 +#
-+CROSS_COMPILER_PREFIX=""
++CROSS_COMPILER_PREFIX="${CLFS_TARGET}-"
 +UCLIBC_EXTRA_CFLAGS=""
 +# DODEBUG is not set
 +DOSTRIP=y
@@ -1297,7 +1297,7 @@ diff -Naur uClibc-0.9.32.orig/clfs/config.mips.little uClibc-0.9.32/clfs/config.
 +#
 +# uClibc development/debugging options
 +#
-+CROSS_COMPILER_PREFIX=""
++CROSS_COMPILER_PREFIX="${CLFS_TARGET}-"
 +UCLIBC_EXTRA_CFLAGS=""
 +# DODEBUG is not set
 +DOSTRIP=y
@@ -1535,7 +1535,7 @@ diff -Naur uClibc-0.9.32.orig/clfs/config.x86_64.little uClibc-0.9.32/clfs/confi
 +#
 +# uClibc development/debugging options
 +#
-+CROSS_COMPILER_PREFIX=""
++CROSS_COMPILER_PREFIX="${CLFS_TARGET}-"
 +UCLIBC_EXTRA_CFLAGS=""
 +# DODEBUG is not set
 +DOSTRIP=y
