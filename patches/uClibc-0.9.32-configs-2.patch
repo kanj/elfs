@@ -1,5 +1,5 @@
-Submitted By: Andrew Bradford <bradfa@gmail.com>
-Date: 2011-11-27
+Submitted By: Andrew Bradford <andrew@bradfordembedded.com>
+Date: 2012-07-25
 Initial Package Version: 0.9.32
 Origin: Andrew Bradford
 Upstream Status: None - CLFS Specific
@@ -99,7 +99,7 @@ diff -Naur uClibc-0.9.32.orig/clfs/config.arm.big uClibc-0.9.32/clfs/config.arm.
 +# DO_C99_MATH is not set
 +# DO_XSI_MATH is not set
 +# UCLIBC_HAS_FENV is not set
-+KERNEL_HEADERS="/usr/include"
++KERNEL_HEADERS="${CLFS}/usr/include"
 +HAVE_DOT_CONFIG=y
 +
 +#
@@ -357,7 +357,7 @@ diff -Naur uClibc-0.9.32.orig/clfs/config.arm.little uClibc-0.9.32/clfs/config.a
 +# DO_C99_MATH is not set
 +# DO_XSI_MATH is not set
 +# UCLIBC_HAS_FENV is not set
-+KERNEL_HEADERS="/usr/include"
++KERNEL_HEADERS="${CLFS}/usr/include"
 +HAVE_DOT_CONFIG=y
 +
 +#
@@ -613,7 +613,7 @@ diff -Naur uClibc-0.9.32.orig/clfs/config.i386.little uClibc-0.9.32/clfs/config.
 +# DO_C99_MATH is not set
 +# DO_XSI_MATH is not set
 +# UCLIBC_HAS_FENV is not set
-+KERNEL_HEADERS="/usr/include"
++KERNEL_HEADERS="${CLFS}/usr/include"
 +HAVE_DOT_CONFIG=y
 +
 +#
@@ -861,7 +861,7 @@ diff -Naur uClibc-0.9.32.orig/clfs/config.mips.big uClibc-0.9.32/clfs/config.mip
 +# DO_C99_MATH is not set
 +# DO_XSI_MATH is not set
 +# UCLIBC_HAS_FENV is not set
-+KERNEL_HEADERS="/usr/include"
++KERNEL_HEADERS="${CLFS}/usr/include"
 +HAVE_DOT_CONFIG=y
 +
 +#
@@ -1129,7 +1129,7 @@ diff -Naur uClibc-0.9.32.orig/clfs/config.mips.little uClibc-0.9.32/clfs/config.
 +# DO_C99_MATH is not set
 +# DO_XSI_MATH is not set
 +# UCLIBC_HAS_FENV is not set
-+KERNEL_HEADERS="/usr/include"
++KERNEL_HEADERS="${CLFS}/usr/include"
 +HAVE_DOT_CONFIG=y
 +
 +#
@@ -1368,7 +1368,7 @@ diff -Naur uClibc-0.9.32.orig/clfs/config.x86_64.little uClibc-0.9.32/clfs/confi
 +# DO_C99_MATH is not set
 +# DO_XSI_MATH is not set
 +# UCLIBC_HAS_FENV is not set
-+KERNEL_HEADERS="/usr/include"
++KERNEL_HEADERS="${CLFS}/usr/include"
 +HAVE_DOT_CONFIG=y
 +
 +#
