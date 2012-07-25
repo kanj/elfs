@@ -18,8 +18,8 @@
 <!ENTITY iana-etc-update-patch-md5 "9b4d102672fc8bf777bbb95d1007edda">
 <!ENTITY iana-etc-update-patch-size "864 KB">
 
-<!ENTITY uclibc-configs-patch "uClibc-&uclibc-version;-configs-2.patch">
-<!ENTITY uclibc-configs-patch-md5 "e1e5c87b00f43d137af84fd3a163a807">
+<!ENTITY uclibc-configs-patch "uClibc-&uclibc-version;-configs-3.patch">
+<!ENTITY uclibc-configs-patch-md5 "614c04a7c0b7016aa482e08817f606ec">
 <!ENTITY uclibc-configs-patch-size "41 KB">
 
 <!-- Beyond patches -->
