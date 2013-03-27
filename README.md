@@ -1,7 +1,7 @@
-clfs-embedded
+Embedded Linux From Source
 =============
 
-Cross Linux From Scratch - Embedded Book
+This is a from the Cross Linux From Scratch - Embedded Book
 
 The purpose of this fork are three fold:
   * Use eGlibc inplace of uClibc. 
