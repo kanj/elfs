@@ -35,6 +35,19 @@
       </itemizedlist>
     </listitem>
 -->
+
+    <listitem>
+      <para>March 30, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Small fixes to aboutlfs, to support automation.</para>
+        </listitem>
+        <listitem>
+          <para>[kanj] - Update packages.ent for binutils_version.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
     <listitem>
       <para>September 22, 2012</para>
       <itemizedlist>
