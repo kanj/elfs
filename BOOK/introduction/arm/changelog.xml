@@ -33,6 +33,21 @@
 -->
 
     <listitem>
+      <para>April 1, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - updated arm/gcc-static and gcc-final: 
+          Specify the --fpu= is not used with soft float option
+          (Tracker-917(c). Minor lay out changes to support automation. 
+          Add not about soft float patch to gcc-final</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+
+
+
+    <listitem>
       <para>September 18, 2012</para>
       <itemizedlist>
         <listitem>
