@@ -31,6 +31,14 @@
     </listitem>
 
 -->
+     <listitem>
+      <para>April 1, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updated bootable/kernel to use the default kernel previously generated.  </para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
     <listitem>
       <para>April 1, 2013</para>
       <itemizedlist>
