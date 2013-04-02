@@ -48,7 +48,7 @@
 <screen os="g"><userinput>
 cp ~/versatile_config .config
 
-make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- menuconfig</userinput></screen>
+make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- oldconfig</userinput></screen>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
    href="../x86/kernel.xml"
