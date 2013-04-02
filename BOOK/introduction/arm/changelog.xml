@@ -35,6 +35,15 @@
       <para>April 1, 2013</para>
       <itemizedlist>
         <listitem>
+          <para>[kanj] - Updated arm/uclibc (Tracker-917(d). Updated the rules so that it would swap EABI and OABI.
+          Thus, make oldconfig no longer needs user interaction. Added sed rules to remove .size directive.  </para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+    <listitem>
+      <para>April 1, 2013</para>
+      <itemizedlist>
+        <listitem>
           <para>[kanj] - Moved linux-kernel headers earlier. Identified the default platform for the book.
           Added the creation of a default kernel. This kernel will be used to aid in deciding the value 
           for other parameters in the arm/variables.xml section.</para>
