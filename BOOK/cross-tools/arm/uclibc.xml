@@ -43,8 +43,8 @@
    it to use the EABI:</para>
 
 <screen os="e"><userinput>cp -v clfs/config.${CLFS_ARCH}.${CLFS_ENDIAN} .config
-sed -i s/".size	_init, .-_init"/""/g libc/sysdeps/linux/arm/crtn.S
-sed -i s/".size	_fini, .-_fini"/""/g libc/sysdeps/linux/arm/crtn.S
+sed -i s/.size*//g libc/sysdeps/linux/arm/crtn.S
+
 if [ "${CLFS_ABI}" == "aapcs" ] || [ "${CLFS_ABI}" == "aapcs-linux" ]; \
   then sed -i -e s/OABI=/EABI=/g -e s/'EABI is'/'OABI is'/g .config; fi</userinput></screen>
 
