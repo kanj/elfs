@@ -35,7 +35,17 @@
       </itemizedlist>
     </listitem>
 -->
-
+    <listitem>
+      <para>April 8, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Update bootscripts/inittab to reflect no root password.</para>
+        </listitem>
+        <listitem>
+          <para>[kanj] - Update packages.ent for binutils_version.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
     <listitem>
       <para>March 30, 2013</para>
       <itemizedlist>
