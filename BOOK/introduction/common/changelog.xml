@@ -36,6 +36,16 @@
     </listitem>
 -->
     <listitem>
+      <para>April 13, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updates to change the section on creating a dedicated partition to 
+           one on creating a working directory.(Ticket-914).</para>
+        </listitem>
+      </itemizedlist>
+      </listitem>
+      
+     <listitem>
       <para>April 8, 2013</para>
       <itemizedlist>
         <listitem>
