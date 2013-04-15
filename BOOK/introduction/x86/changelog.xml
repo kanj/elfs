@@ -33,6 +33,23 @@
 -->
 
     <listitem>
+      <para>April 14, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updated Linux-Headers section to support automation.</para>
+        </listitem>
+        <listitem>
+          <para>[kanj] - Updated uClibc to address .size issue (Ticket-876).</para>
+        </listitem>
+        <listitem>
+          <para>[kanj] - Updated Kernel section to support automation.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+    
+
+
+    <listitem>
       <para>February 10, 2011</para>
       <itemizedlist>
         <listitem>

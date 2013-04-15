@@ -49,9 +49,11 @@
     system will not function properly. If your concerned about disk space, your kernel
     should be without modules.</para></note>
 
-<screen os="g"><userinput>make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- menuconfig</userinput></screen>
+    <screen os="g"><userinput>
+    cp ~/x86_myconfig .config
+    make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- oldconfig</userinput></screen>
 
-    <para os="h">Alternatively, <command>make oldconfig</command> may be more
+    <para os="h">Alternatively, <command>make menuconfig</command> may be more
     appropriate in some situations. See the <filename>README</filename>
     file for more information.</para>
 
@@ -64,7 +66,7 @@
 
     <para os="j">Compile the kernel image and modules:</para>
 
-<screen os="k"><userinput>make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}-</userinput></screen>
+<screen os="k"><userinput>make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- bzImage modules</userinput></screen>
 
     <para os="l">If using kernel modules, an
     <filename>/etc/modprobe.conf</filename> file may be needed.
@@ -101,7 +103,7 @@
 
     <para os="s">Issue the following command to install the kernel:</para>
 
-<screen os="t"><userinput>cp vmlinux ${CLFS}/boot/clfskernel-&linux-version;</userinput></screen>
+<screen os="t"><userinput>cp arch/x86/boot/bzImage ${CLFS}/boot/clfskernel-&linux-version;</userinput></screen>
 
     <para os="u"><filename>System.map</filename> is a symbol file for the kernel.
     It maps the function entry points of every function in the kernel API,
