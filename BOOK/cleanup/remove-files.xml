@@ -16,21 +16,33 @@
   <para>Create a copy of the file system in case changes need to be made
   to it later:</para>
 
-<screen><userinput>install -dv ${CLFS}-final
-cp -arv ${CLFS}/* ${CLFS}-final/</userinput></screen>
+<screen><userinput>
+
+cd ${CLFS}
+
+install -dv ${CLFS}/build
+
+mkdir -pv build/final
+
+shopt -s extglob
+
+cp -arv !(build) build/final/
+
+
+</userinput></screen>
 
   <para>Remove files that aren't needed:</para>
 
-<screen><userinput>rm -rfv ${CLFS}-final/cross-tools
-rm -rfv ${CLFS}-final/usr/src/*
-rm -rfv ${CLFS}-final/usr/include
-rm -rfv ${CLFS}-final/usr/man
-rm -rfv ${CLFS}-final/usr/share/man
-rm -rfv ${CLFS}-final/build</userinput></screen>
+<screen><userinput>rm -rfv ${CLFS}/build/final/cross-tools
+rm -rfv ${CLFS}/build/final/usr/src/*
+rm -rfv ${CLFS}/build/final/usr/include
+rm -rfv ${CLFS}/build/final/usr/man
+rm -rfv ${CLFS}/build/final/usr/share/man
+rm -rfv ${CLFS}/build/final/sources</userinput></screen>
 
   <para>Remove the static libaries:</para>
 
-<screen><userinput>FILES="$(ls ${CLFS}-final/lib/*.a ${CLFS}-final/usr/lib/*.a)"
+<screen><userinput>FILES="$(ls ${CLFS}/build/final/lib/*.a ${CLFS}/build/final/usr/lib/*.a)"
 for file in $FILES; do
  rm -fv $file
 done</userinput></screen>

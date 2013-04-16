@@ -36,6 +36,18 @@
     </listitem>
 -->
     <listitem>
+      <para>April 15, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updated cleanup section to use a subdirectroy of ${CLFS} 
+          rather than create a separate directory. Also added removing ${CLFS}/sources to removing-files 
+          (Ticket-917).</para>
+        </listitem>
+      </itemizedlist>
+      </listitem>
+
+
+    <listitem>
       <para>April 13, 2013</para>
       <itemizedlist>
         <listitem>
