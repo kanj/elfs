@@ -9,10 +9,19 @@
   <?dbhtml filename="reboot.html"?>
 
   <title>Booting the System</title>
+  
 
-  <para>Assuming the boot loader was set up properly,
-  <emphasis>CLFS &version;</emphasis> will boot automatically when you power on
-  the target.</para>
+  <para>The QEMU emulator for this target can be started directly from a kernel and initramfs file.
+  We will not need to deal with bootloaders for this excercise. </para>
+  
+  
+  <screen><userinput>
+  
+    qemu-system-arm -kernel ${CLFS}/boot/clfskernel-&linux-version; \
+    -initrd ${CLFS}/build/initramfs -M versatileab -redir tcp:5555::80 -m 128 -serial stdio -append "rdinit=/sbin/init console=tty1"
+
+</userinput></screen>
+   
 
   <para>When the boot is complete, the embedded CLFS system is ready for use!</para>
 

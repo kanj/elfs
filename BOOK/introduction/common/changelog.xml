@@ -35,6 +35,18 @@
       </itemizedlist>
     </listitem>
 -->
+
+    <listitem>
+      <para>April 19, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updated cleanup/copy-to-target to create an initramfs rather than tar file. 
+          Updated the-end/boot to boot QEMU from the kernel and initramfs created. </para>
+        </listitem>
+      </itemizedlist>
+      </listitem>
+
+
     <listitem>
       <para>April 15, 2013</para>
       <itemizedlist>

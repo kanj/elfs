@@ -11,18 +11,16 @@
   <title>Copy to Target</title>
 
   <para>We just created a cleaned-up version of our build, now
-  compress it so it can be archived and transferred to the target.</para>
-
-  <para>Create a tarball of the build:</para>
+  compress it into an initial ramdisk so it can be archived 
+  and transferred to the target.</para>
+  
 
 <screen><userinput>
 cd ${CLFS}/build/final
-tar jcfv ${CLFS}/build/clfs-embedded.tar.bz2 *</userinput></screen>
 
-  <para>Now you can move your compressed tarball to your target
-  system. This will be different on  every embedded device.</para>
+( find . | cpio -o --format=newc | gzip ) > ../initramfs
 
-  <para>When uncompressing the tarball, make sure to pass tar the "-p"
-  switch to ensure permissions are preserved.</para>
+</userinput></screen>
+   
 
 </sect1>
