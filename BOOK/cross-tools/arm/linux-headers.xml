@@ -3,9 +3,12 @@
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
+ <!ENTITY clfs_arch "arm">
+<!ENTITY kernel_config "arch/arm/configs/versatile_defconfig"> 
 ]>
 
 <sect1 id="ch-cross-tools-linux-headers" role="wrap">
+
   <?dbhtml filename="linux-headers.html"?>
 
   <title>Linux-Headers-&linux-version;</title>
@@ -14,80 +17,47 @@
     <primary sortas="a-Linux-Headers">Linux-Headers</primary>
   </indexterm>
 
-  <sect2 role="package">
-    <title/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+  href="../common/linux-headers.xml"
+  xpointer="xpointer(//*[@role='package'])"/>
 
-    <para>The Linux Kernel contains a make target that installs
-    <quote>sanitized</quote> kernel headers.</para>
+<sect2 role="Platform">
+<title>Platform</title>
 
-  </sect2>
+<para>This is the first section requiring knowledge of the target platform. For this 
+book we will be using the VersatilePB development board 
+(  http://www.arm.com/products/tools/development-boards/versatile/index.php ).
+The primary information we need at thsi time is the architecture arm for this
+platform. Using yes "" in front of make forces the make statement to use default
+values. This is an easy trick for hitting return repeatedly. </para>
 
-  <sect2 role="installation">
-    <title>Installation of Linux Headers</title>
+<screen ><userinput>
+cp &kernel_config; ~/myConfig
 
-    <para os="a">For this step you will need the kernel tarball.
-    This is the first section that requires knowledge about the 
-    development platform, which for this book is the VersatilePB
-    (http://www.arm.com/products/tools/development-boards/versatile/index.php ).
-    The primary information we need at this time is the architecture (ARCH) for this
-    platform. Our first step will be to set the CLFS_ARCH parameter:</para>
-    
-    <screen os="d"><userinput>
-    export CLFS_ARCH=arm
-    echo export CLFS_ARCH=\""${CLFS_ARCH}\"" &gt;&gt; ~/.bashrc
-    </userinput></screen>
-    
+CLFS_ARCH=&clfs_arch;
+echo export  CLFS_ARCH=&clfs_arch; >> ~/.bashrc
 
-    <para os="b">Install the header files that are common to all ARM platforms:</para>
-
-<screen os="c"><userinput>make mrproper
-make ARCH=${CLFS_ARCH} headers_check
-make ARCH=${CLFS_ARCH} INSTALL_HDR_PATH=dest headers_install
-cp -rv dest/include/* ${CLFS}/usr/include</userinput></screen>
-
- <para os="e">Create a default kernel configuration. This will be used later to determine the 
- settings for other key variables:</para>
-
-<screen os="f"><userinput>
-cp arch/arm/configs/versatile_defconfig .config
-
-yes "" | make ARCH=arm oldconfig
-cp .config ~/versatile_myconfig 
 </userinput></screen>
 
+</sect2>
 
-  </sect2>
+  
+ <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+  href="../common/linux-headers.xml"
+  xpointer="xpointer(//*[@role='installation'])"/>
+  
+  
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+  href="../common/linux-headers.xml"
+  xpointer="xpointer(//*[@role='oldconfig'])"/>
 
-  <sect2 id="contents-linux-headers" role="content">
-    <title>Contents of Linux-Headers</title>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+  href="../common/linux-headers.xml"
+  xpointer="xpointer(//*[@role='content'])"/>
 
-    <segmentedlist>
-      <segtitle>Installed headers</segtitle>
 
-      <seglistitem>
-        <seg>/usr/include/{asm,asm-generic,drm,linux,mtd,rdma,scsi,sound,video,xen}/*.h</seg>
-      </seglistitem>
-    </segmentedlist>
 
-    <variablelist>
-      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
-      <?dbfo list-presentation="list"?>
-      <?dbhtml list-presentation="table"?>
-
-      <varlistentry id="linux-headers">
-        <term><filename
-        class="headerfile">/usr/include/{asm,asm-generic,drm,linux,mtd,rdma,scsi,sound,video,xen}/*.h</filename></term>
-        <listitem>
-          <para>The Linux API headers</para>
-          <indexterm zone="ch-cross-tools-linux-headers linux-headers">
-            <primary
-            sortas="e-/usr/include/{asm,linux}/*.h">/usr/include/{asm,linux}/*.h</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-    </variablelist>
-
-  </sect2>
-
+  
 </sect1>
+
+

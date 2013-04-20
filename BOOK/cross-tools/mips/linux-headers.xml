@@ -3,50 +3,50 @@
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
+ <!ENTITY clfs_arch "mips">
+<!ENTITY kernel_config "arch/mips/configs/malta_defconfig"> 
 ]>
 
 <sect1 id="ch-cross-tools-linux-headers" role="wrap">
+
   <?dbhtml filename="linux-headers.html"?>
 
-  <title>Linux-Headers-&linux-mips-version;</title>
+  <title>Linux-Headers-&linux-version;</title>
 
   <indexterm zone="ch-cross-tools-linux-headers">
     <primary sortas="a-Linux-Headers">Linux-Headers</primary>
   </indexterm>
 
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="../x86/linux-headers.xml"
+  href="../common/linux-headers.xml"
   xpointer="xpointer(//*[@role='package'])"/>
 
-  <sect2 role="installation">
-    <title>Installation of Linux Headers</title>
+<sect2 role="platform">
+<title>Platform and Architecture </title>
+<para>This is the first section requiring knowledge of the target platform. For this 
+book we will be using the Malta development board. By reviewing the initial config file 
+for this platform we can determine that the architecture is MIPS.</para>
+ 
+<screen os="c"><userinput>
+cp &kernel_config; ~/myConfig
+
+CLFS_ARCH=&clfs_arch;
+echo export  CLFS_ARCH=&clfs_arch; >> ~/.bashrc
+
+</userinput></screen>
+</sect2>
+
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+  href="../common/linux-headers.xml"
+  xpointer="xpointer(//*[@role='installation'])"/>
+  
+  
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+  href="../common/linux-headers.xml"
+  xpointer="xpointer(//*[@role='oldconfig'])"/>
 
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="../x86/linux-headers.xml"
-  xpointer="xpointer(//*[@os='a'])"/>
-
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="../x86/linux-headers.xml"
-  xpointer="xpointer(//*[@os='p1'])"/>
-
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="../x86/linux-headers.xml"
-  xpointer="xpointer(//*[@os='p2'])"/>
-
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="../x86/linux-headers.xml"
-  xpointer="xpointer(//*[@os='b'])"/>
-
-<screen os="c"><userinput>install -dv ${CLFS}/usr/include
-make mrproper
-make ARCH=mips headers_check
-make ARCH=mips INSTALL_HDR_PATH=dest headers_install
-cp -rv dest/include/* ${CLFS}/usr/include</userinput></screen>
-
-  </sect2>
-
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="../x86/linux-headers.xml"
+  href="../common/linux-headers.xml"
   xpointer="xpointer(//*[@role='content'])"/>
 
 </sect1>
