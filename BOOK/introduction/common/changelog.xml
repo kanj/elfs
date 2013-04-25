@@ -35,7 +35,15 @@
       </itemizedlist>
     </listitem>
 -->
-
+    <listitem>
+      <para>April 25, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updated cross-tools/*/abi to provide externel reference and to
+          cross reference selection to kernel configuration. </para>
+        </listitem>
+      </itemizedlist>
+      </listitem>
     <listitem>
       <para>April 19, 2013</para>
       <itemizedlist>

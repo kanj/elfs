@@ -9,7 +9,19 @@
   <?dbhtml filename="abi.html"?>
 
   <title>ABI Variables</title>
+<sect2 role="abi">
+<title> ABI </title>
+<para> An application binary interface (ABI) describes the low-level interface 
+between a computer program and the operating system. Specifying the ABI is part of 
+the process of fine tuning the cross-compilation toolchain for the selected platform.
+A good overview of ABIs is provided by the following wikipedia entry: 
+    <ulink url="http://en.wikipedia.org/wiki/Application_binary_interface"/>
 
+</para>
+</sect2>
+
+<sect2>
+<title> ABI </title>
   <para os="a" >Setup for a Particular ABI:</para>
 
 <screen os="b"><userinput>export CLFS_ABI="<replaceable>[From Chart]</replaceable>"
@@ -18,7 +30,7 @@ echo export CLFS_ABI=\""${CLFS_ABI}\"" &gt;&gt; ~/.bashrc</userinput></screen>
   <para os="c">The following table gives the entires for the different ABI's 
   that CLFS Embedded supports. Make sure you select one for your build, this
   will ensure capatibilty of your build with your target architecture.</para>
-
+</sect2>
 
 </sect1>
 
