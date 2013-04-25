@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      6.11.&nbsp;uClibc-0.9.31
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20120922-arm">
+    <div class="navheader">
+      <h4>
+        Cross-Compiled Linux From Scratch - Embedded - Version
+        GIT-0.0.1-20120922-arm
+      </h4>
+      <h3>
+        Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="gcc-static.html" title=
+          "Cross GCC-4.6.0 - Static">Prev</a>
+          <p>
+            Cross GCC-4.6.0 - Static
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="gcc-final.html" title=
+          "GCC-4.6.0 - Cross Compiler Final">Next</a>
+          <p>
+            GCC-4.6.0 - Cross Compiler Final
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-arm">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-cross-tools-uclibc" name="ch-cross-tools-uclibc"></a>6.11.
+        uClibc-0.9.31
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The uClibc package contains the main C library. This library
+          provides the basic routines for allocating memory, searching
+          directories, opening and closing files, reading and writing files,
+          string handling, pattern matching, arithmetic, and so on.
+        </p>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.11.1. Installation of uClibc
+        </h2>
+        <div class="admon note">
+          <img alt="[Note]" src="../images/note.png" />
+          <h3>
+            Note
+          </h3>
+          <p>
+            Below we are just telling uClibc to use its default
+            configuration. For those who are more adventurous, you can use
+            make menuconfig and do a more custom build for your uClibc
+            installation.
+          </p>
+        </div>
+        <p>
+          The following patch contains the default configurations for the
+          architectures covered in this book:
+        </p>
+        <pre class="userinput">
+<kbd class="command">patch -Np1 -i ../uClibc-0.9.31-configs-2.patch</kbd>
+</pre>
+        <p>
+          For the ARM architecture, there are two different configurations of
+          uClibc that can be used: the EABI configuration and the OABI
+          configuration. We will first copy the OABI configuration and, if
+          the EABI was selected, modify it to use the EABI:
+        </p>
+        <pre class="userinput">
+<kbd class="command">
+
+
+tar -jxvf ../eglibc-ports-2.13-r13356.tar.bz2
+mv -v eglibc-ports-2.13 ports
+
+#Isuues with pipes and memory
+sed -i s#-pipe,##g Makerules
+
+cp -v Makeconfig{,.orig}
+sed -e 's/-lgcc_eh//g' Makeconfig.orig &gt; Makeconfig
+
+
+
+mkdir -v ../eglibc-build
+cd ../eglibc-build
+
+cat &gt; config.cache &lt;&lt; "EOF"
+libc_cv_forced_unwind=yes
+libc_cv_c_cleanup=yes
+libc_cv_gnu89_inline=yes
+libc_cv_ssp=no
+EOF
+
+
+BUILD_CC="gcc" CC="${CLFS_TARGET}-gcc" \
+    AR="${CLFS_TARGET}-ar" RANLIB="${CLFS_TARGET}-ranlib" \
+    ../eglibc-2.13/configure --prefix=/tools \
+    --host=${CLFS_TARGET} --build=${CLFS_HOST} \
+    --disable-profile --enable-add-ons \
+    --with-tls --enable-kernel=2.6.0 --with-__thread \
+    --with-binutils=${CLFS}/cross-tools/bin  \
+    --cache-file=config.cache --with-sysroot=${CLFS}
+</kbd>
+</pre>
+        <p>
+          The config is a basic working system, but there are some options
+          that are architecture specifc that need to be set. The following
+          command will only bring up items that need a value that we did not
+          specify in our generic config file patch:
+        </p>
+        <p>
+          Compile the package:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make</kbd>
+</pre>
+        <p>
+          Install the package:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make PREFIX=${CLFS} install</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="contents-uclibc" name="contents-uclibc"></a>6.11.2. Contents
+          of uClibc
+        </h2>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class="segtitle">Installed Programs:</strong>
+              <span class="segbody">ld-uClibc.so.0</span>
+            </div>
+            <div class="seg">
+              <strong class="segtitle">Installed Libraries:</strong>
+              <span class="segbody">libc.so.0, libcrypt.so.0, libdl.so.0,
+              libm.so.0, libpthread.so.0, librt.so.0</span>
+            </div>
+            <div class="seg">
+              <strong class="segtitle">Installed Headers:</strong>
+              <span class="segbody">To be written...</span>
+            </div>
+          </div>
+        </div>
+        <div class="variablelist">
+          <h3>
+            Short Descriptions
+          </h3>
+          <table border="0">
+            <col align="left" valign="top" />
+            <tbody>
+              <tr>
+                <td>
+                  <p>
+                    <a id="ld-uClibc" name="ld-uClibc"></a><span class=
+                    "term"><span class=
+                    "command"><strong>ld-uClibc</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    The uClibc dynamic linker / loader
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="libc" name="libc"></a><span class=
+                    "term"><code class="filename">libc</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    The C library
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="libcrypt" name="libcrypt"></a><span class=
+                    "term"><code class="filename">libcrypt</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    The cryptographic library
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="libdl" name="libdl"></a><span class=
+                    "term"><code class="filename">libdl</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    The uClibc dynamic linker / loader library
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="libm" name="libm"></a><span class=
+                    "term"><code class="filename">libm</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    The math library
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="libpthread" name="libpthread"></a><span class=
+                    "term"><code class="filename">libpthread</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    The POSIX thread library
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="librt" name="librt"></a><span class=
+                    "term"><code class="filename">librt</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    The clock and timer library
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="gcc-static.html" title=
+          "Cross GCC-4.6.0 - Static">Prev</a>
+          <p>
+            Cross GCC-4.6.0 - Static
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="gcc-final.html" title=
+          "GCC-4.6.0 - Cross Compiler Final">Next</a>
+          <p>
+            GCC-4.6.0 - Cross Compiler Final
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-arm">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

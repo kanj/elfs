@@ -1,0 +1,752 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      1.3.&nbsp;Master Changelog
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20120922-arm">
+    <div class="navheader">
+      <h4>
+        Cross-Compiled Linux From Scratch - Embedded - Version
+        GIT-0.0.1-20120922-arm
+      </h4>
+      <h3>
+        Chapter&nbsp;1.&nbsp;Introduction
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="how.html" title=
+          "How to Build a CLFS System">Prev</a>
+          <p>
+            How to Build a CLFS System
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="changelog-arm.html" title=
+          "Changelog for ARM">Next</a>
+          <p>
+            Changelog for ARM
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;1.&nbsp;Introduction">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-arm">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-intro-changelog" name="ch-intro-changelog"></a>1.3. Master
+        Changelog
+      </h1>
+      <p>
+        This is version GIT-0.0.1-20120922 of the Cross-Compiled Linux From
+        Scratch book, dated September 22, 2012. If this book is more than six
+        months old, a newer and better version is probably already available.
+        To find out, please check one of the mirrors via <a class="ulink"
+        href="http://trac.cross-lfs.org/">http://trac.cross-lfs.org/</a>.
+      </p>
+      <p>
+        Below is a list of detailed changes made since the previous release
+        of the book.
+      </p>
+      <div class="itemizedlist">
+        <p class="title">
+          <b>Changelog Entries:</b>
+        </p>
+        <ul>
+          <li>
+            <p>
+              April 25, 2013
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [kanj] - Updated cross-tools/*/abi to provide externel
+                    reference and to cross reference selection to kernel
+                    configuration.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              April 19, 2013
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [kanj] - Updated cross-tool chapters to move
+                    kernel-headers earlier. Reformated the kernel header
+                    chapter for each platform. This change is to support a
+                    platform emphasis and to support deriving the CLFS
+                    variables from the kernel configuration.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              April 19, 2013
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [kanj] - Updated cleanup/copy-to-target to create an
+                    initramfs rather than tar file. Updated the-end/boot to
+                    boot QEMU from the kernel and initramfs created.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              April 15, 2013
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [kanj] - Updated cleanup section to use a subdirectroy of
+                    ${CLFS} rather than create a separate directory. Also
+                    added removing ${CLFS}/sources to removing-files
+                    (Ticket-917).
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              April 13, 2013
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [kanj] - Updates to change the section on creating a
+                    dedicated partition to one on creating a working
+                    directory.(Ticket-914).
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              April 8, 2013
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [kanj] - Update bootscripts/inittab to reflect no root
+                    password.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [kanj] - Update packages.ent for binutils_version.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              March 30, 2013
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [kanj] - Small fixes to aboutlfs, to support automation.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [kanj] - Update packages.ent for binutils_version.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              September 22, 2012
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [abradford] - Small fixes to prologue and ch 1 and 2.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              September 13, 2012
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [ljump] - Fix System.map depmod command.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [ljump] - Fix console and null /dev node creation for
+                    final system.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              September 02, 2012
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [William Harrington] - Fix uClibc patch MD5 sum.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              August 24, 2012
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [William Harrington] - Change Beyond Net hostapd page to
+                    include bootscript and configuration sections.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              August 22, 2012
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [William Harrington] - Change Beyond Net Dropbear page
+                    and edit the installation of bootscripts section.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [William Harrington] - Remove bash reference in hostreqs
+                    version script to use $SHELL variable.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              August 08, 2012
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [William Harrington] - Update version check script to
+                    find the libc version with hosts that use paths other
+                    than /lib and /lib64, such as multiarch distro.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              May 14, 2011
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [abradford] - Updated /etc/mdev.conf to Alpine Linux's
+                    example to provide a better baseline example.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Reverted changes that removed the mknod'ing
+                    of /dev/console and /dev/null. These nodes may be needed
+                    on some systems for proper booting.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Added Wireless Tools package to Beyond
+                    Networking section. Thanks to Ivan Castell Rovira for
+                    providing a set of instructions for the installation of
+                    this package.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Fixed some Dropbear issues with symlinks
+                    and directory naming.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              April 20, 2011
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [abradford] - Created a Beyond section just for extra
+                    libraries and moved zlib into it.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              April 19, 2011
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [abradford] - Created a Beyond section just for
+                    networking tools.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Created a Beyond section just for file
+                    system tools and moved e2fsprogs into it.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              April 8, 2011
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [jciccone] - Cleaned up the acknowledgements page.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              March 31, 2011
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [abradford] - Updated BusyBox to version 1.18.4.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Updated GCC to version 4.6.0.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Updated MPC to version 0.9.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Updated zlib to version 1.2.5.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Updated Linux kernel to version 2.6.38.2.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Require Gawk 3.1 or greater because of
+                    Iana-Etc requirements.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Updated "What Now?" section to include
+                    CBLFS link. Thanks go to Adrian Grigo.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Link ${CLFS}/etc/init.d/rcS to
+                    ${CLFS}/etc/rc.d/startup so that BusyBox's init can find
+                    the startup scripts.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Updated mdev configuration such that video
+                    output is disabled by default to ensure no errors if
+                    video is not available.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              March 23, 2011
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [abradford] - Remove mknod commands as mdev takes care of
+                    creating all required entries in /dev automatically.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Moved change ownership section to be as
+                    late in the book as possible and only operate on a copy
+                    of the file system.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              March 18, 2011
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [abradford] - Copy libgcc library to target as it's
+                    needed by at least e2fsprogs.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              March 7, 2011
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [abradford] - Added optional information for building C++
+                    compiler.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Updated bootscripts install target and
+                    package contents to match current bootscripts.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              February 24, 2011
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [abradford] - Added --disable-multilib to GCC builds.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              February 10, 2011
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [abradford] - Changed GCC Static and Final to build GCC
+                    for ${CLFS_ABI} for ARM and MIPS, ${CLFS_CPU} for x86.
+                    This removes the need for using the ${BUILD} variable
+                    when building packages.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Updated Resources section.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              January 30, 2011
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [abradford] - Updated MPFR download link.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Updated GCC to version 4.5.2.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Updated Binutils to version 2.21.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Added information to GCC's configure
+                    options.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [abradford] - Updated Iana-Etc to use more up-to-date
+                    data.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              Janurary 10, 2011
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [jciccone] - Changes Submitted By Andrew Bradford via the
+                    CLFS-Dev Mailing List. Updated E2fsprogs to 1.41.14 and
+                    changed some configure switches for uClibc compatibility.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              November 28, 2010
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [jciccone] - Updated BusyBox to 1.17.3.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [jciccone] - Updated uClibc to 0.9.31.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              November 21, 2010
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [jciccone] - Added MPC 0.8.2.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [jciccone] - Updated GCC to 4.5.1.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [jciccone] - Updated Binutils to 2.20.1.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [jciccone] - Updated MPFR to 3.0.0.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [jciccone] - Updated GMP to 5.0.1.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [jciccone] - Updated the Linux Kernel to 2.6.36.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [jciccone] - Make sure we change CLFS_HOST before we set
+                    it. Also make sure that CLFS_HOST gets saved to the
+                    bashrc.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              November 8, 2008
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [jciccone] - Updated Busybox to 1.12.1.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [jciccone] - Updated uClibc to 0.9.30-rc3.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              November 8, 2008
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [jciccone] - Dropped the uClibc Headers Page.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [jciccone] - Updated GCC to 4.3.2.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    [jciccone] - Updated Binutils to 2.19.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              Janurary 9, 2008
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [jciccone] - Updated Busybox to 1.8.2.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <p>
+              November 5, 2006
+            </p>
+            <div class="itemizedlist">
+              <ul>
+                <li>
+                  <p>
+                    [jim] - Start of CLFS Embedded Development.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="how.html" title=
+          "How to Build a CLFS System">Prev</a>
+          <p>
+            How to Build a CLFS System
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="changelog-arm.html" title=
+          "Changelog for ARM">Next</a>
+          <p>
+            Changelog for ARM
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;1.&nbsp;Introduction">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-arm">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

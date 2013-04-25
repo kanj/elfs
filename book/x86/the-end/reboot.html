@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      17.3.&nbsp;Booting the System
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20120922-x86">
+    <div class="navheader">
+      <h4>
+        Cross-Compiled Linux From Scratch - Embedded - Version
+        GIT-0.0.1-20120922-x86
+      </h4>
+      <h3>
+        Chapter&nbsp;17.&nbsp;The End
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="getcounted.html" title=
+          "Get Counted">Prev</a>
+          <p>
+            Get Counted
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="whatnow.html" title="What Now?">Next</a>
+          <p>
+            What Now?
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;17.&nbsp;The End">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-x86">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-finish-boot" name="ch-finish-boot"></a>17.3. Booting the
+        System
+      </h1>
+      <p>
+        The QEMU emulator for this target can be started directly from a
+        kernel and initramfs file. We will not need to deal with bootloaders
+        for this excercise.
+      </p>
+      <pre class="userinput">
+<kbd class="command">
+  
+    qemu-system-arm -kernel ${CLFS}/boot/clfskernel-2.6.38.2 \
+    -initrd ${CLFS}/build/initramfs -M versatileab -redir tcp:5555::80 -m 128 -serial stdio -append "rdinit=/sbin/init console=tty1"
+
+</kbd>
+</pre>
+      <p>
+        When the boot is complete, the embedded CLFS system is ready for use!
+      </p>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="getcounted.html" title=
+          "Get Counted">Prev</a>
+          <p>
+            Get Counted
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="whatnow.html" title="What Now?">Next</a>
+          <p>
+            What Now?
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;17.&nbsp;The End">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-x86">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

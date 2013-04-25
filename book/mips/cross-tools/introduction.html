@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      6.1.&nbsp;Introduction
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20120922-mips">
+    <div class="navheader">
+      <h4>
+        Cross-Compiled Linux From Scratch - Embedded - Version
+        GIT-0.0.1-20120922-mips
+      </h4>
+      <h3>
+        Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="chapter.html" title=
+          "Constructing Cross-Compile Tools">Prev</a>
+          <p>
+            Constructing Cross-Compile Tools
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="cflags.html" title="Build CFLAGS">Next</a>
+          <p>
+            Build CFLAGS
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-mips">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-cross-tools-introduction" name=
+        "ch-cross-tools-introduction"></a>6.1. Introduction
+      </h1>
+      <p>
+        This chapter shows you how to create cross platform tools.
+      </p>
+      <p>
+        If for some reason you have to stop and come back later, remember to
+        use the <span class="command"><strong>su - clfs</strong></span>
+        command, and it will setup the build environment that you left.
+      </p>
+      <div class="sect2" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.1.1. Common Notes
+        </h2>
+        <div class="admon important">
+          <img alt="[Important]" src="../images/important.png" />
+          <h3>
+            Important
+          </h3>
+          <p>
+            Before issuing the build instructions for a package, the package
+            should be unpacked as user <code class="systemitem">clfs</code>,
+            and a <span class="command"><strong>cd</strong></span> into the
+            created directory should be performed. The build instructions
+            assume that the <span class=
+            "command"><strong>bash</strong></span> shell is in use.
+          </p>
+        </div>
+        <p>
+          Several of the packages are patched before compilation, but only
+          when the patch is needed to circumvent a problem or supply a
+          default configuration. Warning messages about <span class=
+          "emphasis"><em>offset</em></span> or <span class=
+          "emphasis"><em>fuzz</em></span> may also be encountered when
+          applying a patch. Do not worry about these warnings, as the patch
+          was still successfully applied.
+        </p>
+        <p>
+          During the compilation of most packages, there will be several
+          warnings that scroll by on the screen. These are normal and can
+          safely be ignored. These warnings are as they appear&mdash;warnings
+          about deprecated, but not invalid, use of the C or C++ syntax. C
+          standards change fairly often, and some packages still use the
+          older standard. This is not a problem, but does prompt the warning.
+        </p>
+        <div class="admon important">
+          <img alt="[Important]" src="../images/important.png" />
+          <h3>
+            Important
+          </h3>
+          <p>
+            After installing each package, both in this and the next
+            chapters, delete its source and build directories, unless
+            specifically instructed otherwise.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="chapter.html" title=
+          "Constructing Cross-Compile Tools">Prev</a>
+          <p>
+            Constructing Cross-Compile Tools
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="cflags.html" title="Build CFLAGS">Next</a>
+          <p>
+            Build CFLAGS
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-mips">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

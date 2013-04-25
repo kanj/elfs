@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      10.8.&nbsp;Configuring the network Script
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20120922-x86">
+    <div class="navheader">
+      <h4>
+        Cross-Compiled Linux From Scratch - Embedded - Version
+        GIT-0.0.1-20120922-x86
+      </h4>
+      <h3>
+        Chapter&nbsp;10.&nbsp;Setting Up System Bootscripts
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="hosts.html" title=
+          "Customizing the /etc/hosts File">Prev</a>
+          <p>
+            Customizing the /etc/hosts File
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="../bootloaders/chapter.html" title=
+          "Bootloaders">Next</a>
+          <p>
+            Bootloaders
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;10.&nbsp;Setting Up System Bootscripts">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-x86">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-scripts-network" name="ch-scripts-network"></a>10.8.
+        Configuring the network Script
+      </h1>
+      <div class="sect2" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          10.8.1. Creating Network Interface Configuration Files
+        </h2>
+        <p>
+          Which interfaces are brought up and down by the network script
+          depends on the files and directories in the <code class=
+          "filename">/etc/network.d</code> hierarchy. This directory should
+          contain a file for each interface to be configured, such as
+          <code class="filename">interface.xyz</code>, where
+          &ldquo;<span class="quote">xyz</span>&rdquo; is a network interface
+          name. Inside this file we would be defining the attributes to this
+          interface, such as its IP address(es), subnet masks, and so forth.
+        </p>
+        <p>
+          The following command creates the <code class=
+          "filename">network.conf</code> file for use by the entire system:
+        </p>
+        <pre class="userinput">
+<kbd class="command">cat &gt; ${CLFS}/etc/network.conf &lt;&lt; "EOF"
+<code class="literal"># /etc/network.conf
+# Global Networking Configuration
+# interface configuration is in /etc/network.d/
+
+# set to yes to enable networking
+NETWORKING=yes
+
+# set to yes to set default route to gateway
+USE_GATEWAY=no
+
+# set to gateway IP address
+GATEWAY=192.168.0.1
+
+# Interfaces to add to br0 bridge
+# Leave commented to not setup a network bridge
+# Substitute br0 for eth0 in the interface.eth0 sample below to bring up br0
+# instead
+# bcm47xx with vlans:
+#BRIDGE_INTERFACES="eth0.0 eth0.1 wlan0"
+# Other access point with a wired eth0 and a wireless wlan0 interface:
+#BRIDGE_INTERFACES="eth0 wlan0"
+</code>
+EOF</kbd>
+</pre>
+        <p>
+          The <code class="envar">GATEWAY</code> variable should contain the
+          default gateway IP address, if one is present. If not, then comment
+          out the variable entirely.
+        </p>
+        <p>
+          The following command creates a sample <code class=
+          "filename">interface.eth0</code> file for the <span class=
+          "emphasis"><em>eth0</em></span> device:
+        </p>
+        <pre class="userinput">
+<kbd class="command">mkdir ${CLFS}/etc/network.d &amp;&amp;
+cat &gt; ${CLFS}/etc/network.d/interface.eth0 &lt;&lt; "EOF"
+<code class="literal"># Network Interface Configuration
+
+# network device name
+INTERFACE=eth0
+
+# set to yes to use DHCP instead of the settings below
+DHCP=no
+
+# IP address
+IPADDRESS=192.168.1.2
+
+# netmask
+NETMASK=255.255.255.0
+
+# broadcast address
+BROADCAST=192.168.1.255</code>
+EOF</kbd>
+</pre>
+        <p>
+          The <code class="envar">INTERFACE</code> variable should contain
+          the name of the interface interface.
+        </p>
+        <p>
+          The <code class="envar">DHCP</code> variable if set to yes will
+          allow you to use dhcp. If set to no, you will need to configure the
+          rest of the options.
+        </p>
+        <p>
+          The <code class="envar">IPADDRESS</code> variable should contain
+          the default IP address for this interface.
+        </p>
+        <p>
+          The <code class="envar">NETMASK</code> variable should contain the
+          default Subnet Mask for the IP address for this interface.
+        </p>
+        <p>
+          The <code class="envar">BROADCAST</code> variable should contain
+          the default Broadcast Address for the Subnet Mask of the IP Range
+          being used on this interface.
+        </p>
+      </div>
+      <div class="sect2" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="udhcpc.conf" name="udhcpc.conf"></a>10.8.2. Creating the
+          ${CLFS}/etc/udhcpc.conf File
+        </h2>
+        <p>
+          For DHCP to work properly a configuration script is needed. Create
+          a sample udhcpc.conf:
+        </p>
+        <pre class="userinput">
+<kbd class="command">cat &gt; ${CLFS}/etc/udhcpc.conf &lt;&lt; "EOF"
+<code class="literal">#!/bin/sh
+# udhcpc Interface Configuration
+# Based on http://lists.debian.org/debian-boot/2002/11/msg00500.html
+# udhcpc script edited by Tim Riker &lt;Tim@Rikers.org&gt;
+
+[ -z "$1" ] &amp;&amp; echo "Error: should be called from udhcpc" &amp;&amp; exit 1
+
+RESOLV_CONF="/etc/resolv.conf"
+RESOLV_BAK="/etc/resolv.bak"
+
+[ -n "$broadcast" ] &amp;&amp; BROADCAST="broadcast $broadcast"
+[ -n "$subnet" ] &amp;&amp; NETMASK="netmask $subnet"
+
+case "$1" in
+        deconfig)
+                if [ -f "$RESOLV_BAK" ]; then
+                        mv "$RESOLV_BAK" "$RESOLV_CONF"
+                fi
+                /sbin/ifconfig $interface 0.0.0.0
+                ;;
+
+        renew|bound)
+                /sbin/ifconfig $interface $ip $BROADCAST $NETMASK
+
+                if [ -n "$router" ] ; then
+                        while route del default gw 0.0.0.0 dev $interface ; do
+                                true
+                        done
+
+                        for i in $router ; do
+                                route add default gw $i dev $interface
+                        done
+                fi
+
+                if [ ! -f "$RESOLV_BAK" ] &amp;&amp; [ -f "$RESOLV_CONF" ]; then
+                        mv "$RESOLV_CONF" "$RESOLV_BAK"
+                fi
+
+                echo -n &gt; $RESOLV_CONF
+                [ -n "$domain" ] &amp;&amp; echo search $domain &gt;&gt; $RESOLV_CONF
+                for i in $dns ; do
+                        echo nameserver $i &gt;&gt; $RESOLV_CONF
+                done
+                ;;
+esac
+
+exit 0
+</code>EOF
+
+chmod +x ${CLFS}/etc/udhcpc.conf</kbd>
+</pre>
+      </div>
+      <div class="sect2" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="resolv.conf" name="resolv.conf"></a>10.8.3. Creating the
+          ${CLFS}/etc/resolv.conf File
+        </h2>
+        <p>
+          If the system is going to be connected to the Internet, it will
+          need some means of Domain Name Service (DNS) name resolution to
+          resolve Internet domain names to IP addresses, and vice versa. This
+          is best achieved by placing the IP address of the DNS server,
+          available from the ISP or network administrator, into <code class=
+          "filename">/etc/resolv.conf</code>. Create the file by running the
+          following:
+        </p>
+        <pre class="userinput">
+<kbd class="command">cat &gt; ${CLFS}/etc/resolv.conf &lt;&lt; "EOF"
+<code class="literal"># Begin /etc/resolv.conf
+
+domain <em class="replaceable"><code>[Your Domain Name]</code></em>
+nameserver <em class=
+"replaceable"><code>[IP address of your primary nameserver]</code></em>
+nameserver <em class=
+"replaceable"><code>[IP address of your secondary nameserver]</code></em>
+
+# End /etc/resolv.conf</code>
+EOF</kbd>
+</pre>
+        <p>
+          Replace <em class="replaceable"><code>[IP address of the
+          nameserver]</code></em> with the IP address of the DNS most
+          appropriate for the setup. There will often be more than one entry
+          (requirements demand secondary servers for fallback capability). If
+          you only need or want one DNS server, remove the second
+          <span class="emphasis"><em>nameserver</em></span> line from the
+          file. The IP address may also be a router on the local network.
+        </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="hosts.html" title=
+          "Customizing the /etc/hosts File">Prev</a>
+          <p>
+            Customizing the /etc/hosts File
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="../bootloaders/chapter.html" title=
+          "Bootloaders">Next</a>
+          <p>
+            Bootloaders
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;10.&nbsp;Setting Up System Bootscripts">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-x86">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

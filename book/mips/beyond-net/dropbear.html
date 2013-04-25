@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      14.4.&nbsp;Dropbear-0.52
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20120922-mips">
+    <div class="navheader">
+      <h4>
+        Cross-Compiled Linux From Scratch - Embedded - Version
+        GIT-0.0.1-20120922-mips
+      </h4>
+      <h3>
+        Chapter&nbsp;14.&nbsp;Networking Software
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="patches.html" title=
+          "Beyond CLFS Networking Patches">Prev</a>
+          <p>
+            Beyond CLFS Networking Patches
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="iptables.html" title=
+          "IPTables-1.4.2">Next</a>
+          <p>
+            IPTables-1.4.2
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;14.&nbsp;Networking Software">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-mips">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-beyond-net-dropbear" name=
+        "ch-beyond-net-dropbear"></a>14.4. Dropbear-0.52
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          Dropbear is a relatively small SSH 2 server and client. Dropbear
+          has a small memory footprint suitable for memory-constrained
+          environments, while still having the same features as OpenSSH. It
+          does not depend on OpenSSL and it has a MIT style license.
+          Optionally it can even be made smaller.
+        </p>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          14.4.1. Installation of Dropbear
+        </h2>
+        <p>
+          Dropbear incorrectly calls ld instead of gcc for linking, so fix
+          it:
+        </p>
+        <pre class="userinput">
+<kbd class="command">cp Makefile.in{,.orig}
+sed -e s/@LD@/@CC@/ Makefile.in.orig &gt; Makefile.in</kbd>
+</pre>
+        <p>
+          Configure dropbear:
+        </p>
+        <pre class="userinput">
+<kbd class=
+"command">CC="${CC} -Os" ./configure --prefix=/usr --host=${CLFS_TARGET}</kbd>
+</pre>
+        <p>
+          Now we will utilize /dev/urandom instead of /dev/random. To allow
+          this to be utilized we use the following sed:
+        </p>
+        <pre class="userinput">
+<kbd class="command">cp -v options.h options.h.backup
+sed -e "s@/dev/random@/dev/urandom@" options.h.backup &gt; options.h</kbd>
+</pre>
+        <div class="admon note">
+          <img alt="[Note]" src="../images/note.png" />
+          <h3>
+            Note
+          </h3>
+          <p>
+            We are just telling dropbear to use the default configuration.
+            For those for more adventureous, edit options.h to further
+            configure dropbear.
+          </p>
+        </div>
+        <p>
+          Compile the package:
+        </p>
+        <pre class="userinput">
+<kbd class=
+"command">make MULTI=1 PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp"</kbd>
+</pre>
+        <p>
+          Install the package:
+        </p>
+        <pre class="userinput">
+<kbd class=
+"command">make MULTI=1 PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp" \
+    install DESTDIR=${CLFS}
+ln -svf /usr/bin/dropbearmulti ${CLFS}/usr/sbin/dropbear
+ln -svf /usr/bin/dropbearmulti ${CLFS}/usr/bin/dbclient
+ln -svf /usr/bin/dropbearmulti ${CLFS}/usr/bin/dropbearkey
+ln -svf /usr/bin/dropbearmulti ${CLFS}/usr/bin/dropbearconvert
+ln -svf /usr/bin/dropbearmulti ${CLFS}/usr/bin/scp</kbd>
+</pre>
+        <p>
+          Create the directory for the dropbear key files:
+        </p>
+        <pre class="userinput">
+<kbd class="command">install -dv ${CLFS}/etc/dropbear</kbd>
+</pre>
+      </div>
+      <div class="bootscripts" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          14.4.2. Installation of Dropbear Bootscripts
+        </h2>
+        <p>
+          From the clfs-bootscripts package, install the Dropbear
+          bootscripts:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make install-dropbear DESTDIR=${CLFS}</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="contents-dropbear" name="contents-dropbear"></a>14.4.3.
+          Contents of Dropbear
+        </h2>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class="segtitle">Installed programs:</strong>
+              <span class="segbody">To be Written</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="patches.html" title=
+          "Beyond CLFS Networking Patches">Prev</a>
+          <p>
+            Beyond CLFS Networking Patches
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="iptables.html" title=
+          "IPTables-1.4.2">Next</a>
+          <p>
+            IPTables-1.4.2
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;14.&nbsp;Networking Software">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-mips">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

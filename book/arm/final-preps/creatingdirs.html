@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      4.4.&nbsp;Creating Directories
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20120922-arm">
+    <div class="navheader">
+      <h4>
+        Cross-Compiled Linux From Scratch - Embedded - Version
+        GIT-0.0.1-20120922-arm
+      </h4>
+      <h3>
+        Chapter&nbsp;4.&nbsp;Final Preparations
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="settingenvironment.html" title=
+          "Setting Up the Environment">Prev</a>
+          <p>
+            Setting Up the Environment
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="creatingcrossdir.html" title=
+          "Creating the ${CLFS}/cross-tools Directory">Next</a>
+          <p>
+            Creating the ${CLFS}/cross-tools Directory
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;4.&nbsp;Final Preparations">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-arm">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-final-preps-creatingdirs" name=
+        "ch-final-preps-creatingdirs"></a>4.4. Creating Directories
+      </h1>
+      <p>
+        It is time to create some structure in the CLFS file system. Create a
+        standard directory tree by issuing the following commands:
+      </p>
+      <pre class="userinput">
+<kbd class=
+"command">mkdir -pv ${CLFS}/{bin,boot,dev,{etc/,}opt,home,lib/{firmware,modules},mnt}
+mkdir -pv ${CLFS}/{proc,media/{floppy,cdrom},sbin,srv,sys}
+mkdir -pv ${CLFS}/var/{lock,log,mail,run,spool}
+mkdir -pv ${CLFS}/var/{opt,cache,lib/{misc,locate},local}
+install -dv -m 0750 ${CLFS}/root
+install -dv -m 1777 ${CLFS}{/var,}/tmp
+mkdir -pv ${CLFS}/usr/{,local/}{bin,include,lib,sbin,src}
+mkdir -pv ${CLFS}/usr/{,local/}share/{doc,info,locale,man}
+mkdir -pv ${CLFS}/usr/{,local/}share/{misc,terminfo,zoneinfo}
+mkdir -pv ${CLFS}/usr/{,local/}share/man/man{1,2,3,4,5,6,7,8}
+for dir in ${CLFS}/usr{,/local}; do
+  ln -sv share/{man,doc,info} ${dir}
+done</kbd>
+</pre>
+      <p>
+        Directories are, by default, created with permission mode 755, but
+        this is not desirable for all directories. In the commands above, two
+        changes are made&mdash;one to the home directory of user <code class=
+        "systemitem">root</code>, and another to the directories for
+        temporary files.
+      </p>
+      <p>
+        The first mode change ensures that not just anybody can enter the
+        <code class="filename">/root</code> directory&mdash;the same as a
+        normal user would do with his or her home directory. The second mode
+        change makes sure that any user can write to the <code class=
+        "filename">/tmp</code> and <code class="filename">/var/tmp</code>
+        directories, but cannot remove another user's files from them. The
+        latter is prohibited by the so-called &ldquo;<span class=
+        "quote">sticky bit,</span>&rdquo; the highest bit (1) in the 1777 bit
+        mask.
+      </p>
+      <div class="sect2" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          4.4.1. FHS Compliance Note
+        </h2>
+        <p>
+          The directory tree is based on the Filesystem Hierarchy Standard
+          (FHS) (available at <a class="ulink" href=
+          "http://www.pathname.com/fhs/">http://www.pathname.com/fhs/</a>).
+          In addition to the FHS, we create compatibility symlinks for the
+          <code class="filename">man</code>, <code class=
+          "filename">doc</code>, and <code class="filename">info</code>
+          directories since many packages still try to install their
+          documentation into <code class=
+          "filename">/usr/&lt;directory&gt;</code> or <code class=
+          "filename">/usr/local/&lt;directory&gt;</code> as opposed to
+          <code class="filename">/usr/share/&lt;directory&gt;</code> or
+          <code class="filename">/usr/local/share/&lt;directory&gt;</code>.
+          The FHS also stipulates the existence of <code class=
+          "filename">/usr/local/games</code> and <code class=
+          "filename">/usr/share/games</code>. The FHS is not precise as to
+          the structure of the <code class="filename">/usr/local/share</code>
+          subdirectory, so we create only the directories that are needed.
+          However, feel free to create these directories if you prefer to
+          conform more strictly to the FHS.
+        </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="settingenvironment.html" title=
+          "Setting Up the Environment">Prev</a>
+          <p>
+            Setting Up the Environment
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="creatingcrossdir.html" title=
+          "Creating the ${CLFS}/cross-tools Directory">Next</a>
+          <p>
+            Creating the ${CLFS}/cross-tools Directory
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;4.&nbsp;Final Preparations">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-arm">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

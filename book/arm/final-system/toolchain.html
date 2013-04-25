@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      7.3.&nbsp;ToolChain Variables
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20120922-arm">
+    <div class="navheader">
+      <h4>
+        Cross-Compiled Linux From Scratch - Embedded - Version
+        GIT-0.0.1-20120922-arm
+      </h4>
+      <h3>
+        Chapter&nbsp;7.&nbsp;Installing Basic System Software
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="pkgmgt.html" title=
+          "Package Management">Prev</a>
+          <p>
+            Package Management
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="busybox.html" title=
+          "Busybox-1.18.4">Next</a>
+          <p>
+            Busybox-1.18.4
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;7.&nbsp;Installing Basic System Software">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-arm">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-system-toolchain" name="ch-system-toolchain"></a>7.3.
+        ToolChain Variables
+      </h1>
+      <p>
+        Setup target-specific variables for the compiler and linkers. This
+        time we keep them:
+      </p>
+      <pre class="userinput">
+<kbd class="command">echo <code class=
+"literal">export CC=\""${CLFS_TARGET}-gcc\""</code> &gt;&gt; ~/.bashrc
+echo <code class=
+"literal">export CXX=\""${CLFS_TARGET}-g++\""</code> &gt;&gt; ~/.bashrc
+echo <code class=
+"literal">export AR=\""${CLFS_TARGET}-ar\""</code> &gt;&gt; ~/.bashrc
+echo <code class=
+"literal">export AS=\""${CLFS_TARGET}-as\""</code> &gt;&gt; ~/.bashrc
+echo <code class=
+"literal">export LD=\""${CLFS_TARGET}-ld\""</code> &gt;&gt; ~/.bashrc
+echo <code class=
+"literal">export RANLIB=\""${CLFS_TARGET}-ranlib\""</code> &gt;&gt; ~/.bashrc
+echo <code class=
+"literal">export READELF=\""${CLFS_TARGET}-readelf\""</code> &gt;&gt; ~/.bashrc
+echo <code class=
+"literal">export STRIP=\""${CLFS_TARGET}-strip\""</code> &gt;&gt; ~/.bashrc
+source ~/.bashrc</kbd>
+</pre>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="pkgmgt.html" title=
+          "Package Management">Prev</a>
+          <p>
+            Package Management
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="busybox.html" title=
+          "Busybox-1.18.4">Next</a>
+          <p>
+            Busybox-1.18.4
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;7.&nbsp;Installing Basic System Software">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-arm">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

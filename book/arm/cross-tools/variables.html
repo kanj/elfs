@@ -1,0 +1,506 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      6.5.&nbsp;Build Variables
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20120922-arm">
+    <div class="navheader">
+      <h4>
+        Cross-Compiled Linux From Scratch - Embedded - Version
+        GIT-0.0.1-20120922-arm
+      </h4>
+      <h3>
+        Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="abi.html" title="ABI Variables">Prev</a>
+          <p>
+            ABI Variables
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="gmp.html" title="GMP-5.0.1">Next</a>
+          <p>
+            GMP-5.0.1
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-arm">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-cross-tools-variables" name=
+        "ch-cross-tools-variables"></a>6.5. Build Variables
+      </h1>
+      <div class="host" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.5.1. Set Host
+        </h2>
+        <p>
+          In the process of building the cross-compilation toolchain a local
+          toolchain is also created. To avoid confusion with any existing
+          native compilation tools the "triplet" for this toolchain has the
+          word "cross" embedded into it.
+        </p>
+        <pre class="userinput">
+<kbd class="command">
+export CLFS_HOST=$(echo ${MACHTYPE} | sed "s/-[^-]*/-cross/")
+echo export CLFS_HOST=\""${CLFS_HOST}\"" &gt;&gt; ~/.bashrc
+</kbd>
+</pre>
+      </div>
+      <div class="endianess" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.5.2. Set Endianess
+        </h2>
+        <p>
+          The Endianess of system refers to how numbers are represented. See
+          the following wiki entry for additional details: <a class="ulink"
+          href=
+          "http://en.wikipedia.org/wiki/Endianness">http://en.wikipedia.org/wiki/Endianness</a>
+          Based on the selected platform the following setting is
+          appropriate:
+        </p>
+        <pre class="userinput">
+<kbd class="command">
+export CLFS_ENDIAN=little
+echo export CLFS_ENDIAN=\""${CLFS_ENDIAN}\"" &gt;&gt; ~/.bashrc
+</kbd>
+</pre>
+      </div>
+      <div class="armVariables" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.5.3. Architecture Specific Variables
+        </h2>
+        <p>
+          The ARM architecture supports 16 bity instruction reffered to as
+          THUMB,see the following wiki entry for additional information:
+          <a class="ulink" href=
+          "http://en.wikipedia.org/wiki/ARM_architecture#Thumb">http://en.wikipedia.org/wiki/ARM_architecture#Thumb</a>
+          If we review the configuration file created earlier under the
+          section "Processor Features" we see that the following config flag
+          has been set CONFIG_ARM_THUMB=y thus we set the arm mode to thumb
+          to enable a 16 bit instruction set or use the generally applicable
+          arm mode.
+        </p>
+        <pre class="userinput">
+<kbd class="command">
+export CLFS_ARM_MODE="arm"
+echo export CLFS_ARM_MODE=\""${CLFS_ARM_MODE}\"" &gt;&gt; ~/.bashrc
+</kbd>
+</pre>
+        <p>
+          There are a number of arm architectures (see table below).If we
+          review the configuration file created earlier under the section
+          "Processor type" we see that the following config flag has been set
+          CONFIG_CPU_32v5=y thus we set the arm architecture as follows:
+        </p>
+        <pre class="userinput">
+<kbd class="command">
+export CLFS_ARM_ARCH=armv5
+echo export CLFS_ARM_ARCH=\""${CLFS_ARM_ARCH}\"" &gt;&gt; ~/.bashrc
+</kbd>
+</pre>
+        <p>
+          If your target CPU has hard floating point support (not all ARM
+          CPUs do), set the following CLFS_FLOAT variable to either "hard" or
+          "softfp". If your target CPU does not have hard floating point
+          support, set the following CLFS_FLOAT variable to "soft".
+        </p>
+        <pre class="userinput">
+<kbd class="command">
+export CLFS_FLOAT=soft
+echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc
+</kbd>
+</pre>
+        <div class="table">
+          <a id="idp3793072" name="idp3793072"></a>
+          <p class="title">
+            <b>Table&nbsp;6.2.&nbsp;ARM Archiecture Choices</b>
+          </p>
+          <div class="table-contents">
+            <table summary="ARM Archiecture Choices" border="1">
+              <colgroup>
+                <col />
+                <col />
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td>
+                    armv2
+                  </td>
+                  <td>
+                    armv2a
+                  </td>
+                  <td>
+                    armv3
+                  </td>
+                  <td>
+                    armv3m
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    armv4
+                  </td>
+                  <td>
+                    armv4t
+                  </td>
+                  <td>
+                    armv5
+                  </td>
+                  <td>
+                    armv5t
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    armv5te
+                  </td>
+                  <td>
+                    armv6
+                  </td>
+                  <td>
+                    armv6j
+                  </td>
+                  <td>
+                    armv6t2
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    armv6z
+                  </td>
+                  <td>
+                    armv6zk
+                  </td>
+                  <td>
+                    armv6-m
+                  </td>
+                  <td>
+                    armv7
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    armv7-a
+                  </td>
+                  <td>
+                    armv7-r
+                  </td>
+                  <td>
+                    armv7-m
+                  </td>
+                  <td>
+                    iwmmxt
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    iwmmxt2
+                  </td>
+                  <td>
+                    ep9312
+                  </td>
+                  <td class="auto-generated">
+                    &nbsp;
+                  </td>
+                  <td class="auto-generated">
+                    &nbsp;
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div><br class="table-break" />
+        <div class="table">
+          <a id="idp3801576" name="idp3801576"></a>
+          <p class="title">
+            <b>Table&nbsp;6.3.&nbsp;ARM Hard Floating Point Versions</b>
+          </p>
+          <div class="table-contents">
+            <table summary="ARM Hard Floating Point Versions" border="1">
+              <colgroup>
+                <col />
+                <col />
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td>
+                    fpa
+                  </td>
+                  <td>
+                    fpe2
+                  </td>
+                  <td>
+                    fpe3
+                  </td>
+                  <td>
+                    maverick
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    vfp
+                  </td>
+                  <td>
+                    vfpv3
+                  </td>
+                  <td>
+                    vfpv3-fp16
+                  </td>
+                  <td>
+                    vfpv3-d16
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    vfpv3-d16-fp16
+                  </td>
+                  <td>
+                    vfpv3xd
+                  </td>
+                  <td>
+                    vfpv3xd-fp16
+                  </td>
+                  <td>
+                    neon
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    neon-fp16
+                  </td>
+                  <td>
+                    vfpv4
+                  </td>
+                  <td>
+                    vfpv4-d16
+                  </td>
+                  <td>
+                    fpv4-sp-d16
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    neon-vfpv4
+                  </td>
+                  <td>
+                    softvfp
+                  </td>
+                  <td>
+                    none
+                  </td>
+                  <td class="auto-generated">
+                    &nbsp;
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div><br class="table-break" />
+      </div>
+      <div class="target" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.5.4. Set Target
+        </h2>
+        <p>
+          During the building of the cross-compile tools, you will need to
+          set a few variables that will be dependent on your particular
+          needs. You will need to select the target triplet for the target
+          architecture, the CPU endianess, the CPU architecture, the CPU
+          mode, the CPU floating point hardware availability, and (if
+          available) the type of floating point hardware. If you do not know
+          what values can be chosen for each of these, you can use the tables
+          at the bottom of this page as a reference.
+        </p>
+        <p>
+          Most ARM processors are little endian, it is a safe choice. If your
+          processor is an ARM9, good choices include: triplet of
+          armv5l-unknown-linux-uclibeabi, ARM arch of armv5t, float of
+          softfp, and fpu of either none or softvfp. ARM9 processors do not
+          always have hardware floating point abilities. If your processor is
+          a Cortex-A8 or Cortex-A9, good choices include: triplet of
+          armv7a-unknown-linux-uclibceabi, ARM arch of armv7-a, float of
+          hard, and fpu of vfpv3-d16.
+        </p>
+        <p>
+          Now we will set the architecture and endianess of the CPU based on
+          the target triplet provided above:
+        </p>
+        <p>
+          The target triplet is a smart name that is used during the
+          compilation of binutils to set certain options (e.g. endianness).
+          The following table gives examples:
+        </p>
+        <div class="table">
+          <a id="idp3812352" name="idp3812352"></a>
+          <p class="title">
+            <b>Table&nbsp;6.4.&nbsp;Example Processor Type, ABI, and Target
+            Triplets</b>
+          </p>
+          <div class="table-contents">
+            <table summary="Example Processor Type, ABI, and Target Triplets"
+            border="1">
+              <colgroup>
+                <col />
+                <col />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>
+                    Processor
+                  </th>
+                  <th>
+                    Endianess
+                  </th>
+                  <th>
+                    ABI
+                  </th>
+                  <th>
+                    Target Triplet
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Generic arm
+                  </td>
+                  <td>
+                    little
+                  </td>
+                  <td>
+                    OABI
+                  </td>
+                  <td>
+                    arm-unknown-linux-uclibc
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Generic arm, version 4
+                  </td>
+                  <td>
+                    little
+                  </td>
+                  <td>
+                    OABI
+                  </td>
+                  <td>
+                    armv4-unknown-linux-uclibc
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Generic arm, version 5
+                  </td>
+                  <td>
+                    little
+                  </td>
+                  <td>
+                    EABI
+                  </td>
+                  <td>
+                    armv5l-unknown-linux-uclibceabi
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Generic arm, version 5
+                  </td>
+                  <td>
+                    big
+                  </td>
+                  <td>
+                    EABI
+                  </td>
+                  <td>
+                    armv5b-unknown-linux-uclibceabi
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Generic arm
+                  </td>
+                  <td>
+                    little
+                  </td>
+                  <td>
+                    EABI
+                  </td>
+                  <td>
+                    arm-unknown-linux-uclibceabi
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Generic arm, version 7-a
+                  </td>
+                  <td>
+                    little
+                  </td>
+                  <td>
+                    EABI
+                  </td>
+                  <td>
+                    armv7a-unknown-linux-uclibceabi
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div><br class="table-break" />
+        <pre class="userinput">
+<kbd class="command">
+export CLFS_TARGET=armv5l-unknown-linux-uclibc
+echo export CLFS_TARGET=\""${CLFS_TARGET}\"" &gt;&gt; ~/.bashrc
+</kbd>
+</pre>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="abi.html" title="ABI Variables">Prev</a>
+          <p>
+            ABI Variables
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="gmp.html" title="GMP-5.0.1">Next</a>
+          <p>
+            GMP-5.0.1
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-arm">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

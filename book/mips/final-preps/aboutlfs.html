@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      4.1.&nbsp;About $CLFS
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20120922-mips">
+    <div class="navheader">
+      <h4>
+        Cross-Compiled Linux From Scratch - Embedded - Version
+        GIT-0.0.1-20120922-mips
+      </h4>
+      <h3>
+        Chapter&nbsp;4.&nbsp;Final Preparations
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="chapter.html" title=
+          "Final Preparations">Prev</a>
+          <p>
+            Final Preparations
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="addinguser.html" title=
+          "Adding the CLFS User">Next</a>
+          <p>
+            Adding the CLFS User
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;4.&nbsp;Final Preparations">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-mips">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-final-preps-aboutlfs" name=
+        "ch-final-preps-aboutlfs"></a>4.1. About $CLFS
+      </h1>
+      <p>
+        Throughout this book, the environment variable <code class=
+        "envar">CLFS</code> will be used several times. It is paramount that
+        this variable is always defined. It should be set to the mount point
+        chosen for the CLFS partition. Check that the <code class=
+        "envar">CLFS</code> variable is set up properly with:
+      </p>
+      <pre class="userinput">
+<kbd class="command">echo ${CLFS}</kbd>
+</pre>
+      <p>
+        Make sure the output shows the path to the CLFS partition's mount
+        point, which is <code class="filename">/mnt/clfs</code> if the
+        provided example was followed. If the output is incorrect, the
+        variable can be set with:
+      </p>
+      <pre class="userinput">
+<kbd class="command">export CLFS=/mnt/clfs</kbd>
+</pre>
+      <p>
+        Having this variable set is beneficial in that commands such as
+        <span class="command"><strong>install -d
+        ${CLFS}/tools</strong></span> can be typed literally. The shell will
+        automatically replace &ldquo;<span class=
+        "quote">${CLFS}</span>&rdquo; with &ldquo;<span class=
+        "quote">/mnt/clfs</span>&rdquo; (or whatever the variable was set to)
+        when it processes the command line.
+      </p>
+      <p>
+        If you haven't created the <code class="filename">${CLFS}</code>
+        directory, do so at this time by issuing the following commands:
+      </p>
+      <pre class="userinput">
+<kbd class="command">install -dv ${CLFS} </kbd>
+</pre>
+      <p>
+        Do not forget to check that <code class="envar">${CLFS}</code> is set
+        whenever you leave and reenter the current working environment (as
+        when doing a &ldquo;<span class="quote">su</span>&rdquo; to
+        <code class="systemitem">root</code> or another user).
+      </p>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="chapter.html" title=
+          "Final Preparations">Prev</a>
+          <p>
+            Final Preparations
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="addinguser.html" title=
+          "Adding the CLFS User">Next</a>
+          <p>
+            Adding the CLFS User
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;4.&nbsp;Final Preparations">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-mips">
+          Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
