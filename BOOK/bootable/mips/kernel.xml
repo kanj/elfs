@@ -45,7 +45,12 @@
    href="../x86/kernel.xml"
    xpointer="xpointer(//*[@os='f'])"/>
 
-<screen os="g"><userinput>make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- menuconfig</userinput></screen>
+<screen os="g"><userinput>
+cp ~/myConfig .config
+
+sed -i 's/# CONFIG_BLK_DEV_INITRD is not set/CONFIG_BLK_DEV_INITRD=y/g' .config
+
+yes "" | make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- oldconfig</userinput></screen>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
    href="../x86/kernel.xml"
@@ -59,7 +64,7 @@
    href="../x86/kernel.xml"
    xpointer="xpointer(//*[@os='j'])"/>
 
-<screen os="k"><userinput>make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- </userinput></screen>
+<screen os="k"><userinput>make CFLAGS_KERNEL='-Wno-error=unused-but-set-variable' ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- </userinput></screen>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
    href="../x86/kernel.xml"
@@ -92,7 +97,7 @@
    href="../x86/kernel.xml"
    xpointer="xpointer(//*[@os='s'])"/>
 
-<screen os="t"><userinput>cp arch/${CLFS_ARCH}/boot/vmlinux ${CLFS}/boot/clfskernel-&linux-version;</userinput></screen>
+<screen os="t"><userinput>cp vmlinux ${CLFS}/boot/clfskernel-&linux-version;</userinput></screen>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
    href="../x86/kernel.xml"

@@ -42,7 +42,12 @@
     proper configuration is used based on those choices, first copy the configuration
     matching the endianess chosen, then update the ABI and MIPS level:</para>
 
-<screen os="e"><userinput>cp -v clfs/config.${CLFS_ARCH}.${CLFS_ENDIAN} .config
+<screen os="e"><userinput>
+
+sed -i '/ent/d' libc/sysdeps/linux/mips/crtn.S
+
+
+cp -v clfs/config.${CLFS_ARCH}.${CLFS_ENDIAN} .config
 if [ "${CLFS_ABI}" == "n32" ]; \
 then sed -i s/CONFIG_MIPS_O32_ABI/CONFIG_MIPS_N32_ABI/g .config; \
 elif [ "${CLFS_ABI}" == "64" ]; \
@@ -62,9 +67,7 @@ then sed -i s/CONFIG_MIPS_ISA_1/CONFIG_MIPS_ISA_3/g .config; fi</userinput></scr
     href="../common/uclibc.xml"
     xpointer="xpointer(//*[@os='h'])"/>
 
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-    href="../common/uclibc.xml"
-    xpointer="xpointer(//*[@os='i'])"/>
+    <screen os="i"><userinput>make  CFLAGS-crtn.S='-finhibit-size-directive'</userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"

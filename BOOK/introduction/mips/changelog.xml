@@ -31,7 +31,20 @@
     </listitem>
 
 -->
-
+    <listitem>
+      <para>April 26, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updated cross-tools/uclibc to address .size issue
+          Update cross-tools/gcc-final for lib-mudflap error.
+          Updated bootable/kernel to point to proper location of vmlinux,
+          address the error on unused variable, and to activate kernel config
+          for initial ramdisk. Updated te-end/boot to boot using QEMU.
+          System gets to "Press Enter to activate console", but is unresponsive 
+          afterwards.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
     <listitem>
       <para>February 24, 2011</para>
       <itemizedlist>
