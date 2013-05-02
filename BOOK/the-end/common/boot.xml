@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-finish-boot">
+  <?dbhtml filename="reboot.html"?>
+
+  <title>Booting the System</title>
+  
+
+  <para os="a"> QEMU (Short QUick EMulator ) provides way of running software for a number of different 
+  hardware platforms. For Linux Operating Systems it is able to boot directly from a kernel and inital ramdisk file.
+  This is the option we will use so as to bypass the additional complication of compiling a boot loader and 
+  formating physical media with these files. The following wikepedia entry gives additional information about QEMU:
+  
+    <ulink url="http://http://en.wikipedia.org/wiki/QEMU"/>  </para>
+  
+  
+  <screen><userinput>
+  
+    qemu-system-mipsel -kernel ${CLFS}/boot/clfskernel-&linux-version; \
+    -initrd ${CLFS}/build/initramfs -M malta -redir tcp:5555::80 -m 128 -serial stdio -append "rdinit=/sbin/init console=tty1"
+
+</userinput></screen>
+   
+
+  <para>When the boot is complete, the embedded CLFS system is ready for use!</para>
+
+
+<variablelist os="ag">
+
+    <varlistentry os="ag1">
+      <term><parameter>-kernel</parameter></term>
+      <listitem>
+        <para>This option sets the kernel for the emulator to use.</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry os="ag2">
+      <term><parameter>-initrd</parameter></term>
+      <listitem>
+        <para>This option sets the initial ram disk to use.</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry os="ag3">
+      <term><parameter>-M</parameter></term>
+      <listitem>
+        <para>This option sets the machine to be emulated.</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry os="ag4">
+      <term><parameter>-redir</parameter></term>
+      <listitem>
+        <para>This option sets the floating point mode selected earlier.</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry os="ag5">
+      <term><parameter>-m</parameter></term>
+      <listitem>
+        <para>This option sets the size of the ram memory for emulated machine..</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry os="ag6">
+      <term><parameter>-serial</parameter></term>
+      <listitem>
+        <para>This option directs the serial output from the emulated machine to the terminal.</para>
+      </listitem>
+    </varlistentry>
+    <varlistentry os="ag6">
+      <term><parameter>-append</parameter></term>
+      <listitem>
+        <para>This option appends information to the command line used during the bootup of the emulated machine.</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+
+</sect1>

@@ -17,8 +17,8 @@
   
   <screen><userinput>
   
-    qemu-system-arm -kernel ${CLFS}/boot/clfskernel-&linux-version; \
-    -initrd ${CLFS}/build/initramfs -M versatileab -redir tcp:5555::80 -m 128 -serial stdio -append "rdinit=/sbin/init console=tty1"
+    qemu-system-mipsel -kernel ${CLFS}/boot/clfskernel-&linux-version; \
+    -initrd ${CLFS}/build/initramfs -M malta -redir tcp:5555::80 -m 128 -serial stdio -append "rdinit=/sbin/init console=tty1"
 
 </userinput></screen>
    

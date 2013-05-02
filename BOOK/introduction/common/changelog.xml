@@ -36,6 +36,14 @@
     </listitem>
 -->
     <listitem>
+      <para>May 01, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updated the-end/*/boot to use QEMU to boot the system created. </para>
+        </listitem>
+      </itemizedlist>
+      </listitem>
+    <listitem>
       <para>April 25, 2013</para>
       <itemizedlist>
         <listitem>
