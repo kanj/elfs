@@ -39,6 +39,15 @@
       <para>May 05, 2013</para>
       <itemizedlist>
         <listitem>
+          <para>[kanj] - Updated bootable/fstab to get rid of uneeded partions, since dooing a ramdisk only
+          system. Also moved common sections to a common xml file. Updated kernel for the individual platforms. </para>
+        </listitem>
+      </itemizedlist>
+      </listitem>
+    <listitem>
+      <para>May 05, 2013</para>
+      <itemizedlist>
+        <listitem>
           <para>[kanj] - Updated cross-tools/*/variables to use relate the values selected 
           to the kernel configuration file. </para>
         </listitem>

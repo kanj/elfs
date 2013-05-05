@@ -15,34 +15,34 @@
   </indexterm>
 
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="../x86/kernel.xml"
+  href="../common/kernel.xml"
   xpointer="xpointer(//*[@role='package'])"/>
 
   <sect2 role="installation">
     <title>Installation of the kernel</title>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='a'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='b'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='c'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='d'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='e'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='f'])"/>
 
 <screen os="g"><userinput>
@@ -50,91 +50,93 @@ cp ~/myConfig .config
 
 sed -i 's/# CONFIG_BLK_DEV_INITRD is not set/CONFIG_BLK_DEV_INITRD=y/g' .config
 
+sed -i 's/# CONFIG_INPUT_KEYBOARD is not set/CONFIG_INPUT_KEYBOARD=y/g' .config 
+
 yes "" | make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- oldconfig</userinput></screen>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='h'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='i'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='j'])"/>
 
 <screen os="k"><userinput>make CFLAGS_KERNEL='-Wno-error=unused-but-set-variable' ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- </userinput></screen>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='l'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='m'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='n'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='o'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='p'])"/>
 
 <screen os="q"><userinput>make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- \
     INSTALL_MOD_PATH=${CLFS} modules_install</userinput></screen>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='r'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='s'])"/>
 
 <screen os="t"><userinput>cp vmlinux ${CLFS}/boot/clfskernel-&linux-version;</userinput></screen>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='u'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='v'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='w'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='x'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='y'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='z'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='aa'])"/>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-   href="../x86/kernel.xml"
+   href="../common/kernel.xml"
    xpointer="xpointer(//*[@os='ab'])"/>
 
   </sect2>
 
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="../x86/kernel.xml"
+  href="../common/kernel.xml"
   xpointer="xpointer(//*[@role='content'])"/>
 
 </sect1>

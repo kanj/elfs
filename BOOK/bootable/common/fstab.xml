@@ -25,8 +25,6 @@
 # file system  mount-point  type   options          dump  fsck
 #                                                         order
 
-/dev/<replaceable>[xxx]</replaceable>     /            <replaceable>[fff]</replaceable>  defaults         1     1
-/dev/<replaceable>[yyy]</replaceable>     swap         swap   pri=1            0     0
 proc           /proc        proc   defaults         0     0
 sysfs          /sys         sysfs  defaults         0     0
 devpts         /dev/pts     devpts gid=4,mode=620   0     0
@@ -34,12 +32,7 @@ shm            /dev/shm     tmpfs  defaults         0     0
 # End /etc/fstab</literal>
 EOF</userinput></screen>
 
-  <para os="b">Replace <replaceable>[xxx]</replaceable>,
-  <replaceable>[yyy]</replaceable>, and <replaceable>[fff]</replaceable>
-  with the values appropriate for the system, for example, <filename
-  class="partition">hda2</filename>, <filename
-  class="partition">hda5</filename>, and <systemitem
-  class="filesystem">ext2</systemitem>. For details on the six
+  <para os="b"> For details on the six
   fields in this file, see <command>man 5 fstab</command>.</para>
 
   <para os="c">The <filename class="directory">/dev/shm</filename> mount point
