@@ -36,6 +36,15 @@
     </listitem>
 -->
     <listitem>
+      <para>May 05, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updated cross-tools/*/variables to use relate the values selected 
+          to the kernel configuration file. </para>
+        </listitem>
+      </itemizedlist>
+      </listitem>
+    <listitem>
       <para>May 01, 2013</para>
       <itemizedlist>
         <listitem>

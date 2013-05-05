@@ -10,23 +10,48 @@
 
   <title>Build Variables</title>
 
-  <bridgehead renderas="sect4">Setting Host and Target</bridgehead>
+<sect2 role="host">
+<title> Set Host </title>
 
-<screen os="b"><userinput>export CLFS_HOST=$(echo ${MACHTYPE} | sed "s/-[^-]*/-cross/")
-export CLFS_TARGET="<replaceable>[target triplet]</replaceable>"</userinput></screen>
+<para> In the process of building the cross-compilation toolchain a local toolchain
+is also created. To avoid confusion with any existing native compilation tools the 
+"triplet" for this toolchain has the word "cross" embedded into it.</para>
 
-  <para os="c">Now we will set the architecture and endianess of the CPU based
+<screen os="b"><userinput>
+export CLFS_HOST=$(echo ${MACHTYPE} | sed "s/-[^-]*/-cross/")
+echo export CLFS_HOST=\""${CLFS_HOST}\"" &gt;&gt; ~/.bashrc
+</userinput></screen>
+
+</sect2>
+
+<sect2 role="endianess">
+<title> Set Endianess </title>
+
+<para> The Endianess of system refers to how numbers are represented. See the following 
+wiki entry for additional details:
+
+    <ulink url="http://en.wikipedia.org/wiki/Endianness"/>
+    
+    
+    
+Based on the selected platform the following setting is appropriate:    
+</para>
+
+<screen os="d"><userinput>
+export CLFS_ENDIAN=little
+echo export CLFS_ENDIAN=\""${CLFS_ENDIAN}\"" &gt;&gt; ~/.bashrc
+</userinput></screen>
+</sect2>
+
+<sect2 role="target">
+<title> Set Target </title>
+<para os="c">Now we will set the architecture and endianess of the CPU based
   on the target triplet provided above:</para>
-
-<screen os="d"><userinput>export CLFS_ARCH=$(echo ${CLFS_TARGET} | sed -e 's/-.*//' -e 's/i.86/i386/')
-export CLFS_ENDIAN=little</userinput></screen>
-
-  <para os="g">Now we will add this to <filename>~/.bashrc</filename>, just in
-  case you have to exit and restart building later:</para>
-
-<screen os="h"><userinput>echo export CLFS_HOST=\""${CLFS_HOST}\"" &gt;&gt; ~/.bashrc
+<screen os="b"><userinput>
+export CLFS_TARGET="<replaceable>[target triplet]</replaceable>"
 echo export CLFS_TARGET=\""${CLFS_TARGET}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_ARCH=\""${CLFS_ARCH}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_ENDIAN=\""${CLFS_ENDIAN}\"" &gt;&gt; ~/.bashrc</userinput></screen>
+</userinput></screen>
+</sect2>
+
 
 </sect1>

@@ -3,6 +3,7 @@
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
+  <!ENTITY clfs_target "mipsel-unknown-linux-uclibc">
 ]>
 
 <sect1 id="ch-cross-tools-variables">
@@ -10,62 +11,69 @@
 
   <title>Build Variables</title>
 
-  <bridgehead renderas="sect4">Setting Host and Target</bridgehead>
+ <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+  href="../common/variables.xml"
+  xpointer="xpointer(//*[@role='host'])"/>
 
-  <para os="a">During the building of the cross-compile tools you will need to
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+  href="../common/variables.xml"
+  xpointer="xpointer(//*[@role='endianess'])"/>
+  
+  <sect2 role="target">
+<title> Set Target </title>
+
+<para os="a">During the building of the cross-compile tools, you will need to
   set a few variables that will be dependent on your particular needs.
-  You will need to set the target triplet for the target architecture, the MIPS
-  level, and CPU endianess. If you do not know what triplet or level you want,
-  you can use the table at the bottom of this page as a reference. Set
-  the command using the method listed below:</para>
+  You will need to select the target triplet for the target architecture, the CPU
+  endianess, the CPU architecture, the CPU mode, the CPU floating point hardware
+  availability, and (if available) the type of floating point hardware. If you 
+  do not know what values can be chosen for each of these, you can use the 
+  tables at the bottom of this page as a reference.</para>
 
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="../common/variables.xml"
-  xpointer="xpointer(//*[@os='b'])"/>
+  
 
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="../common/variables.xml"
-  xpointer="xpointer(//*[@os='c'])"/>
+</sect2>
 
-<screen os="d"><userinput>export CLFS_ARCH=$(echo ${CLFS_TARGET} | sed -e 's/\(mips\)\(64\)\?\(el\)\?-.*/\1\3/')
-export CLFS_ENDIAN=$(echo ${CLFS_ARCH} | sed -e 's/mipsel/little/' -e 's/mips/big/')</userinput></screen>
+<sect2 role="mipsVariables">
+<title> MIPS specific variables </title>
 
+ 
   <para os="m1">Now you will need to set the MIPS LEVEL. This determines how your
   GCC and uClibc are built. There are currently 5 MIPS ISA Levels. To keep things 
-  simple we are only using two. For more information, see
+  simple we are only using two. See the following table to dsetermine the appropriate level. For more information, see
   <ulink url="http://www.linux-mips.org/wiki/Instruction_Set_Architecture"/></para>
 
-<screen os="m2"><userinput>export CLFS_MIPS_LEVEL="<replaceable>[mips level]</replaceable>"</userinput></screen>
+<screen os="m2"><userinput>
+export CLFS_MIPS_LEVEL="1"
+echo export CLFS_MIPS_LEVEL=\""${CLFS_MIPS_LEVEL}\"" &gt;&gt; ~/.bashrc
+</userinput></screen>
 
   <para os="m3">We also need to select the floating point capability of the CPU.
-  If the CPU has built-in hardware for performing floating point calculations,
-  choose "hard", otherwise choose "soft":</para>
+  That is code built for hardware floating point will always run correctly, even on 
+  systems without an FPU. Gcc's mips-linux, mipsel-linux, mips64-linux and 
+  mips64el-linux targets default to hardware floating point. 
+  If the CPU has built-in hardware for performing floating 
+  point calculations, choose "hard", otherwise choose "soft":</para>
 
-<screen os="m4"><userinput>export CLFS_FLOAT="<replaceable>[hard or soft]</replaceable>"</userinput></screen>
+<screen os="m4"><userinput>
+export CLFS_FLOAT="soft"
+echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc
+</userinput></screen>
 
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="../common/variables.xml"
-  xpointer="xpointer(//*[@os='g'])"/>
-
-<screen os="h"><userinput>echo export CLFS_HOST=\""${CLFS_HOST}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_TARGET=\""${CLFS_TARGET}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_ARCH=\""${CLFS_ARCH}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_ENDIAN=\""${CLFS_ENDIAN}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_MIPS_LEVEL=\""${CLFS_MIPS_LEVEL}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc</userinput></screen>
-
+  
   <table os="i">
     <title>Processor Type and  Target Triplets</title>
     <?dbfo table-width="5.5in" ?>
 
     <tgroup cols="2">
-
+         <colspec colnum="1" colwidth="2in"   colname="Kernel"/>
       <colspec colnum="1" colwidth="2in"   colname="Processor"/>
       <colspec colnum="2" colwidth="2.5in" colname="Triplet"/>
       <colspec colnum="3" colwidth="1in"   colname="MIPS Level"/>
 
       <thead>
         <row>
+           <entry>Kernel</entry> 
           <entry>Processor</entry>
           <entry>Target Triplet</entry>
           <entry>MIPS Level</entry>
@@ -74,21 +82,25 @@ echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc</userinput></scree
 
       <tbody>
         <row>
+            <entry>CONFIG_CPU_MIPS32</entry>
           <entry>MIPS 32 bits Little Endian</entry>
           <entry>mipsel-unknown-linux-uclibc</entry>
           <entry>1</entry>
         </row>
         <row>
+            <entry>CONFIG_CPU_MIPS32</entry>
           <entry>MIPS 32 bits Big Endian</entry>
           <entry>mips-unknown-linux-uclibc</entry>
           <entry>1</entry>
         </row>
         <row>
+            <entry></entry>
           <entry>MIPS 64 bits Little Endian</entry>
           <entry>mips64el-unknown-linux-uclibc</entry>
           <entry>3</entry>
         </row>
         <row>
+            <entry></entry>
           <entry>MIPS 64 bits Big Endian</entry>
           <entry>mips64-unknown-linux-uclibc</entry>
           <entry>3</entry>
@@ -98,5 +110,11 @@ echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc</userinput></scree
     </tgroup>
 
   </table>
-
+  <para os="c">Now we will set the target based
+  on the preceeding table:</para>
+<screen os="b"><userinput>
+export CLFS_TARGET=&clfs_target;
+echo export CLFS_TARGET=\""${CLFS_TARGET}\"" &gt;&gt; ~/.bashrc
+</userinput></screen>
+</sect2>
 </sect1>

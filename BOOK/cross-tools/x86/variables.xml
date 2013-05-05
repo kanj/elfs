@@ -3,6 +3,8 @@
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
+   <!ENTITY clfs_target "i686-pc-linux-uclibc">
+   <!ENTITY clfs_cpu "i686">
 ]>
 
 <sect1 id="ch-cross-tools-variables">
@@ -10,40 +12,31 @@
 
   <title>Build Variables</title>
 
-  <bridgehead renderas="sect4">Setting Host and Target</bridgehead>
+ <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+  href="../common/variables.xml"
+  xpointer="xpointer(//*[@role='host'])"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+  href="../common/variables.xml"
+  xpointer="xpointer(//*[@role='endianess'])"/>
+  
+  <sect2>
+  <title> x86 Variables </title>
+  
 
   <para os="a">During the building of the cross-compile tools you will need to
   set a few variables that will be dependent on your particular needs.
-  You will need to set the target triplet for the target architecture, the CPU
-  type, and CPU endianess. If you do not know what triplet or CPU type you want,
-  you can use the table at the bottom of this page as a reference. Set
-  the command using the method listed below:</para>
+  You will need to set the target triplet for the target architecture, and the CPU
+  type. Review the configuration file, especially the "Processor type and features" section. Set
+  the variables using the method listed below:</para>
 
-<screen os="b"><userinput>export CLFS_HOST=$(echo ${MACHTYPE} | sed "s/-[^-]*/-cross/")
-export CLFS_TARGET=<replaceable>[target triplet]</replaceable>
-export CLFS_CPU=<replaceable>[cpu type]</replaceable></userinput></screen>
-
-  <para os="c">Now we will set the architecture and endianess of the CPU based
-  on the target triplet provided above:</para>
-
-<screen os="d"><userinput>export CLFS_ARCH=$(echo ${CLFS_TARGET} | sed -e 's/-.*//' -e 's/i.86/i386/')
-export CLFS_ENDIAN=little</userinput></screen>
-
-  <para os="g">Now we will add this to <filename>~/.bashrc</filename>, just in
-  case you have to exit and restart building later:</para>
-
-<screen os="h"><userinput>echo export CLFS_HOST=\""${CLFS_HOST}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_TARGET=\""${CLFS_TARGET}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_ARCH=\""${CLFS_ARCH}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_ENDIAN=\""${CLFS_ENDIAN}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_CPU=\""${CLFS_CPU}\"" &gt;&gt; ~/.bashrc</userinput></screen>
 
   <table os="i">
     <title>Processor Type and  Target Triplets</title>
     <?dbfo table-width="7.5in" ?>
 
     <tgroup cols="2">
-
+       <colspec colnum="1" colwidth="2.5in"   colname="Kernel"/> 
       <colspec colnum="1" colwidth="2.5in"   colname="Processor"/>
       <colspec colnum="2" colwidth="2in" colname="Triplet"/>
       <colspec colnum="3" colwidth="0.5in" colname="CPU Type"/>
@@ -51,6 +44,7 @@ echo export CLFS_CPU=\""${CLFS_CPU}\"" &gt;&gt; ~/.bashrc</userinput></screen>
 
       <thead>
         <row>
+            <entry>Kernel</entry>
           <entry>Processor</entry>
           <entry>Target Triplet</entry>
           <entry>CPU Type</entry>
@@ -60,30 +54,35 @@ echo export CLFS_CPU=\""${CLFS_CPU}\"" &gt;&gt; ~/.bashrc</userinput></screen>
 
       <tbody>
         <row>
+             <entry>CONFIG_M486</entry>
           <entry>486 Compatibles</entry>
           <entry>i486-pc-linux-uclibc</entry>
           <entry>i486</entry>
           <entry>Intel's i486</entry>
         </row>
         <row>
+            <entry></entry>
           <entry>Pentium, K6, 586 Compatibles</entry>
           <entry>i586-pc-linux-uclibc</entry>
           <entry>i586</entry>
           <entry>Intel Pentium without MMX</entry>
         </row>
         <row>
+             <entry>CONFIG_M686</entry>
           <entry>Pentium II, Pentium III, Pentium 4</entry>
           <entry>i686-pc-linux-uclibc</entry>
           <entry>i686</entry>
           <entry>PentiumPro instruction set</entry>
         </row>
         <row>
+             <entry></entry>
           <entry>Athlon</entry>
           <entry>i686-pc-linux-uclibc</entry>
           <entry>athlon</entry>
           <entry>AMD 32 bit Athlon</entry>
         </row>
         <row>
+             <entry></entry>
           <entry>Opteron</entry>
           <entry>x86_64-unknown-linux-uclibc</entry>
           <entry>k8</entry>
@@ -94,5 +93,15 @@ echo export CLFS_CPU=\""${CLFS_CPU}\"" &gt;&gt; ~/.bashrc</userinput></screen>
     </tgroup>
 
   </table>
+  
+  <screen os="d"><userinput>
+  export CLFS_CPU=&clfs_cpu;
+  echo export CLFS_CPU=\""${CLFS_CPU}\"" &gt;&gt; ~/.bashrc
+  export CLFS_TARGET=&clfs_target;
+echo export CLFS_TARGET=\""${CLFS_TARGET}\"" &gt;&gt; ~/.bashrc  
 
+</userinput></screen>
+
+
+</sect2>
 </sect1>

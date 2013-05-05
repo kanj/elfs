@@ -3,6 +3,7 @@
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
+   <!ENTITY clfs_target "armv5l-unknown-linux-uclibc">
 ]>
 
 <sect1 id="ch-cross-tools-variables">
@@ -10,132 +11,69 @@
 
   <title>Build Variables</title>
 
-  <bridgehead renderas="sect4">Setting Host and Target</bridgehead>
-
-  <para os="a">During the building of the cross-compile tools, you will need to
-  set a few variables that will be dependent on your particular needs.
-  You will need to select the target triplet for the target architecture, the CPU
-  endianess, the CPU architecture, the CPU mode, the CPU floating point hardware
-  availability, and (if available) the type of floating point hardware. If you 
-  do not know what values can be chosen for each of these, you can use the 
-  tables at the bottom of this page as a reference.</para>
-
-  <para os="a1">Most ARM processors are little endian, it is a safe choice.
-  If your processor is an ARM9, good choices include: triplet of
-  armv5l-unknown-linux-uclibeabi, ARM arch of armv5t, float of softfp, and fpu
-  of either none or softvfp. ARM9 processors do not always have hardware
-  floating point abilities. If your processor is a Cortex-A8 or Cortex-A9, good
-  choices include: triplet of armv7a-unknown-linux-uclibceabi, ARM arch of
-  armv7-a, float of hard, and fpu of vfpv3-d16.</para>
-
-  <para os="a2">First, set the host and target triplets:</para>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+  href="../common/variables.xml"
+  xpointer="xpointer(//*[@role='host'])"/>
 
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
   href="../common/variables.xml"
-  xpointer="xpointer(//*[@os='b'])"/>
+  xpointer="xpointer(//*[@role='endianess'])"/>
+  
+  
 
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="../common/variables.xml"
-  xpointer="xpointer(//*[@os='c'])"/>
 
-<screen os="d"><userinput>export CLFS_ARCH=arm
-export CLFS_ENDIAN="<replaceable>[endianess]</replaceable>"</userinput></screen>
+<sect2 role="armVariables">
+<title> Architecture Specific Variables </title>
 
-  <para os="e">Choose the ARM architecture (see table below) and mode of 
-  your CPU:</para>
+<para>  The ARM architecture supports 16 bity instruction reffered to as THUMB,see the following wiki entry for
+additional information:
 
-<screen os="f"><userinput>export CLFS_ARM_ARCH="<replaceable>[architecture]</replaceable>"
-export CLFS_ARM_MODE="<replaceable>[arm or thumb]</replaceable>"</userinput></screen>
+<ulink url="http://en.wikipedia.org/wiki/ARM_architecture#Thumb"/>
+
+
+If we review the configuration file created earlier under the section "Processor Features" we see that the following config flag has been set
+
+    CONFIG_ARM_THUMB=y
+
+thus we set the arm mode to thumb to enable a 16 bit instruction set or use the generally applicable arm mode. </para>
+
+<screen os="f"><userinput>
+export CLFS_ARM_MODE="arm"
+echo export CLFS_ARM_MODE=\""${CLFS_ARM_MODE}\"" &gt;&gt; ~/.bashrc
+</userinput></screen>    
+
+
+
+
+
+<para> There are a number of arm architectures (see table below).If we review the configuration file created earlier 
+under the section "Processor type" we see that the following config flag has been set
+
+    CONFIG_CPU_32v5=y
+
+thus we set the arm architecture as follows: </para>
+
+<screen os="f"><userinput>
+export CLFS_ARM_ARCH=armv5
+echo export CLFS_ARM_ARCH=\""${CLFS_ARM_ARCH}\"" &gt;&gt; ~/.bashrc
+</userinput></screen>
+
+
+
+  
 
   <para os="f1">If your target CPU has hard floating point support (not all ARM
   CPUs do), set the following CLFS_FLOAT variable to either "hard" or "softfp".
   If your target CPU does not have hard floating point support, set the following
-  CLFS_FLOAT vairable to "soft".</para>
+  CLFS_FLOAT variable to "soft".</para>
 
-<screen os="f2"><userinput>export CLFS_FLOAT="<replaceable>[hard, softfp, or soft]"</replaceable></userinput></screen>
-
-  <para os="f3">If you chose either "hard" or "softfp" for CLFS_FLOAT, you now
-  need to set which floating point hardware is actually included (see table below)
-  with your ARM CPU:</para>
-
-<screen os="f4"><userinput>export CLFS_FPU="<replaceable>[fpu version]</replaceable>"</userinput></screen>
-
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="../common/variables.xml"
-  xpointer="xpointer(//*[@os='g'])"/>
-
-<screen os="h"><userinput>echo export CLFS_HOST=\""${CLFS_HOST}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_TARGET=\""${CLFS_TARGET}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_ARCH=\""${CLFS_ARCH}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_ENDIAN=\""${CLFS_ENDIAN}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_ARM_ARCH=\""${CLFS_ARM_ARCH}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_ARM_MODE=\""${CLFS_ARM_MODE}\"" &gt;&gt; ~/.bashrc
+<screen os="f2"><userinput>
+export CLFS_FLOAT=soft
 echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc
-echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc</userinput></screen>
+</userinput></screen>    
 
-  <table os="i">
-    <title>Example Processor Type, ABI, and  Target Triplets</title>
-    <?dbfo table-width="7in" ?>
 
-    <tgroup cols="2">
-
-      <colspec colnum="1" colwidth="2.5in" colname="Processor"/>
-      <colspec colnum="2" colwidth="1in" colname="Endianess"/>
-      <colspec colnum="3" colwidth="1in" colname="ABI"/>
-      <colspec colnum="4" colwidth="2.5in" colname="Triplet"/>
-
-      <thead>
-        <row>
-          <entry>Processor</entry>
-          <entry>Endianess</entry>
-          <entry>ABI</entry>
-          <entry>Target Triplet</entry>
-        </row>
-      </thead>
-
-      <tbody>
-        <row>
-          <entry>Generic arm</entry>
-          <entry>little</entry>
-          <entry>OABI</entry>
-          <entry>arm-unknown-linux-uclibc</entry>
-        </row>
-        <row>
-          <entry>Generic arm, version 4</entry>
-          <entry>little</entry>
-          <entry>OABI</entry>
-          <entry>armv4-unknown-linux-uclibc</entry>
-        </row>
-        <row>
-          <entry>Generic arm, version 5</entry>
-          <entry>little</entry>
-          <entry>EABI</entry>
-          <entry>armv5l-unknown-linux-uclibceabi</entry>
-        </row>
-        <row>
-          <entry>Generic arm, version 5</entry>
-          <entry>big</entry>
-          <entry>EABI</entry>
-          <entry>armv5b-unknown-linux-uclibceabi</entry>
-        </row>
-        <row>
-          <entry>Generic arm</entry>
-          <entry>little</entry>
-          <entry>EABI</entry>
-          <entry>arm-unknown-linux-uclibceabi</entry>
-        </row>
-        <row>
-          <entry>Generic arm, version 7-a </entry>
-          <entry>little</entry>
-          <entry>EABI</entry>
-          <entry>armv7a-unknown-linux-uclibceabi</entry>
-        </row>
-      </tbody>
-
-    </tgroup>
-
-  </table>
-
+ 
   <table os="j">
     <title>ARM Archiecture Choices</title>
     <?dbfo table-width="4in" ?>
@@ -230,5 +168,100 @@ echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc</userinput></screen>
       </tbody>
     </tgroup>
   </table>
+</sect2>
+<sect2 role="target">
+<title> Set Target </title>
 
+<para os="a">During the building of the cross-compile tools, you will need to
+  set a few variables that will be dependent on your particular needs.
+  You will need to select the target triplet for the target architecture, the CPU
+  endianess, the CPU architecture, the CPU mode, the CPU floating point hardware
+  availability, and (if available) the type of floating point hardware. If you 
+  do not know what values can be chosen for each of these, you can use the 
+  tables at the bottom of this page as a reference.</para>
+
+  <para os="a1">Most ARM processors are little endian, it is a safe choice.
+  If your processor is an ARM9, good choices include: triplet of
+  armv5l-unknown-linux-uclibeabi, ARM arch of armv5t, float of softfp, and fpu
+  of either none or softvfp. ARM9 processors do not always have hardware
+  floating point abilities. If your processor is a Cortex-A8 or Cortex-A9, good
+  choices include: triplet of armv7a-unknown-linux-uclibceabi, ARM arch of
+  armv7-a, float of hard, and fpu of vfpv3-d16.</para>
+<para os="c">Now we will set the architecture and endianess of the CPU based
+  on the target triplet provided above:</para>
+  <para os="a2">The target triplet is a smart name that is used during the compilation 
+  of binutils to set certain options (e.g. endianness). The following table 
+  gives examples:</para>
+  
+   <table os="i">
+    <title>Example Processor Type, ABI, and  Target Triplets</title>
+    <?dbfo table-width="7in" ?>
+
+    <tgroup cols="2">
+
+      <colspec colnum="1" colwidth="2.5in" colname="Processor"/>
+      <colspec colnum="2" colwidth="1in" colname="Endianess"/>
+      <colspec colnum="3" colwidth="1in" colname="ABI"/>
+      <colspec colnum="4" colwidth="2.5in" colname="Triplet"/>
+
+      <thead>
+        <row>
+          <entry>Processor</entry>
+          <entry>Endianess</entry>
+          <entry>ABI</entry>
+          <entry>Target Triplet</entry>
+        </row>
+      </thead>
+
+      <tbody>
+        <row>
+          <entry>Generic arm</entry>
+          <entry>little</entry>
+          <entry>OABI</entry>
+          <entry>arm-unknown-linux-uclibc</entry>
+        </row>
+        <row>
+          <entry>Generic arm, version 4</entry>
+          <entry>little</entry>
+          <entry>OABI</entry>
+          <entry>armv4-unknown-linux-uclibc</entry>
+        </row>
+        <row>
+          <entry>Generic arm, version 5</entry>
+          <entry>little</entry>
+          <entry>EABI</entry>
+          <entry>armv5l-unknown-linux-uclibceabi</entry>
+        </row>
+        <row>
+          <entry>Generic arm, version 5</entry>
+          <entry>big</entry>
+          <entry>EABI</entry>
+          <entry>armv5b-unknown-linux-uclibceabi</entry>
+        </row>
+        <row>
+          <entry>Generic arm</entry>
+          <entry>little</entry>
+          <entry>EABI</entry>
+          <entry>arm-unknown-linux-uclibceabi</entry>
+        </row>
+        <row>
+          <entry>Generic arm, version 7-a </entry>
+          <entry>little</entry>
+          <entry>EABI</entry>
+          <entry>armv7a-unknown-linux-uclibceabi</entry>
+        </row>
+      </tbody>
+
+    </tgroup>
+
+  </table>
+
+  
+  
+  
+<screen os="b"><userinput>
+export CLFS_TARGET=&clfs_target;
+echo export CLFS_TARGET=\""${CLFS_TARGET}\"" &gt;&gt; ~/.bashrc
+</userinput></screen>
+</sect2>
 </sect1>
