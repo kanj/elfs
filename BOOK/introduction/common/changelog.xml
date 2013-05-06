@@ -35,6 +35,13 @@
       </itemizedlist>
     </listitem>
 -->
+     <listitem>
+      <para>May 05, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updated bootscript/network updated for QEMU userland networking. </para>
+        </listitem>
+      </itemizedlist>
     <listitem>
       <para>May 05, 2013</para>
       <itemizedlist>

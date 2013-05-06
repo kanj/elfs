@@ -33,15 +33,15 @@
 <literal># /etc/network.conf
 # Global Networking Configuration
 # interface configuration is in /etc/network.d/
-
+# Based on QEMU userland networking
 # set to yes to enable networking
 NETWORKING=yes
 
 # set to yes to set default route to gateway
-USE_GATEWAY=no
+USE_GATEWAY=yes
 
 # set to gateway IP address
-GATEWAY=192.168.0.1
+GATEWAY=10.0.2.2
 
 # Interfaces to add to br0 bridge
 # Leave commented to not setup a network bridge
@@ -72,13 +72,13 @@ INTERFACE=eth0
 DHCP=no
 
 # IP address
-IPADDRESS=192.168.1.2
+IPADDRESS=10.0.2.15
 
 # netmask
 NETMASK=255.255.255.0
 
 # broadcast address
-BROADCAST=192.168.1.255</literal>
+BROADCAST=10.0.2.255</literal>
 EOF</userinput></screen>
 
     <para>The <envar>INTERFACE</envar> variable should contain the name of
@@ -181,9 +181,9 @@ chmod +x ${CLFS}/etc/udhcpc.conf</userinput></screen>
 <screen><userinput>cat &gt; ${CLFS}/etc/resolv.conf &lt;&lt; "EOF"
 <literal># Begin /etc/resolv.conf
 
-domain <replaceable>[Your Domain Name]</replaceable>
-nameserver <replaceable>[IP address of your primary nameserver]</replaceable>
-nameserver <replaceable>[IP address of your secondary nameserver]</replaceable>
+nameserver 10.0.2.3
+nameserver 127.0.0.1
+
 
 # End /etc/resolv.conf</literal>
 EOF</userinput></screen>
