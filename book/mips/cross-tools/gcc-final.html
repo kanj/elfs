@@ -15,8 +15,7 @@
   <body class="clfs" id="clfs-GIT-0.0.1-20120922-mips">
     <div class="navheader">
       <h4>
-        Cross-Compiled Linux From Scratch - Embedded - Version
-        GIT-0.0.1-20120922-mips
+        Embedded Linux from Source - Version GIT-0.0.1-20120922-mips
       </h4>
       <h3>
         Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools
@@ -41,8 +40,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-mips">
-          Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20120922-mips">Home</a>
         </li>
       </ul>
     </div>
@@ -89,7 +87,7 @@ cd ../gcc-build</kbd>
   ../gcc-4.6.0/configure --prefix=${CLFS}/cross-tools \
   --build=${CLFS_HOST} --target=${CLFS_TARGET} --host=${CLFS_HOST} \
   --with-sysroot=${CLFS} --disable-nls --enable-shared \
-  --enable-languages=c --enable-c99 --enable-long-long \
+  --enable-languages=c --enable-c99 --enable-long-long --disable-libmudflap \
   --with-mpfr=${CLFS}/cross-tools --with-gmp=${CLFS}/cross-tools \
   --with-mpc=${CLFS}/cross-tools --disable-multilib \
   --with-abi=${CLFS_ABI} --with-arch=mips${CLFS_MIPS_LEVEL} \
@@ -287,8 +285,7 @@ cd ../gcc-build</kbd>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-mips">
-          Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20120922-mips">Home</a>
         </li>
       </ul>
     </div>

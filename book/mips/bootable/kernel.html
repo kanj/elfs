@@ -15,8 +15,7 @@
   <body class="clfs" id="clfs-GIT-0.0.1-20120922-mips">
     <div class="navheader">
       <h4>
-        Cross-Compiled Linux From Scratch - Embedded - Version
-        GIT-0.0.1-20120922-mips
+        Embedded Linux from Source - Version GIT-0.0.1-20120922-mips
       </h4>
       <h3>
         Chapter&nbsp;9.&nbsp;Making the CLFS System Bootable
@@ -42,8 +41,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-mips">
-          Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20120922-mips">Home</a>
         </li>
       </ul>
     </div>
@@ -103,8 +101,14 @@
           </p>
         </div>
         <pre class="userinput">
-<kbd class=
-"command">make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- menuconfig</kbd>
+<kbd class="command">
+cp ~/myConfig .config
+
+sed -i 's/# CONFIG_BLK_DEV_INITRD is not set/CONFIG_BLK_DEV_INITRD=y/g' .config
+
+sed -i 's/# CONFIG_INPUT_KEYBOARD is not set/CONFIG_INPUT_KEYBOARD=y/g' .config 
+
+yes "" | make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- oldconfig</kbd>
 </pre>
         <p>
           Alternatively, <span class="command"><strong>make
@@ -125,7 +129,7 @@
         </p>
         <pre class="userinput">
 <kbd class=
-"command">make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- </kbd>
+"command">make CFLAGS_KERNEL='-Wno-error=unused-but-set-variable' ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- </kbd>
 </pre>
         <p>
           If using kernel modules, an <code class=
@@ -171,8 +175,7 @@
           Issue the following command to install the kernel:
         </p>
         <pre class="userinput">
-<kbd class=
-"command">cp arch/${CLFS_ARCH}/boot/vmlinux ${CLFS}/boot/clfskernel-2.6.38.2</kbd>
+<kbd class="command">cp vmlinux ${CLFS}/boot/clfskernel-2.6.38.2</kbd>
 </pre>
         <p>
           <code class="filename">System.map</code> is a symbol file for the
@@ -324,8 +327,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Cross-Compiled Linux From Scratch - Embedded - Version GIT-0.0.1-20120922-mips">
-          Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20120922-mips">Home</a>
         </li>
       </ul>
     </div>
