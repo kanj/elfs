@@ -52,20 +52,9 @@
 
   </part>
 
+  
   <part id="part5">
     <?dbhtml filename="part5.html"?>
-
-    <title>Beyond CLFS Embedded</title>
-
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="beyond-intro/mips-chapter.xml"/>
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="beyond-lib/mips-chapter.xml"/>
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="beyond-net/mips-chapter.xml"/>
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="beyond-filesys/mips-chapter.xml"/>
-
-  </part>
-
-  <part id="part6">
-    <?dbhtml filename="part6.html"?>
 
     <title>Cleanup and Boot</title>
 
@@ -73,7 +62,16 @@
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="the-end/mips-chapter.xml"/>
 
   </part>
+  
+    <part id="part6">
+    <?dbhtml filename="part6.html"?>
 
+    <title>Beyond ELFS</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="belfs/binclock/mips-chapter.xml"/>
+   
+
+  </part>
   <part id="part7">
     <?dbhtml filename="part7.html"?>
 
