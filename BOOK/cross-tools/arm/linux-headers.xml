@@ -32,7 +32,7 @@ platform. Using yes "" in front of make forces the make statement to use default
 values. This is an easy trick for hitting return repeatedly. </para>
 
 <screen ><userinput>
-cp &kernel_config; ~/myConfig
+cp &kernel_config; ${CLFS}/boot/clfskernel-&linux-version;
 
 CLFS_ARCH=&clfs_arch;
 echo export  CLFS_ARCH=&clfs_arch; >> ~/.bashrc

@@ -5,14 +5,13 @@
   %general-entities;
 ]>
 
-<chapter id="chapter-cleanup" xreflabel="Cleanup">
-  <?dbhtml dir="cleanup"?>
+<chapter id="chapter-createDir" xreflabel="Preparing a Working Directory">
+  <?dbhtml dir="create-dir"?>
   <?dbhtml filename="chapter.html"?>
 
-  <title>Backup and Cleanup</title>
+  <title>Creating a Build Directory</title>
 
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="remove-files.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="chowning.xml"/>
   
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="common/builddir.xml"/>
 
 </chapter>

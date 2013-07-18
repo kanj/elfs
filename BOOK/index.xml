@@ -6,8 +6,9 @@
 ]>
 
 <bookinfo>
-  <title>Cross-Compiled Linux From Scratch - Embedded</title>
+  <title>Embedded Linux from Source</title>
   <subtitle>Version &version;</subtitle>
+  <subtitle> Based on Cross Linux from Scratch - Embedded </subtitle>
 
   <authorgroup>
     <author>
@@ -30,8 +31,8 @@
 
   <copyright id="copyright">
     <year>2005&ndash;&year;</year>
-    <holder>Joe Ciccone, Jim Gifford, Maarten Lankhorst, &amp; Ryan Oliver</holder>
+    <holder>Kirk Terrell, Andrew Bradford, Joe Ciccone, Jim Gifford, Maarten Lankhorst, &amp; Ryan Oliver</holder>
   </copyright>
-
+  
 </bookinfo>
 

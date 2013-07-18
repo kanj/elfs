@@ -17,7 +17,7 @@ DLLISTDIR	:= $(RENDERDIR)/download-list
 CHUNK_QUIET	:= 1
 ROOT_ID		:=
 
-ARCHS		:= x86 mips wrt arm
+ARCHS		:= mips arm x86   
 
 ifdef V
   Q =
@@ -93,7 +93,9 @@ $(ARCHS_HTML):
 
 	@echo "Copying CSS code and images for $(arch)..."
 	$(Q)mkdir -p $(HTMLDIR)/$(arch)/stylesheets
+	$(Q)mkdir -p $(HTMLDIR)/$(arch)/belfs/stylesheets
 	$(Q)cp $(PWD)/stylesheets/lfs-xsl/*.css $(HTMLDIR)/$(arch)/stylesheets
+	$(Q)cp $(PWD)/stylesheets/lfs-xsl/*.css $(HTMLDIR)/$(arch)/belfs/stylesheets
 	$(Q)sed -i -e "s@../stylesheets@stylesheets@g" $(HTMLDIR)/$(arch)/*.html
 	$(Q)mkdir -p $(HTMLDIR)/$(arch)/images
 	$(Q)cp $(PWD)/images/*.png $(HTMLDIR)/$(arch)/images
@@ -222,3 +224,16 @@ help:
 	@echo
 	@echo "Download-List Targets"
 	@echo "  $(FG_GREEN)download-list $(FG_BLUE)$(ARCHS_DLLIST)$(FG_DEFAULT)"
+
+install-arm:    BUILDDIR = $HOME/clfs.arm.little	
+install-arm:
+	../scripts/aCLFS924 "arm" $(BUILDDIR)
+	
+install-mips:   BUILDDIR = ~/clfs.mips.little
+install-mips:
+	../scripts/aCLFS924 "mips" $(BUILDDIR)
+
+install-x86:   BUILDDIR = ~/clfs.i386
+install-x86:
+	../scripts/aCLFS924 "x86" $(BUILDDIR)	
+    

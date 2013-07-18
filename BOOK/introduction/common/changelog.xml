@@ -35,6 +35,37 @@
       </itemizedlist>
     </listitem>
 -->
+     
+     <listitem>
+      <para>July 17, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Changes made to support a complete system without creating a clfs user or having root access. 
+                            * Update materials/introduction to remove reference to root
+                            * Update prologue/hostreqs to add fakeroot as a prerequisite
+                            * Update final-preps/settingenvironment to support no clfs user
+                            * Update cleanup/chowning to mention use of fakeroot, and merge with copy-to-target
+                            * Remove cleanup/copy-to-target
+         </para>
+        </listitem>
+      </itemizedlist>
+      </listitem>
+     
+     <listitem>
+      <para>July 17, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Changes made to support automated build of examples from book. 
+                            * Added install-arm, install-mips, and install-x86 targets to makefile
+                            * Added aCLFS924, a shell script to BOOK/scripts to make the tool chain.
+         </para>
+        </listitem>
+      </itemizedlist>
+      </listitem>
+     
+     
+     
+     
      <listitem>
       <para>May 05, 2013</para>
       <itemizedlist>
@@ -42,6 +73,8 @@
           <para>[kanj] - Updated bootscript/network updated for QEMU userland networking. </para>
         </listitem>
       </itemizedlist>
+      </listitem>
+      
     <listitem>
       <para>May 05, 2013</para>
       <itemizedlist>
@@ -51,6 +84,7 @@
         </listitem>
       </itemizedlist>
       </listitem>
+      
     <listitem>
       <para>May 05, 2013</para>
       <itemizedlist>

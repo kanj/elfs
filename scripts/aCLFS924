@@ -1,0 +1,287 @@
+#!/bin/bash
+
+set -e
+# Version 2013-
+#   Added .tgz archives
+#   Updated OOM for makeReport
+#   Make log directory as needed
+#   Moved doCleanUp after break for non-zero exit code
+#   In makescript changed chmod 777 to chmod +x
+#   Updated to doDownload to look in /usr/src otherwise download to {CLFS}/usr/src
+#   Updated do download to cp patches from patch directory
+#   Updated do prep to process a $platform.xml file to add the source urls and versions
+#   Update to pull PLATFORM and CLFS from commandline
+#   removed doRender and other dead code
+#   Reporting is broken
+
+
+# Version 2013-04-02
+#   Changed CLFS to BUILDDIR
+#   Addressed case where SBU can't be calculated
+#   Renamed .../sources/clfs to .../sources/logs
+#   Update makeShellScript to use external sed script
+#   Changed the completion flag from a file to an entry in the log
+#   Added path for OOM and sedScript to build.config
+#   Conditional editing for fpu=none case done with build.config file
+
+# Version 2013-03-26
+#   Update redirect for patch download from > to >>
+#   Moved BOOK_ARCH to build.config
+#   Updated initDU to address case when ${CLFS} not yet created.
+#   Added makeReport
+#   Removed final shellScript
+#   Update BOOK_ARCH to PLATFORM and gitBOOK to BOOK to be consistent with JHALFS
+
+# Version   2013-03-25
+#   Outputs are saved to log files in ${CLFS}/sources/clfs
+#   Key stats are save to log file - start/stop times, disk usage at key points
+#   OOM moved to arch specific folder
+#   Patch download integrated into package download
+#   Progress indicator reformatted
+#   Some commands "silenced", e.g. cd -.
+
+aFormat="%-5s %-12s %-37s %-6s %-38s %-10s %-8s \n"
+
+PLATFORM=$1
+
+BUILDDIR=$2
+
+doPrep () {
+
+SED=../scripts/configs/sedScripts/elf.sed
+
+scriptDir=../render/html/${PLATFORM}/
+
+xsltproc stylesheets/clfs-chunked.xsl ../scripts/configs/OOM/${PLATFORM}.xml > ../scripts/configs/OOM/${PLATFORM}.oom
+sed '1d'  -i ../scripts/configs/OOM/${PLATFORM}.oom
+sed '1d'  -i ../scripts/configs/OOM/${PLATFORM}.oom
+sed '$d'  -i ../scripts/configs/OOM/${PLATFORM}.oom
+
+
+OOM="../scripts/configs/OOM/${PLATFORM}.oom"
+
+
+cat $SED | sed s#'${BUILDDIR}'#${BUILDDIR}#g > sed.tmp
+
+
+SED=$PWD/sed.tmp
+
+
+}
+
+doDownload () {
+
+        
+      pkg=${pkgUrl##*/}
+
+      echo "Preparing "$base
+
+      if [ -f /usr/src/$pkg ] 
+      then
+        SRC_ARCHIVE="/usr/src"
+      else  
+        wget -P ${BUILDDIR}/usr/src  $pkgUrl
+        SRC_ARCHIVE=${BUILDDIR}
+      fi  
+
+ 
+
+      tarType=${pkgUrl##*.}
+
+      pkgFolder=${pkg%%.tar*}
+
+      buildFolder=$( echo -n $pkgFolder | cut -d- -f1 )"-build"
+
+      case $tarType in
+
+            bz2) tar -xjf $SRC_ARCHIVE/$pkg -C ${BUILDDIR}/sources/  ;;
+
+            tar) tar -xvf $SRC_ARCHIVE/$pkg -C ${BUILDDIR}/sources/  ;;
+
+            gz)   tar -xzf $SRC_ARCHIVE/$pkg -C ${BUILDDIR}/sources/  ;;
+            
+            xz) tar -Jxf $SRC_ARCHIVE/$pkg -C ${BUILDDIR}/sources/  ;;
+            
+            tgz)   tar -xzf $SRC_ARCHIVE/$pkg -C ${BUILDDIR}/sources/  ;;
+
+            *)    echo "Unrecognized archive format " && exit 1   ;;
+
+      esac
+   
+   
+  
+   
+   [ -z $patchUrl ] || cp ../patches/$patchUrl ${BUILDDIR}/sources/$patchUrl > /dev/null 2>>log
+   
+
+}
+
+
+makeScript () {
+
+echo "#!/bin/sh" > shellScript
+echo "export CLFS=${BUILDDIR}" >> shellScript
+echo "export BUILDDIR=${BUILDDIR}" >> shellScript
+echo '[ -f ${CLFS}/.bashrc ] && source ${CLFS}/.bashrc' >> shellScript
+echo "pushd $PWD" >> shellScript
+echo "cd $base " >> shellScript
+cat $scriptDir/$rootPage | hxselect kbd -c -s '\n' | sed -f $SED >> shellScript  # scrape commands from page
+echo 'echo "exitCode="$?' >> shellScript
+echo "popd " >> shellScript
+
+
+chmod +x shellScript
+
+}
+
+doCleanUp () {
+
+    rm -rf $( echo -n $base | sed s#'${BUILDDIR}'#${BUILDDIR}#g )
+
+    for aPatch in `ls ${BUILDDIR}/sources/ | grep -e "patch" `
+    do
+        rm ${BUILDDIR}/sources/$aPatch
+    done
+
+    for aBuildDir in `ls ${BUILDDIR}/sources/ | grep -e "-build" `
+    do
+        rm -rf  ${BUILDDIR}/sources/$aBuildDir
+    done        
+    
+}
+
+makeReport () {
+
+[ -e shellScript ] && rm shellScript
+if [ -f ${BUILDDIR}/sources/logs/cross-tools/binutils.log ]
+then
+SBU=$(( $( grep -e "finalTime" ${BUILDDIR}/sources/logs/cross-tools/binutils.log | cut -d= -f2 ) - \
+        $( grep -e "initTime" ${BUILDDIR}/sources/logs/cross-tools/binutils.log | cut -d= -f2 ) ))
+else
+    SBU=1
+fi    
+
+echo "The contents of the build.config file was:"
+cat build.config
+
+printf "%30s %5s %5s %5s %5s %5s  \n" "Page"  "Initial DU (kb)" "Build DU (kb)" "Final DU (kb)" "elapsedTime (s)"  "elaspsed Time (SBU)"
+
+aFormat="%-35s  %9d %9d %9d %9d %3d \n"
+
+for  pageEntry in $( cat $OOM )
+do
+    
+    
+    rootPage=$( echo -n $pageEntry | cut -d'#' -f1 )
+
+    
+    log=$( echo -n $rootPage | sed s#html#log#g )   
+    
+    initDU=$( grep -e "initDU" ${BUILDDIR}/sources/logs/$log | cut -d= -f2 )
+    
+    initTime=$( grep -e "initTime" ${BUILDDIR}/sources/logs/$log | cut -d= -f2 )
+    
+    maxDU=$( grep -e "maxDU" ${BUILDDIR}/sources/logs/$log | cut -d= -f2 )
+    
+      
+    buildDU=$(( maxDU - initDU))
+    
+    finalDU=$( grep -e "finalDU" ${BUILDDIR}/sources/logs/$log | cut -d= -f2 )
+    
+    finalTime=$( grep -e "finalTime" ${BUILDDIR}/sources/logs/$log | cut -d= -f2 )
+    
+    elapsedTime=$(( $finalTime - $initTime ))
+    
+    buildSBU=$(( $elapsedTime / $SBU ))
+    
+    printf "$aFormat"  $rootPage $initDU $buildDU $finalDU $elapsedTime $buildSBU 
+      
+done 
+
+mv summary ${BUILDDIR}/sources/logs
+
+
+
+}
+
+doPrep
+
+#OOM=Order of March. This file contains page url, which user executes, what directory to start from, and 
+# the url for the source package to download
+
+
+
+for  pageEntry in $( cat $OOM )
+do
+    
+    
+    rootPage=$( echo -n $pageEntry | cut -d'#' -f1 )
+
+    user=$( echo -n $pageEntry | cut -d'#' -f2 )
+    
+    base=$( echo -n $pageEntry | cut -d'#' -f3 )
+    
+    pkgUrl=$( echo -n $pageEntry | cut -d'#' -f4 )
+    
+    patchUrl=$( echo -n $pageEntry | cut -d'#' -f5 )
+    
+    log=$( echo -n $rootPage | sed s#html#log#g )   
+    
+    returnCode=$( grep -e "exitCode" ${BUILDDIR}/sources/logs/$log 2>/dev/null | cut -d= -f2)
+    [ "$returnCode" = "0"  ] && continue
+    
+    initDU=$( du -ks ${BUILDDIR} 2>/dev/null | cut -f1 ) 
+    
+    [ "$initDU" = "" ] && initDU=0
+    
+    echo "initDU="$initDU > log
+    
+    [ -z $pkgUrl ] || doDownload
+    
+    echo "initTime="`date +%s` >> log
+    
+   
+   
+        
+   
+               
+   makeScript
+   
+   
+  
+   printf "$aFormat" $user "is executing" $rootPage "from" $base "using" ${PLATFORM}
+   
+  
+      
+    if [ "${user}" == "root" ]
+    then
+        fakeroot -- $PWD/shellScript >> log        2>&1    
+    else 
+        $PWD/shellScript >> log        2>&1  
+    fi        
+          
+   
+    
+    maxDU=$( du -ks ${BUILDDIR} | cut -f1 )  
+    echo "maxDU="$maxDU >> log
+    echo "finalTime="`date +%s` >> log
+    
+   
+    
+    
+    finalDU=$( du -ks ${BUILDDIR} | cut -f1 )  
+    echo "finalDU="$finalDU >> log
+    [ -d `dirname ${BUILDDIR}/sources/logs/$log` ] || sudo -u $( who -m | awk '{print $1;}' )  mkdir -pv `dirname ${BUILDDIR}/sources/logs/$log`
+    mv log  ${BUILDDIR}/sources/logs/$log
+    
+   
+    returnCode=$( grep -e "exitCode" ${BUILDDIR}/sources/logs/$log | cut -d= -f2)
+    [ $returnCode -eq 0 ] || break
+    
+   [ -z $pkgUrl ] || doCleanUp
+      
+done 
+returnCode=$( grep -e "exitCode" ${BUILDDIR}/sources/logs/$log 2>>/dev/null  | cut -d= -f2)
+( [ $returnCode -eq 0 ] && echo "Congratulations system build complete " ) || echo "Abnormal Termination"
+
+[ $returnCode -eq 0 ] && makeReport > summary

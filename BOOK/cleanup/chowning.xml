@@ -17,7 +17,7 @@
   <important>
 
     <para>The commands on this page of the book must be performed while
-    logged in as <systemitem class="username">root</systemitem>. Check that
+    logged in as <systemitem class="username">root</systemitem>, or in a fakeroot session. Check that
     ${CLFS} is still set:</para>
 
     <screen><userinput>echo ${CLFS}</userinput></screen>
@@ -27,7 +27,20 @@
   <para>Make <systemitem class="username">root</systemitem> the owner of the
   entire CLFS system:</para>
 
-<screen><userinput>chown -Rv root:root ${CLFS}/build/final</userinput></screen>
+<screen><userinput>
+
+cd ${CLFS}/build
+
+chown -Rv root:root final
+
+mknod -m 0666 ${CLFS}/build/final/dev/null c 1 3
+mknod -m 0600 ${CLFS}/build/final/dev/console c 5 1
+
+cd final 
+
+( find . | cpio -o --format=newc | gzip ) > ../initramfs
+
+</userinput></screen>
 
   <para>The following files should not to belong to the
   <systemitem class="groupname">root</systemitem> group, they should belong

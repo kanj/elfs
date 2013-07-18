@@ -46,9 +46,9 @@
    xpointer="xpointer(//*[@os='f'])"/>
 
 <screen os="g"><userinput>
-cp ~/myConfig .config
+cp ${CLFS}/boot/clfskernel-&linux-version; .config
 
-make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- oldconfig</userinput></screen>
+yes "" | make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- oldconfig</userinput></screen>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
    href="../common/kernel.xml"

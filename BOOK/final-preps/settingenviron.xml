@@ -10,27 +10,13 @@
 
   <title>Setting Up the Environment</title>
 
-  <para os="a">Set up a good working environment by creating two new startup
-  files for the <command>bash</command> shell. While logged in as user
-  <systemitem class="username">clfs</systemitem>, issue the following
-  command to create a new <filename>.bash_profile</filename>:</para>
+  
 
-<screen os="b"><userinput>cat &gt; ~/.bash_profile &lt;&lt; "EOF"
-<literal>exec env -i HOME=${HOME} TERM=${TERM} PS1='\u:\w\$ ' /bin/bash</literal>
-EOF</userinput></screen>
+<screen os="b"><userinput>export ${CLFS}=/mnt/clfs</userinput></screen>
 
-  <para os="c">When logged on as user <systemitem class="username">clfs</systemitem>,
-  the initial shell is usually a <emphasis>login</emphasis> shell which
-  reads the <filename>/etc/profile</filename> of the host (probably
-  containing some settings and environment variables) and then
-  <filename>.bash_profile</filename>. The
-  <command>exec env -i.../bin/bash</command> command in the
-  <filename>.bash_profile</filename> file replaces the running shell with
-  a new one with a completely empty environment, except for the
-  <envar>HOME</envar>, <envar>TERM</envar>, and <envar>PS1</envar> variables.
-  This ensures that no unwanted and potentially hazardous environment
-  variables from the host system leak into the build environment. The
-  technique used here achieves the goal of ensuring a clean environment.</para>
+  <para os="c">To ensure a clean separation between host and build environments 
+  we will create a custum .bashrc file. This file will be read when invoking a non-login
+  instance of bash. </para>
 
   <para os="d">The new instance of the shell is a <emphasis>non-login</emphasis>
   shell, which does not read the <filename>/etc/profile</filename> or
@@ -38,10 +24,12 @@ EOF</userinput></screen>
   <filename>.bashrc</filename> file instead. Create the
   <filename>.bashrc</filename> file now:</para>
 
-<screen os="e"><userinput>cat &gt; ~/.bashrc &lt;&lt; "EOF"
+<screen os="e"><userinput>cat &gt; ${CLFS}/.bashrc &lt;&lt; "EOF"
 <literal>set +h
 umask 022
 CLFS=/mnt/clfs
+HOME=/mnt/clfs
+PS1='clfs-\u:\w\$'
 LC_ALL=POSIX
 PATH=${CLFS}/cross-tools/bin:/bin:/usr/bin
 export CLFS LC_ALL PATH</literal>
@@ -89,6 +77,9 @@ EOF</userinput></screen>
   <para os="k">Finally, to have the environment fully prepared for building the
   temporary tools, source the just-created user profile:</para>
 
-<screen os="l"><userinput>source ~/.bash_profile</userinput></screen>
+<screen os="l"> 
+To access the special environment launch the bash shell as follows: export CLFS=/mnt/clfs; bash --rcfile ${CLFS}/.bashrc 
+To use this environment in a shell script do as follows:    export CLFS=/mnt/clfs ; source ${CLFS}/.bashrc
+</screen>
 
 </sect1>

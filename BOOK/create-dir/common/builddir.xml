@@ -5,20 +5,20 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-workingDir-creating">
-  <?dbhtml filename="mkdir.html"?>
+<sect1 id="ch-createDir-builddir">
+  <?dbhtml filename="builddir.html"?>
 
-  <title>Creating the Working Directory</title>
+  <title>Creating a Build Directory</title>
 
   <para>A dedicated place to build the CLFS system needs to be created. For the purposes of this book, it is
   assumed that the working directory is <filename
-  class="directory">/opt/clfs</filename>, but the directory choice is up
-  to you.</para>
+  class="directory">/mnt/clfs</filename>, but the directory choice is up
+  to you.   </para>
 
   <para>Choose a working directory  and assign it to the <envar>CLFS</envar>
   environment variable by running:</para>
 
-<screen><userinput>export CLFS=/opt/clfs</userinput></screen>
+<screen><userinput>export CLFS=/mnt/clfs</userinput></screen>
 
   <para>Next, create the working directory by
   running:</para>
@@ -26,6 +26,7 @@
 <screen><userinput>mkdir -pv ${CLFS}
 </userinput></screen>
 
+<para>Make sure you have non-root ownership of the directory. If required use chown -R to set the desired ownership. </para>
   
 
   

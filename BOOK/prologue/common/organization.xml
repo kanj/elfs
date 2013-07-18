@@ -47,10 +47,9 @@
   </sect2>
 
   <sect2>
-    <title>Part V - Beyond CLFS Embedded</title>
+    <title>Part V - Cleanup and Boot</title>
 
-    <para>Part V provides instructions on optional packages that can be
-    installed to enhance your CLFS system.</para>
+    <para>Part V provides instructions on creating a root file system using compiled packages.</para>
 
   </sect2>
 

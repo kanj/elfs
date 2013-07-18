@@ -27,16 +27,17 @@
   url="&packages-root;"/>.</para>
 
   <para>Downloaded packages and patches will need to be stored somewhere
-  that is conveniently available throughout the entire build. A working
-  directory is also required to unpack the sources and build them.
+  that is conveniently available throughout the entire build. The automated 
+  version will   look in /usr/src for the packages. If not found it will 
+  download to ${CLFS}/usr/src. A working   directory is also required to 
+  unpack the sources and build them.
   <filename class="directory">${CLFS}/sources</filename> can be used both
   as the place to store the tarballs and patches and as a working
   directory. By using this directory, the required elements will be
   located on the CLFS partition and will be available during all stages
   of the building process.</para>
 
-  <para>To create this directory, execute, as user <systemitem
-  class="username">root</systemitem>, the following command before
+  <para>To create this directory, execute, the following command before
   starting the download session:</para>
 
 <screen><userinput>mkdir -v ${CLFS}/sources</userinput></screen>
