@@ -5,27 +5,26 @@
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=iso-8859-1" />
     <title>
-      4.3.&nbsp;Setting Up the Environment
+      4.2.&nbsp;Setting Up the Environment
     </title>
     <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
     <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
     "text/css" media="print" />
   </head>
-  <body class="clfs" id="clfs-GIT-0.0.1-20120922-arm">
+  <body class="clfs" id="clfs-GIT-0.0.1-20130717-arm">
     <div class="navheader">
       <h4>
-        Embedded Linux from Source - Version GIT-0.0.1-20120922-arm
+        Embedded Linux from Source - Version GIT-0.0.1-20130717-arm
       </h4>
       <h3>
         Chapter&nbsp;4.&nbsp;Final Preparations
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="addinguser.html" title=
-          "Adding the CLFS User">Prev</a>
+          <a accesskey="p" href="aboutlfs.html" title="About $CLFS">Prev</a>
           <p>
-            Adding the CLFS User
+            About $CLFS
           </p>
         </li>
         <li class="next">
@@ -41,44 +40,22 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20120922-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130717-arm">Home</a>
         </li>
       </ul>
     </div>
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-final-preps-settingenviron" name=
-        "ch-final-preps-settingenviron"></a>4.3. Setting Up the Environment
+        "ch-final-preps-settingenviron"></a>4.2. Setting Up the Environment
       </h1>
-      <p>
-        Set up a good working environment by creating two new startup files
-        for the <span class="command"><strong>bash</strong></span> shell.
-        While logged in as user <code class="systemitem">clfs</code>, issue
-        the following command to create a new <code class=
-        "filename">.bash_profile</code>:
-      </p>
       <pre class="userinput">
-<kbd class="command">cat &gt; ~/.bash_profile &lt;&lt; "EOF"
-<code class=
-"literal">exec env -i HOME=${HOME} TERM=${TERM} PS1='\u:\w\$ ' /bin/bash</code>
-EOF</kbd>
+<kbd class="command">export ${CLFS}=/mnt/clfs</kbd>
 </pre>
       <p>
-        When logged on as user <code class="systemitem">clfs</code>, the
-        initial shell is usually a <span class=
-        "emphasis"><em>login</em></span> shell which reads the <code class=
-        "filename">/etc/profile</code> of the host (probably containing some
-        settings and environment variables) and then <code class=
-        "filename">.bash_profile</code>. The <span class=
-        "command"><strong>exec env -i.../bin/bash</strong></span> command in
-        the <code class="filename">.bash_profile</code> file replaces the
-        running shell with a new one with a completely empty environment,
-        except for the <code class="envar">HOME</code>, <code class=
-        "envar">TERM</code>, and <code class="envar">PS1</code> variables.
-        This ensures that no unwanted and potentially hazardous environment
-        variables from the host system leak into the build environment. The
-        technique used here achieves the goal of ensuring a clean
-        environment.
+        To ensure a clean separation between host and build environments we
+        will create a custum .bashrc file. This file will be read when
+        invoking a non-login instance of bash.
       </p>
       <p>
         The new instance of the shell is a <span class=
@@ -89,10 +66,12 @@ EOF</kbd>
         <code class="filename">.bashrc</code> file now:
       </p>
       <pre class="userinput">
-<kbd class="command">cat &gt; ~/.bashrc &lt;&lt; "EOF"
+<kbd class="command">cat &gt; ${CLFS}/.bashrc &lt;&lt; "EOF"
 <code class="literal">set +h
 umask 022
 CLFS=/mnt/clfs
+HOME=/mnt/clfs
+PS1='clfs-\u:\w\$'
 LC_ALL=POSIX
 PATH=${CLFS}/cross-tools/bin:/bin:/usr/bin
 export CLFS LC_ALL PATH</code>
@@ -154,17 +133,18 @@ EOF</kbd>
         Finally, to have the environment fully prepared for building the
         temporary tools, source the just-created user profile:
       </p>
-      <pre class="userinput">
-<kbd class="command">source ~/.bash_profile</kbd>
+      <pre class="screen">
+ 
+To access the special environment launch the bash shell as follows: export CLFS=/mnt/clfs; bash --rcfile ${CLFS}/.bashrc 
+To use this environment in a shell script do as follows:    export CLFS=/mnt/clfs ; source ${CLFS}/.bashrc
 </pre>
     </div>
     <div class="navfooter">
       <ul>
         <li class="prev">
-          <a accesskey="p" href="addinguser.html" title=
-          "Adding the CLFS User">Prev</a>
+          <a accesskey="p" href="aboutlfs.html" title="About $CLFS">Prev</a>
           <p>
-            Adding the CLFS User
+            About $CLFS
           </p>
         </li>
         <li class="next">
@@ -180,7 +160,7 @@ EOF</kbd>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20120922-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130717-arm">Home</a>
         </li>
       </ul>
     </div>
