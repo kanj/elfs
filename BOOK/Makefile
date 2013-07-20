@@ -1,4 +1,5 @@
-TOP		:= $(PWD)
+TOP := $(PWD)
+
 RENDERDIR	:= $(TOP)/../render
 
 VALIDATEDIR	:= $(RENDERDIR)/validate
@@ -14,10 +15,12 @@ TROUBLEDIR	:= $(RENDERDIR)/trouble
 DUMPDIR		:= $(RENDERDIR)/commands
 DLLISTDIR	:= $(RENDERDIR)/download-list
 
+SYSBUILD	:=	$(shell dirname $(PWD))/sysBuild
+
 CHUNK_QUIET	:= 1
 ROOT_ID		:=
 
-ARCHS		:= mips arm x86   
+ARCHS		:= mips arm x86 
 
 ifdef V
   Q =
@@ -77,10 +80,12 @@ $(ARCHS_P_XML):
 	  $(VALIDATEDIR)/$(arch)-full.xml
 
 ARCHS_HTML := $(ARCHS:%=%-html)
+
 .PHONY: html render $(ARCHS_HTML)
 html render: $(ARCHS_HTML) titlepage
 $(ARCHS_HTML): override arch = $(@:%-html=%)
 $(ARCHS_HTML):
+	ln -sf $(arch).ent bsp.ent
 	@$(MAKE) --no-print-directory $(arch)-profiled-xml
 
 	@echo "Rendering chunked XHTML of $(arch)..."
@@ -225,15 +230,31 @@ help:
 	@echo "Download-List Targets"
 	@echo "  $(FG_GREEN)download-list $(FG_BLUE)$(ARCHS_DLLIST)$(FG_DEFAULT)"
 
-install-arm:    BUILDDIR = $HOME/clfs.arm.little	
-install-arm:
+install-arm:    BUILDDIR = ~/clfs.arm.little
+install-arm: 	arm-html   
 	../scripts/aCLFS924 "arm" $(BUILDDIR)
 	
-install-mips:   BUILDDIR = ~/clfs.mips.little
-install-mips:
+install-mips:   BUILDDIR = $(SYSBUILD)/clfs.mips.little
+install-mips:	mips-html   
 	../scripts/aCLFS924 "mips" $(BUILDDIR)
 
 install-x86:   BUILDDIR = ~/clfs.i386
-install-x86:
+install-x86:	x86-html
 	../scripts/aCLFS924 "x86" $(BUILDDIR)	
-    
+
+install-armEglibc:   BUILDDIR = ~/clfs.armEglibc
+install-armEglibc:	armEglibc-html
+	../scripts/aCLFS924 "armEglibc" $(BUILDDIR)	
+	
+install-mipsEglibc:	BUILDDIR = ~/clfs_mipsEglibc
+install-mipsEglibc:	mipsEglibc-html
+	../scripts/aCLFS924 "mipsEglibc" $(BUILDDIR)		
+	
+install-mipsMusl:	BUILDDIR = ~/clfs_mipsMusl
+install-mipsMusl:	mipsMusl-html
+	../scripts/aCLFS924 "mipsMusl" $(BUILDDIR)	
+	
+check-bigtop:
+	echo $(BIGTOP)		
+	echo $(BIGTOPER)
+	

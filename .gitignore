@@ -2,3 +2,8 @@
 *.swp
 \#*#
 *~
+/BOOK/log
+/BOOK/sed.tmp
+/BOOK/shellScript
+/sysBuild/
+/scripts/configs/OOM/*.oom

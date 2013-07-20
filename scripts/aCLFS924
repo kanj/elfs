@@ -1,7 +1,11 @@
 #!/bin/bash
 
 set -e
-# Version 2013-
+# Version  
+#   Updated doDownload to look in the correct directory
+#   Updated makeReport to remove cat build.config
+
+# Version 2013-07-17
 #   Added .tgz archives
 #   Updated OOM for makeReport
 #   Make log directory as needed
@@ -80,8 +84,8 @@ doDownload () {
       then
         SRC_ARCHIVE="/usr/src"
       else  
-        wget -P ${BUILDDIR}/usr/src  $pkgUrl
-        SRC_ARCHIVE=${BUILDDIR}
+        [ -f ${BUILDDIR}/usr/src/$pkg ] || wget -P ${BUILDDIR}/usr/src  $pkgUrl
+        SRC_ARCHIVE=${BUILDDIR}/usr/src
       fi  
 
  
@@ -161,8 +165,6 @@ else
     SBU=1
 fi    
 
-echo "The contents of the build.config file was:"
-cat build.config
 
 printf "%30s %5s %5s %5s %5s %5s  \n" "Page"  "Initial DU (kb)" "Build DU (kb)" "Final DU (kb)" "elapsedTime (s)"  "elaspsed Time (SBU)"
 

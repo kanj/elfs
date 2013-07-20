@@ -2,7 +2,9 @@
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../../general.ent">
+  <!ENTITY % boardSupport-entities SYSTEM "../../bsp.ent">
   %general-entities;
+  %boardSupport-entities;
 ]>
 
 <sect1 id="ch-system-abi">
@@ -95,7 +97,7 @@
  setting for CLFS_ABI is appropriate:</para>
 
   <screen os="b"><userinput>
-  export CLFS_ABI="apcs-gnu"
+  export CLFS_ABI=&clfs_abi;
   echo export CLFS_ABI=\""${CLFS_ABI}\"" &gt;&gt; ~/.bashrc
     
     </userinput></screen>

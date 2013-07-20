@@ -1,0 +1,22 @@
+#!/bin/sh
+export CLFS=/home/home/kanj/elfs/aCLFS/gitBOOK/elfsMain/sysBuild/clfs.mips.little
+export BUILDDIR=/home/home/kanj/elfs/aCLFS/gitBOOK/elfsMain/sysBuild/clfs.mips.little
+[ -f ${CLFS}/.bashrc ] && source ${CLFS}/.bashrc
+pushd /home/home/kanj/elfs/aCLFS/gitBOOK/elfsMain/BOOK
+cd ${BUILDDIR}/sources/gcc-4.6.0 
+mkdir -v ../gcc-build
+cd ../gcc-build
+AR=ar LDFLAGS="-Wl,-rpath,${CLFS}/cross-tools/lib" \
+  ../gcc-4.6.0/configure --prefix=${CLFS}/cross-tools \
+  --build=${CLFS_HOST} --host=${CLFS_HOST} --target=${CLFS_TARGET} \
+  --with-sysroot=${CLFS} --disable-nls  --disable-shared \
+  --with-mpfr=${CLFS}/cross-tools --with-gmp=${CLFS}/cross-tools \
+  --with-mpc=${CLFS}/cross-tools --without-headers --with-newlib \
+  --disable-decimal-float --disable-libgomp --disable-libmudflap \
+  --disable-libssp --disable-threads --enable-languages=c \
+  --disable-multilib --with-abi=${CLFS_ABI} --with-arch=mips${CLFS_MIPS_LEVEL} \
+  --with-float=${CLFS_FLOAT} --with-endian=${CLFS_ENDIAN}
+make all-gcc all-target-libgcc
+make install-gcc install-target-libgcc
+echo "exitCode="$?
+popd 

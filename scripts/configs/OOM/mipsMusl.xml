@@ -7,7 +7,7 @@
   %boardSupport-entities;
 ]>
 <sect>
-final-preps/aboutlfs.html#root#$PWD###  
+create-dir/builddir.html#clfs#$PWD###  
 final-preps/settingenvironment.html#clfs#$HOME###  
 final-preps/creatingdirs.html#clfs#$PWD###  
 final-preps/creatingcrossdir.html#clfs#$PWD###  
@@ -21,8 +21,7 @@ cross-tools/mpfr.html#clfs#${BUILDDIR}/sources/mpfr-&mpfr-version;#http://gforge
 cross-tools/mpc.html#clfs#${BUILDDIR}/sources/mpc-&mpc-version;#http://www.multiprecision.org/mpc/download/mpc-&mpc-version;.tar.gz##  
 cross-tools/binutils.html#clfs#${BUILDDIR}/sources/binutils-&binutils-version;#&gnu;binutils/binutils-&binutils-version;.tar.bz2##  
 cross-tools/gcc-static.html#clfs#${BUILDDIR}/sources/gcc-&gcc-version;#ftp://gcc.gnu.org/pub/gcc/releases/gcc-&gcc-version;/gcc-&gcc-version;.tar.bz2#gcc-4.6.0-uclibc-arm-softfloat-2.patch#  
-cross-tools/uclibc.html#clfs#${BUILDDIR}/sources/uClibc-&uclibc-version;#http://www.uclibc.org/downloads/uClibc-&uclibc-version;.tar.bz2#uClibc-0.9.31-configs-2.patch#  
-final-system/toolchain.html#clfs#$HOME### 
+cross-tools/musl.html#clfs#${BUILDDIR}/sources/musl-&musl-version;#http://www.musl-libc.org/releases/musl-&musl-version;.tar.gz##
 final-system/busybox.html#clfs#${BUILDDIR}/sources/busybox-&busybox-version;#http://busybox.net/downloads/busybox-&busybox-version;.tar.bz2#busybox-1.18.4-config-1.patch# 
 final-system/iana-etc.html#clfs#${BUILDDIR}/sources/iana-etc-2.30#http://cross-lfs.org/files/packages/embedded-0.0.1/iana-etc-2.30.tar.bz2#iana-etc-2.30-update-1.patch# 
 bootable/fstab.html#clfs#$PWD### 
@@ -32,8 +31,8 @@ bootscripts/mdev.html#clfs#$PWD###
 bootscripts/profile.html#clfs#$PWD### 
 bootscripts/inittab.html#clfs#$PWD### 
 bootscripts/hostname.html#clfs#$PWD### 
-cleanup/remove-files.html#root#$PWD### 
+cleanup/remove-files.html#clfs#$PWD### 
 cleanup/chowning.html#root#$PWD### 
-the-end/theend.html#root#$PWD### 
-the-end/reboot.html#root#$PWD### 
+the-end/theend.html#clfs#$PWD### 
+the-end/reboot.html#clfs#$PWD### 
 </sect>

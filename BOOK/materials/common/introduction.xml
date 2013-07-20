@@ -19,6 +19,11 @@
   These work-arounds will be developed and stabilized in the development
   version of the book.</para>
 
+<para>The packages will be broken up into two groups. The first group of packages are
+to build the following: toolchain, and a root file system. The second group of
+packages are the Board Support Packages. These packages will include the Kernel, and 
+may include a bootloader</para>
+
   <para>Download locations may not always be accessible. If a download
   location has changed since this book was published, Google (<ulink
   url="http://www.google.com/"/>) provides a useful search engine for

@@ -2,8 +2,9 @@
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../../general.ent">
+  <!ENTITY % boardSupport-entities SYSTEM "../../bsp.ent">
   %general-entities;
-   <!ENTITY clfs_target "armv5l-unknown-linux-uclibc">
+  %boardSupport-entities;
 ]>
 
 <sect1 id="ch-cross-tools-variables">
@@ -15,11 +16,24 @@
   href="../common/variables.xml"
   xpointer="xpointer(//*[@role='host'])"/>
 
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="../common/variables.xml"
-  xpointer="xpointer(//*[@role='endianess'])"/>
-  
-  
+ <sect2 role="endianess">
+<title> Set Endianess </title>
+
+<para> The Endianess of system refers to how numbers are represented. See the following 
+wiki entry for additional details:
+
+    <ulink url="http://en.wikipedia.org/wiki/Endianness"/>
+    
+    
+    
+Based on the selected platform the following setting is appropriate:    
+</para>
+
+<screen os="d"><userinput>
+export CLFS_ENDIAN=&clfs_endian;
+echo export CLFS_ENDIAN=\""${CLFS_ENDIAN}\"" &gt;&gt; ~/.bashrc
+</userinput></screen>
+</sect2>
 
 
 <sect2 role="armVariables">
@@ -38,7 +52,7 @@ If we review the configuration file created earlier under the section "Processor
 thus we set the arm mode to thumb to enable a 16 bit instruction set or use the generally applicable arm mode. </para>
 
 <screen os="f"><userinput>
-export CLFS_ARM_MODE="arm"
+export CLFS_ARM_MODE=&clfs_arm_mode;
 echo export CLFS_ARM_MODE=\""${CLFS_ARM_MODE}\"" &gt;&gt; ~/.bashrc
 </userinput></screen>    
 
@@ -54,7 +68,7 @@ under the section "Processor type" we see that the following config flag has bee
 thus we set the arm architecture as follows: </para>
 
 <screen os="f"><userinput>
-export CLFS_ARM_ARCH=armv5
+export CLFS_ARM_ARCH=&clfs_arm_arch;
 echo export CLFS_ARM_ARCH=\""${CLFS_ARM_ARCH}\"" &gt;&gt; ~/.bashrc
 </userinput></screen>
 
@@ -68,7 +82,7 @@ echo export CLFS_ARM_ARCH=\""${CLFS_ARM_ARCH}\"" &gt;&gt; ~/.bashrc
   CLFS_FLOAT variable to "soft".</para>
 
 <screen os="f2"><userinput>
-export CLFS_FLOAT=soft
+export CLFS_FLOAT=&clfs_float;
 echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc
 </userinput></screen>    
 

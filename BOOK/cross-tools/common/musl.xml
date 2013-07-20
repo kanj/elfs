@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<!-- Common EGLIBC -->
+
+<sect1 id="ch-cross-tools-musl" role="wrap">
+  <?dbhtml filename="musl.html"?>
+
+  <title>EGLIBC-&eglibc-version;</title>
+
+  <indexterm zone="ch-cross-tools-musl">
+    <primary sortas="a-EGLIBC">EGLIBC</primary>
+    <secondary>cross tools</secondary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>The EGLIBC package contains the main C library. This library provides
+    the basic routines for allocating memory, searching directories, opening and
+    closing files, reading and writing files, string handling, pattern matching,
+    arithmetic, and so on.</para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Musl libc </title>
+
+    <para>It should be noted that compiling EGLIBC in any way other than
+    the method suggested in this book puts the stability of the system at
+    risk.</para>
+
+    <para os="e">The EGLIBC documentation recommends building EGLIBC outside of
+      the source directory in a dedicated build directory:</para>
+
+
+
+    <para os="g">Prepare Musl libc  for compilation:</para>
+
+<screen os="df"><userinput>
+
+export C_INCLUDE_PATH=${CLFS}/include
+
+echo "C_INCLUDE_PATH="$C_INCLUDE_PATH >> ~/.bashrc
+
+
+BUILD_CC="gcc" CC="${CLFS_TARGET}-gcc" \
+    AR="${CLFS_TARGET}-ar" RANLIB="${CLFS_TARGET}-ranlib" \
+    ./configure --prefix=${CLFS} --disable-gcc-wrapper \
+    --host=${CLFS_TARGET} --build=${CLFS_HOST} --syslibdir=${CLFS}/lib
+    </userinput></screen>
+    <variablelist os="dg">
+      <title>The meaning of the new configure options:</title>
+
+      <varlistentry os="dg1">
+        <term><parameter>BUILD_CC="gcc"</parameter></term>
+        <listitem>
+          <para>This sets EGLIBC to use the current compiler on our system. This is
+          used to create the tools EGLIBC uses during its build.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry os="dg2">
+        <term><parameter>CC="${CLFS_TARGET}-gcc"</parameter></term>
+        <listitem>
+          <para>This forces EGLIBC to use the GCC compiler that we made for our target
+          architecture.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry os="dg3">
+        <term><parameter>AR="${CLFS_TARGET}-ar"</parameter></term>
+        <listitem>
+          <para>This forces EGLIBC to use the <command>ar</command> utility
+          we made for our target architecture.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry os="dg4">
+        <term><parameter>RANLIB="${CLFS_TARGET}-ranlib"</parameter></term>
+        <listitem>
+          <para>This forces EGLIBC to use the <command>ranlib</command> utility
+          we made for our target architecture.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry os="dg5">
+        <term><parameter>--disable-profile</parameter></term>
+        <listitem>
+          <para>This builds the libraries without profiling information. 
+          Omit this option if profiling on the temporary tools is necessary.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry os="dg6">
+        <term><parameter>--with-tls</parameter></term>
+        <listitem>
+          <para>This tells EGLIBC to use Thread Local Storage.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry os="dg7">
+        <term><parameter>--enable-kernel=3.0</parameter></term>
+        <listitem>
+          <para>This tells EGLIBC to compile the library with support
+          for 3.0 and later Linux kernels.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry os="dg8">
+        <term><parameter>--with-__thread</parameter></term>
+        <listitem>
+          <para>This tells EGLIBC to use use the __thread for libc and
+          libpthread builds.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry os="dg9">
+        <term><parameter>--with-binutils=/cross-tools/bin</parameter></term>
+        <listitem>
+          <para>This tells EGLIBC to use the Binutils that are specific to
+          our target architecture.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry os="dg10">
+        <term><parameter>--with-headers=/tools/include</parameter></term>
+        <listitem>
+          <para>This tells EGLIBC to compile itself against the headers
+          recently installed to the <filename class="directory">/tools</filename>
+          directory, so that it knows exactly what features the kernel has
+          and can optimize itself accordingly.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry os="dg11">
+        <term><parameter>--enable-obsolete-rpc</parameter></term>
+        <listitem>
+          <para>This tells EGLIBC to make the deprecated RPC headers available
+            at compile time as per pre version 2.14 of EGLIBC.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry os="dg12">
+        <term><parameter>--cache-file=config.cache</parameter></term>
+        <listitem>
+          <para>This tells EGLIBC to utilize a premade cache file.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para os="h">Compile the package:</para>
+
+<screen os="i"><userinput>make </userinput></screen>
+
+    <para os="l">Install the package:</para>
+
+<screen os="j"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-musl" role="content">
+    <title>Contents of EGLIBC</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Headers</segtitle>
+      <seglistitem>
+        <seg>To be written...</seg>
+        <seg>To be written...</seg>
+        <seg>To be written...</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="ld-EGLIBC">
+        <term><filename class="libraryfile">ld</filename></term>
+        <listitem>
+          <para>The dynamic linker / loader</para>
+          <indexterm zone="ch-cross-tools-musl ld">
+            <primary sortas="c-ld">ld</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libc">
+        <term><filename class="libraryfile">libc</filename></term>
+        <listitem>
+          <para>The C library</para>
+          <indexterm zone="ch-cross-tools-musl libc">
+            <primary sortas="c-libc">libc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libcrypt">
+        <term><filename class="libraryfile">libcrypt</filename></term>
+        <listitem>
+          <para>The cryptographic library</para>
+          <indexterm zone="ch-cross-tools-musl libcrypt">
+            <primary sortas="c-libcrypt">libcrypt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libdl">
+        <term><filename class="libraryfile">libdl</filename></term>
+        <listitem>
+          <para>The dynamic linker / loader library</para>
+          <indexterm zone="ch-cross-tools-musl libdl">
+            <primary sortas="c-libdl">libdl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libm">
+        <term><filename class="libraryfile">libm</filename></term>
+        <listitem>
+          <para>The math library</para>
+          <indexterm zone="ch-cross-tools-musl libm">
+            <primary sortas="c-libm">libm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpthread">
+        <term><filename class="libraryfile">libpthread</filename></term>
+        <listitem>
+          <para>The POSIX thread library</para>
+          <indexterm zone="ch-cross-tools-musl libpthread">
+            <primary sortas="c-libpthread">libpthread</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="librt">
+        <term><filename class="libraryfile">librt</filename></term>
+        <listitem>
+          <para>The clock and timer library</para>
+          <indexterm zone="ch-cross-tools-musl librt">
+            <primary sortas="c-librt">librt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+  </sect2>
+</sect1>

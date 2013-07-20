@@ -2,7 +2,9 @@
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../../general.ent">
+ <!ENTITY % boardSupport-entities SYSTEM "../../bsp.ent">
   %general-entities;
+  %boardSupport-entities;
 ]>
 
 <sect1 id="ch-materials-packages-arm">
@@ -10,11 +12,29 @@
 
   <title>Additional Packages for ARM</title>
 
-<!--
+
+
+
+
+
+
   <variablelist role="materials">
 
-  </variablelist>
--->
+  
+
+
+<varlistentry os="linux">
+      <term>Linux (&linux-version;) - <token>&linux-size;</token>:</term>
+      <listitem>
+        <para>Home page: <ulink url="&linux-home;"/></para>
+        <para>Download: <ulink url="&linux-url;"/></para>
+        <para>MD5 sum: <literal>&linux-md5;</literal></para>
+      </listitem>
+</varlistentry>
+
+</variablelist>
+
+
 
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
   href="../common/packages.xml"

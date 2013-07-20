@@ -2,8 +2,9 @@
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../../general.ent">
+  <!ENTITY % boardSupport-entities SYSTEM "../../bsp.ent">
   %general-entities;
-  <!ENTITY clfs_target "mipsel-unknown-linux-uclibc">
+  %boardSupport-entities;
 ]>
 
 <sect1 id="ch-cross-tools-variables">
@@ -44,7 +45,7 @@
   <ulink url="http://www.linux-mips.org/wiki/Instruction_Set_Architecture"/></para>
 
 <screen os="m2"><userinput>
-export CLFS_MIPS_LEVEL="1"
+export CLFS_MIPS_LEVEL=&clfs_mips_level;
 echo export CLFS_MIPS_LEVEL=\""${CLFS_MIPS_LEVEL}\"" &gt;&gt; ~/.bashrc
 </userinput></screen>
 
@@ -56,7 +57,7 @@ echo export CLFS_MIPS_LEVEL=\""${CLFS_MIPS_LEVEL}\"" &gt;&gt; ~/.bashrc
   point calculations, choose "hard", otherwise choose "soft":</para>
 
 <screen os="m4"><userinput>
-export CLFS_FLOAT="soft"
+export CLFS_FLOAT=&clfs_float;
 echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc
 </userinput></screen>
 

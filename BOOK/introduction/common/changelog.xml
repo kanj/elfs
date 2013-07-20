@@ -35,7 +35,19 @@
       </itemizedlist>
     </listitem>
 -->
-     
+     <listitem>
+      <para>July 20, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updated automated build to build to the sysBuild in the 
+                same directory as render.
+                Created a separate "arch".ent file to hold variable names for 
+                platform variables. Can be used to overide default packages from 
+                packages.ent
+         </para>
+        </listitem>
+      </itemizedlist>
+      </listitem>
      <listitem>
       <para>July 17, 2013</para>
       <itemizedlist>

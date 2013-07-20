@@ -2,9 +2,9 @@
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../../general.ent">
+ <!ENTITY % boardSupport-entities SYSTEM "../../bsp.ent">
   %general-entities;
- <!ENTITY clfs_arch "mips">
-<!ENTITY kernel_config "arch/mips/configs/malta_defconfig"> 
+  %boardSupport-entities;
 ]>
 
 <sect1 id="ch-cross-tools-linux-headers" role="wrap">
@@ -28,7 +28,7 @@ book we will be using the Malta development board. By reviewing the initial conf
 for this platform we can determine that the architecture is MIPS.</para>
  
 <screen os="c"><userinput>
-cp &kernel_config; ~/myConfig
+cp &kernel_config; ${CLFS}/boot/config-&linux-version;
 
 CLFS_ARCH=&clfs_arch;
 echo export  CLFS_ARCH=&clfs_arch; >> ~/.bashrc
