@@ -9,15 +9,11 @@
 <!ENTITY linux-md5 "5e9d0edae15053ea9acd932e6d162d03">
 <!ENTITY linux-home "http://www.kernel.org">
 
+<!ENTITY kernel_config "arch/x86/configs/i386_defconfig">
 
-<!ENTITY kernel_config "arch/arm/configs/versatile_defconfig">
 
-
-<!ENTITY clfs_arch "arm">
-<!ENTITY clfs_arm_arch "armv5">
-<!ENTITY clfs_arm_mode "arm">
-<!ENTITY clfs_abi "apcs-gnu">
+<!ENTITY clfs_arch "i386">
 <!ENTITY clfs_endian "little">
-<!ENTITY clfs_target "armv5l-unknown-linux-uclibc">
-<!ENTITY clfs_float "soft">
+<!ENTITY clfs_target "i686-unknown-linux-gnu">
+
 

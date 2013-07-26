@@ -5,7 +5,7 @@
   %general-entities;
 ]>
 
-<!-- ARM specific uClibc -->
+<!-- MIPS uClibc -->
 
 <sect1 id="ch-cross-tools-uclibc" role="wrap">
   <?dbhtml filename="uclibc.html"?>
@@ -36,17 +36,42 @@
     href="../common/uclibc.xml"
     xpointer="xpointer(//*[@os='c'])"/>
 
+    <para os="d">For the MIPS architecture, there are many different combinations
+    of configurations that can be used when building uClibc based on the choices
+    made previously for: endianess, ABI, and MIPS level.  To ensure that the
+    proper configuration is used based on those choices, first copy the configuration
+    matching the endianess chosen, then update the ABI and MIPS level:</para>
 
-   <para os="d">For the ARM architecture, there are two different configurations
-   of uClibc that can be used: the EABI configuration and the OABI configuration.
-   We will first copy the OABI configuration and, if the EABI was selected, modify
-   it to use the EABI:</para>
+<screen os="e"><userinput>
 
-<screen os="e"><userinput>cp -v clfs/config.${CLFS_ARCH}.${CLFS_ENDIAN} .config
-sed -i '/.size*/d' libc/sysdeps/linux/arm/crtn.S
+sed -i '/ent/d' libc/sysdeps/linux/mips/crtn.S
 
-if [ "${CLFS_ABI}" == "aapcs" ] || [ "${CLFS_ABI}" == "aapcs-linux" ]; \
-  then sed -i -e s/OABI=/EABI=/g -e s/'EABI is'/'OABI is'/g .config; fi</userinput></screen>
+
+cp -v ../uClibc-0.9.33.2.config .config
+
+
+    sed -i -e'/^# TARGET_mips/a TARGET_mips=y' .config
+    
+    case ${CLFS_ENDIAN} in
+        big) sed -i -e'/^# ARCH_WANTS_BIG_ENDIAN is not set/a ARCH_WANTS_BIG_ENDIAN=y' .config ;;
+        little) sed -i -e'/^# ARCH_WANTS_LITTLE_ENDIAN is not set/a ARCH_WANTS_LITTLE_ENDIAN=y' .config ;;
+    esac
+    
+    case ${CLFS_ABI} in
+        32)     sed -i '61iCONFIG_MIPS_O32_ABI=y' .config ;;
+        n32)    sed -i '61iCONFIG_MIPS_N32_ABI=y' .config ;;
+        64)     sed -i '61iCONFIG_MIPS_N64_ABI=y' .config ;;
+    esac
+    
+    case ${CLFS_MIPS_LEVEL} in
+        1)     sed -i '61iCONFIG_MIPS_ISA_1=y' .config ;;
+        3)     sed -i '61iCONFIG_MIPS_ISA_3=y' .config ;;
+       
+    esac
+
+
+
+</userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"
@@ -60,9 +85,7 @@ if [ "${CLFS_ABI}" == "aapcs" ] || [ "${CLFS_ABI}" == "aapcs-linux" ]; \
     href="../common/uclibc.xml"
     xpointer="xpointer(//*[@os='h'])"/>
 
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-    href="../common/uclibc.xml"
-    xpointer="xpointer(//*[@os='i'])"/>
+    <screen os="i"><userinput>make  CFLAGS-crtn.S='-finhibit-size-directive'</userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"

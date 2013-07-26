@@ -18,6 +18,6 @@
 <!ENTITY clfs_mips_level "1">
 <!ENTITY clfs_abi "32">
 <!ENTITY clfs_endian "little">
-<!ENTITY clfs_target "mipsel-unknown-linux-musl">
+<!ENTITY clfs_target "mipsel-unknown-linux-gnu">
 <!ENTITY clfs_float "soft">
 

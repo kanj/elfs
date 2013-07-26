@@ -8,7 +8,7 @@
 <!-- ARM specific uClibc -->
 
 <sect1 id="ch-cross-tools-uclibc" role="wrap">
-  <?dbhtml filename="uclibc.html"?>
+  <?dbhtml filename="uclibc911.html"?>
 
   <title>uClibc-&libc-version;</title>
 
@@ -42,11 +42,23 @@
    We will first copy the OABI configuration and, if the EABI was selected, modify
    it to use the EABI:</para>
 
-<screen os="e"><userinput>cp -v clfs/config.${CLFS_ARCH}.${CLFS_ENDIAN} .config
+<screen os="e"><userinput>
+
+
 sed -i '/.size*/d' libc/sysdeps/linux/arm/crtn.S
 
+make ARCH=${CLFS_ARCH} defconfig
+
+sed -i -e s#/usr/include#${CLFS}/usr/include# .config
+
 if [ "${CLFS_ABI}" == "aapcs" ] || [ "${CLFS_ABI}" == "aapcs-linux" ]; \
-  then sed -i -e s/OABI=/EABI=/g -e s/'EABI is'/'OABI is'/g .config; fi</userinput></screen>
+  then sed -i -e s/OABI=/EABI=/g -e s/'EABI is'/'OABI is'/g .config; fi
+  
+if [ "${CLFS_ENDIAN}" == "little" ];
+    then sed -i -e 's/BIG_ENDIAN=/LITTLE_ENDIAN=/g' -e 's/LITTLE_ENDIAN is/BIG_ENDIAN is/g' .config; fi    
+  
+  
+</userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"
@@ -60,17 +72,13 @@ if [ "${CLFS_ABI}" == "aapcs" ] || [ "${CLFS_ABI}" == "aapcs-linux" ]; \
     href="../common/uclibc.xml"
     xpointer="xpointer(//*[@os='h'])"/>
 
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-    href="../common/uclibc.xml"
-    xpointer="xpointer(//*[@os='i'])"/>
+    <screen os="i"><userinput>make CROSS_COMPILER_PREFIX=${CLFS_TARGET}- </userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"
     xpointer="xpointer(//*[@os='l'])"/>
 
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-    href="../common/uclibc.xml"
-    xpointer="xpointer(//*[@os='j'])"/>
+    <screen os="j"><userinput>make CROSS_COMPILER_PREFIX=${CLFS_TARGET}- PREFIX=${CLFS} install</userinput></screen>
 
   </sect2>
 

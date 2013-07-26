@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
-  <!ENTITY % general-entities SYSTEM "../../general.ent">
-  %general-entities;
+ <!ENTITY % general-entities SYSTEM "../../general.ent">
+   %general-entities;
 ]>
 
 <sect1 id="ch-materials-packages-common">
@@ -68,6 +68,25 @@
       </listitem>
     </varlistentry>
 
+    <varlistentry>
+      <term>C Library - &libc-name; (&libc-version;) - <token>&libc-size;</token>:</term>
+      <listitem>
+        <para>Home page: <ulink url="&libc-home;"/></para>
+        <para>Download: <ulink url="&libc-url;"/></para>
+        <para>MD5 sum: <literal>&libc-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+    
+    
+    
+    <varlistentry os="linux">
+      <term>Linux (&linux-version;) - <token>&linux-size;</token>:</term>
+      <listitem>
+        <para>Home page: <ulink url="&linux-home;"/></para>
+        <para>Download: <ulink url="&linux-url;"/></para>
+        <para>MD5 sum: <literal>&linux-md5;</literal></para>
+      </listitem>
+</varlistentry>
     
     <varlistentry>
       <term>MPC (&mpc-version;) - <token>&mpc-size;</token>:</term>
@@ -87,14 +106,8 @@
       </listitem>
     </varlistentry>
 
-    <varlistentry>
-      <term>uClibc (&uclibc-version;) - <token>&uclibc-size;</token>:</term>
-      <listitem>
-        <para>Home page: <ulink url="&uclibc-home;"/></para>
-        <para>Download: <ulink url="&uclibc-url;"/></para>
-        <para>MD5 sum: <literal>&uclibc-md5;</literal></para>
-      </listitem>
-    </varlistentry>
+    
+    
 
   </variablelist>
 

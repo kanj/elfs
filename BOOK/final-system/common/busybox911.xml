@@ -6,7 +6,7 @@
 ]>
 
 <sect1 id="ch-system-busybox" role="wrap">
-  <?dbhtml filename="busybox.html"?>
+  <?dbhtml filename="busybox911.html"?>
 
   <title>Busybox-&busybox-version;</title>
 
@@ -40,8 +40,7 @@
     <para os="a">The following patch contains a default configuration for busybox:</para>
 
 <screen os="b"><userinput>patch -Np1 -i ../&busybox-config-patch;
-cp -v clfs/config .config
-cp ../busybox.stage1.config .config
+cp TEST_config_rh9 .config
 
 </userinput></screen>
 

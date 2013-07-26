@@ -11,6 +11,15 @@
 <!ENTITY linux-md5 "5e9d0edae15053ea9acd932e6d162d03">
 <!ENTITY linux-home "http://www.kernel.org">
 
+<!ENTITY libc-name "eGlibc">
+<!ENTITY libc-version "2.17">
+<!ENTITY libc-svn-rev "23226">
+<!ENTITY libc-size "11632 KB">
+<!ENTITY libc-url "&clfs-root;/files/eglibc-&libc-version;-r&libc-svn-rev;.tar.xz">
+<!ENTITY libc-md5 "4190f48bb7172335d6ca2507cd1d3b90">
+<!ENTITY libc-home "http://www.eglibc.org/">
+
+
 <!ENTITY kernel_config "arch/mips/configs/malta_defconfig">
 
 

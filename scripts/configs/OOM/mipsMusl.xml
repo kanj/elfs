@@ -22,7 +22,7 @@ cross-tools/mpc.html#clfs#${BUILDDIR}/sources/mpc-&mpc-version;#http://www.multi
 cross-tools/binutils.html#clfs#${BUILDDIR}/sources/binutils-&binutils-version;#&gnu;binutils/binutils-&binutils-version;.tar.bz2##  
 cross-tools/gcc-static.html#clfs#${BUILDDIR}/sources/gcc-&gcc-version;#ftp://gcc.gnu.org/pub/gcc/releases/gcc-&gcc-version;/gcc-&gcc-version;.tar.bz2#gcc-4.6.0-uclibc-arm-softfloat-2.patch#  
 cross-tools/musl.html#clfs#${BUILDDIR}/sources/musl-&musl-version;#http://www.musl-libc.org/releases/musl-&musl-version;.tar.gz##
-final-system/busybox.html#clfs#${BUILDDIR}/sources/busybox-&busybox-version;#http://busybox.net/downloads/busybox-&busybox-version;.tar.bz2#busybox-1.18.4-config-1.patch# 
+final-system/busybox.html#clfs#${BUILDDIR}/sources/busybox-&busybox-version;#http://busybox.net/downloads/busybox-&busybox-version;.tar.bz2#busybox.stage1.config# 
 final-system/iana-etc.html#clfs#${BUILDDIR}/sources/iana-etc-2.30#http://cross-lfs.org/files/packages/embedded-0.0.1/iana-etc-2.30.tar.bz2#iana-etc-2.30-update-1.patch# 
 bootable/fstab.html#clfs#$PWD### 
 bootable/kernel.html#clfs#${BUILDDIR}/sources/linux-&linux-version;#&kernel;linux/kernel/v&linux-dl-version;/linux-&linux-version;.tar.bz2##  

@@ -3,8 +3,6 @@
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
- <!ENTITY clfs_arch "i386">
-<!ENTITY kernel_config "arch/x86/configs/i386_defconfig"> 
 ]>
 
 <sect1 id="ch-cross-tools-linux-headers" role="wrap">

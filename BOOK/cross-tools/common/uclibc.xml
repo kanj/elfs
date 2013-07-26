@@ -10,7 +10,7 @@
 <sect1 id="ch-cross-tools-uclibc" role="wrap">
   <?dbhtml filename="uclibc.html"?>
 
-  <title>uClibc-&uclibc-version;</title>
+  <title>uClibc-&libc-version;</title>
 
   <indexterm zone="ch-cross-tools-uclibc">
     <primary sortas="a-uClibc">uClibc</primary>
@@ -51,7 +51,7 @@
     command will only bring up items that need a value that we did not
     specify in our generic config file patch:</para>
 
-<screen os="g"><userinput>make oldconfig</userinput></screen>
+<screen os="g"><userinput>yes"" | make oldconfig</userinput></screen>
 
     <para os="h">Compile the package:</para>
 

@@ -20,7 +20,7 @@ SYSBUILD	:=	$(shell dirname $(PWD))/sysBuild
 CHUNK_QUIET	:= 1
 ROOT_ID		:=
 
-ARCHS		:= mips arm x86 
+ARCHS		:= mips arm x86 mipsMusl x86Musl armMusl
 
 ifdef V
   Q =
@@ -230,7 +230,12 @@ help:
 	@echo "Download-List Targets"
 	@echo "  $(FG_GREEN)download-list $(FG_BLUE)$(ARCHS_DLLIST)$(FG_DEFAULT)"
 
-install-arm:    BUILDDIR = ~/clfs.arm.little
+
+
+
+
+
+install-arm:    BUILDDIR = $(SYSBUILD)/clfs.arm.little
 install-arm: 	arm-html   
 	../scripts/aCLFS924 "arm" $(BUILDDIR)
 	
@@ -238,23 +243,27 @@ install-mips:   BUILDDIR = $(SYSBUILD)/clfs.mips.little
 install-mips:	mips-html   
 	../scripts/aCLFS924 "mips" $(BUILDDIR)
 
-install-x86:   BUILDDIR = ~/clfs.i386
+install-x86:   BUILDDIR = $(SYSBUILD)/clfs.i386
 install-x86:	x86-html
 	../scripts/aCLFS924 "x86" $(BUILDDIR)	
 
-install-armEglibc:   BUILDDIR = ~/clfs.armEglibc
+install-armEglibc:   BUILDDIR = $(SYSBUILD)/clfs.armEglibc
 install-armEglibc:	armEglibc-html
 	../scripts/aCLFS924 "armEglibc" $(BUILDDIR)	
 	
-install-mipsEglibc:	BUILDDIR = ~/clfs_mipsEglibc
+install-mipsEglibc:	BUILDDIR = $(SYSBUILD)/clfs_mipsEglibc
 install-mipsEglibc:	mipsEglibc-html
 	../scripts/aCLFS924 "mipsEglibc" $(BUILDDIR)		
 	
 install-mipsMusl:	BUILDDIR = ~/clfs_mipsMusl
 install-mipsMusl:	mipsMusl-html
 	../scripts/aCLFS924 "mipsMusl" $(BUILDDIR)	
+
+install-x86Musl:	BUILDDIR = $(SYSBUILD)/clfs_x86Musl
+install-x86Musl:	x86Musl-html
+	../scripts/aCLFS924 "x86Musl" $(BUILDDIR)	
 	
-check-bigtop:
-	echo $(BIGTOP)		
-	echo $(BIGTOPER)
+install-armMusl:	BUILDDIR = $(SYSBUILD)/clfs_armMusl
+install-armMusl:	armMusl-html
+	../scripts/aCLFS924 "armMusl" $(BUILDDIR)		
 	
