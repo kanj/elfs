@@ -24,20 +24,15 @@
 
 <para>This is the first section requiring knowledge of the target platform. For this 
 book we will be using the VersatilePB development board 
-(  http://www.arm.com/products/tools/development-boards/versatile/index.php ).
-The primary information we need at thsi time is the architecture arm for this
-platform. Using yes "" in front of make forces the make statement to use default
-values. This is an easy trick for hitting return repeatedly. </para>
-
-<screen ><userinput>
-cp &kernel_config; ${CLFS}/boot/clfskernel-&linux-version;
-
-CLFS_ARCH=&clfs_arch;
-echo export  CLFS_ARCH=&clfs_arch; >> ~/.bashrc
-
-</userinput></screen>
-
+(  http://www.arm.com/products/tools/development-boards/versatile/index.php ). 
+The initial configuration file for this platform is at &kernel_config;.
+The primary information we need at this time is the architecture is arm for this
+platform.   </para>
 </sect2>
+
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+  href="../common/linux-headers.xml"
+  xpointer="xpointer(//*[@role='Architecture'])"/>
 
   
  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"

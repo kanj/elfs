@@ -23,17 +23,15 @@
 <title>Platform and Architecture </title>
 <para>This is the first section requiring knowledge of the target platform. For this 
 book we will be using the Malta development board. By reviewing the initial config file 
-for this platform we can determine that the architecture is MIPS.</para>
+for this platform, &kernel_config;,  we can determine that the architecture is MIPS.</para>
  
-<screen os="c"><userinput>
-cp &kernel_config; ${CLFS}/boot/config-&linux-version;
-
-CLFS_ARCH=&clfs_arch;
-echo export  CLFS_ARCH=&clfs_arch; >> ~/.bashrc
-
-</userinput></screen>
 </sect2>
-
+ 
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+  href="../common/linux-headers.xml"
+  xpointer="xpointer(//*[@role='Architecture'])"/>
+  
+  
 <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
   href="../common/linux-headers.xml"
   xpointer="xpointer(//*[@role='installation'])"/>

@@ -52,8 +52,8 @@
     should be without modules.</para></note>
 
     <screen os="g"><userinput>
-    cp &kernel_config; .config
-   yes "" | make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- oldconfig</userinput></screen>
+    cp ${CLFS}/boot/config-&linux-version; .config
+   </userinput></screen>
 
     <para os="h">Alternatively, <command>make menuconfig</command> may be more
     appropriate in some situations. See the <filename>README</filename>

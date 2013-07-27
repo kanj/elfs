@@ -20,20 +20,21 @@
     
 <para> The Linux Kernel contains a make target that installs <quote>sanitized</quote> kernel headers. The Linux Kernel is itself a C program consisting of a number of separate source files. Header files are separate files used to keep variable definitions consistent between multiple source files. These header files are also required during the compilation of cros-compiler toolchain. We will need to know which architecture we are developing for to install the proper header files. To determine this we need what platform we are developing for.</para>
 
-<para>The Linux Kernel uses a config file to determine which of the source files to compile into the final kernel or modules. The kernel source contains a number of configurations. Or in some cases the Linux Support Package for the platform will contain a custom source file with a configuration. This config file is in part determined by the platform and additionally by the users choice of features to enable or disable. Typically the config file is incomplete and requires additional process to make suitable for compiling a kernel. In this chapeter will shall do 3 things: identify the platform, determine the architecture, install the appropriate headers, and make the config file for the platform. </para>
+<para>The Linux Kernel uses a config file to determine which of the source files to compile into the final kernel or modules. The kernel source contains a number of configurations. Or in some cases the Linux Support Package for the platform will contain a custom source file with a configuration. This config file is in part determined by the platform and additionally by the users choice of features to enable or disable. Typically the config file is incomplete and requires additional process to make suitable for compiling a kernel. In this chapeter will shall do four things: identify the platform, determine the architecture, install the appropriate headers, and make the config file for the platform. </para>
 
 	
 
-  </sect2>
+</sect2>
 
-<sect2 role="Architecture  and Platform">
+<sect2 role="Platform">
 <title>Set Platform </title>
 <para> Replace this section in actual </para>
+</sect2>
+
+<sect2 role="Architecture">
+<title>Set Architecture </title>
 
 <screen os="c"><userinput>
-
-cp &kernel_config; ${CLFS}/boot/config-&linux-version;
-
 
 CLFS_ARCH=&clfs_arch;
 echo export  CLFS_ARCH=&clfs_arch; >> ~/.bashrc
@@ -64,7 +65,7 @@ cp -rv dest/include/* ${CLFS}/usr/include
 <title> Make Config </title>
 <screen os="e"><userinput>
 
-cp ${CLFS}/boot/config-&linux-version; .config
+cp &kernel_config; .config
 
 yes "" | make ARCH=${CLFS_ARCH} oldconfig
 

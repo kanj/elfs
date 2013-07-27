@@ -52,7 +52,7 @@ sed -i 's/# CONFIG_BLK_DEV_INITRD is not set/CONFIG_BLK_DEV_INITRD=y/g' .config
 
 sed -i 's/# CONFIG_INPUT_KEYBOARD is not set/CONFIG_INPUT_KEYBOARD=y/g' .config 
 
-yes "" | make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- oldconfig</userinput></screen>
+</userinput></screen>
 
    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
    href="../common/kernel.xml"

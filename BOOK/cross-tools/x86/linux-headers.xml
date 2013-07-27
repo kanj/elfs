@@ -23,20 +23,13 @@
 <title>Platform</title>
 
 <para>This is the first section requiring knowledge of the target platform. For this 
-book we will be using the a standard pc. The primary information we need at this time is the architecture i386
+book we will be using the a standard pc. The initial config file is at &kernel_config;. The primary information we need at this time is the architecture i386
  for this platform.  </para>
+ </sect2>
   
- <screen os="c"><userinput>
-
-cp &kernel_config; ~/myConfig
-
-CLFS_ARCH=&clfs_arch;
-echo export  CLFS_ARCH=&clfs_arch; >> ~/.bashrc
-
-</userinput></screen>
-
-
-</sect2>
+ <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+  href="../common/linux-headers.xml"
+  xpointer="xpointer(//*[@role='Architecture'])"/>
 
 
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"

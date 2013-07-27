@@ -35,6 +35,18 @@
       </itemizedlist>
     </listitem>
 -->
+        <listitem>
+      <para>July 25, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Modified cross-tools/linux-headers and bootable/kernel in all 
+                books to increase consistency and remove non-value added steps.
+         </para>
+        </listitem>
+      </itemizedlist>
+      </listitem> 
+    
+    
      <listitem>
       <para>July 20, 2013</para>
       <itemizedlist>
