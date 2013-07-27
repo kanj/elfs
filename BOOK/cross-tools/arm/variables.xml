@@ -85,9 +85,17 @@ echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc
 </userinput></screen>    
 
 
+ <para os="f3">In all cases the has to support a floating point emulation. If the floating point support 
+ is hard/softp this emulation needs to line up with the hardware. Based on the review 
+ of ${CLFS}/boot/config-&linux-version; we will set CLFS_FPU as follows:</para>
+
+<screen os="f4"><userinput>
+export CLFS_FPU=&clfs_fpu;
+echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc
+</userinput></screen>    
  
   <table os="j">
-    <title>ARM Archiecture Choices</title>
+    <title>ARM Architecture Choices</title>
     <?dbfo table-width="4in" ?>
 
     <tgroup cols="2">
@@ -138,8 +146,9 @@ echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc
 
   <table os="j">
     <title>ARM Hard Floating Point Versions</title>
-    <?dbfo table-width="4in" ?>
-
+    
+    
+    
     <tgroup cols="2">
 
       <colspec colnum="1" colwidth="1in" colname="FPU Choice"/>

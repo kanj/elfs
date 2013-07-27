@@ -31,6 +31,16 @@
     </listitem>
 
 -->
+
+    <listitem>
+      <para>July 26, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Ticket 917(b)(c) Updated cross-tools/variable and cross-tools/gcc-static to address setting CLFS_FPU.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
      <listitem>
       <para>April 1, 2013</para>
       <itemizedlist>
