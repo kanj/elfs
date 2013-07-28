@@ -230,12 +230,88 @@ cd ../gcc-build</userinput></screen>
 
   </sect2>
 
-  <sect2 role="content">
-    <title/>
+  <sect2 id="contents-gcc" role="content">
+    <title>Contents of GCC</title>
 
-    <para>Details on this package are located in <xref
-    linkend="contents-gcc" role="."/></para>
+    <segmentedlist>
+      <segtitle>Installed programs</segtitle>
+      <segtitle>Installed libraries</segtitle>
+
+      <seglistitem>
+        <seg>cc (link to gcc), gcc, gccbug, and gcov</seg>
+        <seg>libgcc.a, libgcc_eh.a, libgcc_s.so, libmudflap.[a,so],
+        and libmudflapth.[a,so]</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="cc">
+        <term><command>cc</command></term>
+        <listitem>
+          <para>The C compiler</para>
+          <indexterm zone="ch-cross-tools-gcc-static cc">
+            <primary sortas="b-cc">cc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gcc">
+        <term><command>gcc</command></term>
+        <listitem>
+          <para>The C compiler</para>
+          <indexterm zone="ch-cross-tools-gcc-static gcc">
+            <primary sortas="b-gcc">gcc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gccbug">
+        <term><command>gccbug</command></term>
+        <listitem>
+          <para>A shell script used to help create useful bug reports</para>
+          <indexterm zone="ch-cross-tools-gcc-static gccbug">
+            <primary sortas="b-gccbug">gccbug</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gcov">
+        <term><command>gcov</command></term>
+        <listitem>
+          <para>A coverage testing tool; it is used to analyze programs to
+          determine where optimizations will have the most effect</para>
+          <indexterm zone="ch-cross-tools-gcc-static gcov">
+            <primary sortas="b-gcov">gcov</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgcc">
+        <term><filename class="libraryfile">libgcc</filename></term>
+        <listitem>
+          <para>Contains run-time support for <command>gcc</command></para>
+          <indexterm zone="ch-cross-tools-gcc-static libgcc">
+            <primary sortas="c-libgcc*">libgcc*</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libmudflap">
+        <term><filename class="libraryfile">libmudflap</filename></term>
+        <listitem>
+          <para>The libmudflap libraries are used by GCC for instrumenting
+          pointer and array dereferencing operations.</para>
+          <indexterm zone="ch-cross-tools-gcc-static libmudflap">
+            <primary sortas="c-libmudflap*">libmudflap*</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
 
   </sect2>
-
 </sect1>

@@ -35,6 +35,34 @@
       </itemizedlist>
     </listitem>
 -->
+
+        <listitem>
+      <para>July 27, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Modified cross-tools/"arch"-chapter.xml  and cross-tools/common/gcc-static.xml
+          to support single stage cross-compiler creation. Refer to <ulink url="http://gcc.gnu.org/install/build.html#Building a cross compiler"/> for a discussion of cross-compiler construction.
+         </para>
+        </listitem>
+      </itemizedlist>
+      </listitem> 
+
+
+
+
+        <listitem>
+      <para>July 26, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Modified cross-tools/"arch"-chapter.xml  and cross-tools/common/gcc-static.xml
+          to support single stage cross-compiler creation. Refer to http://gcc.gnu.org/install/build.html
+          for a discussion of cross-compiler construction.
+         </para>
+        </listitem>
+      </itemizedlist>
+      </listitem> 
+    
+
         <listitem>
       <para>July 25, 2013</para>
       <itemizedlist>
