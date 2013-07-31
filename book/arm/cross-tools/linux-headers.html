@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
     "text/css" media="print" />
   </head>
-  <body class="clfs" id="clfs-GIT-0.0.1-20130717-arm">
+  <body class="clfs" id="clfs-GIT-0.0.1-20130730-arm">
     <div class="navheader">
       <h4>
-        Embedded Linux from Source - Version GIT-0.0.1-20130717-arm
+        Embedded Linux from Source - Version GIT-0.0.1-20130730-arm
       </h4>
       <h3>
         Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools
@@ -39,7 +39,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130717-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130730-arm">Home</a>
         </li>
       </ul>
     </div>
@@ -72,7 +72,7 @@
           determined by the platform and additionally by the users choice of
           features to enable or disable. Typically the config file is
           incomplete and requires additional process to make suitable for
-          compiling a kernel. In this chapeter will shall do 3 things:
+          compiling a kernel. In this chapeter will shall do four things:
           identify the platform, determine the architecture, install the
           appropriate headers, and make the config file for the platform.
         </p>
@@ -86,14 +86,17 @@
           platform. For this book we will be using the VersatilePB
           development board (
           http://www.arm.com/products/tools/development-boards/versatile/index.php
-          ). The primary information we need at thsi time is the architecture
-          arm for this platform. Using yes "" in front of make forces the
-          make statement to use default values. This is an easy trick for
-          hitting return repeatedly.
+          ). The initial configuration file for this platform is at
+          arch/arm/configs/versatile_defconfig. The primary information we
+          need at this time is the architecture is arm for this platform.
         </p>
+      </div>
+      <div class="Architecture" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.3.3. Set Architecture
+        </h2>
         <pre class="userinput">
 <kbd class="command">
-cp arch/arm/configs/versatile_defconfig ${CLFS}/boot/clfskernel-2.6.38.2
 
 CLFS_ARCH=arm
 echo export  CLFS_ARCH=arm &gt;&gt; ~/.bashrc
@@ -103,7 +106,7 @@ echo export  CLFS_ARCH=arm &gt;&gt; ~/.bashrc
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.3.3. Installation of Linux Headers
+          6.3.4. Installation of Linux Headers
         </h2>
         <p>
           For this step you will need the kernel tarball.
@@ -123,16 +126,16 @@ cp -rv dest/include/* ${CLFS}/usr/include
       </div>
       <div class="oldconfig" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.3.4. Make Config
+          6.3.5. Make Config
         </h2>
         <pre class="userinput">
 <kbd class="command">
 
-cp ~/myConfig .config
+cp arch/arm/configs/versatile_defconfig .config
 
 yes "" | make ARCH=${CLFS_ARCH} oldconfig
 
-cp .config ~/myConfig
+cp .config ${CLFS}/boot/config-2.6.38.2
 
 </kbd>
 </pre>
@@ -140,7 +143,7 @@ cp .config ~/myConfig
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
           <a id="contents-linux-headers" name=
-          "contents-linux-headers"></a>6.3.5. Contents of Linux-Headers
+          "contents-linux-headers"></a>6.3.6. Contents of Linux-Headers
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -197,7 +200,7 @@ cp .config ~/myConfig
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130717-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130730-arm">Home</a>
         </li>
       </ul>
     </div>

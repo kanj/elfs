@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
     "text/css" media="print" />
   </head>
-  <body class="clfs" id="clfs-GIT-0.0.1-20130717-arm">
+  <body class="clfs" id="clfs-GIT-0.0.1-20130730-arm">
     <div class="navheader">
       <h4>
-        Embedded Linux from Source - Version GIT-0.0.1-20130717-arm
+        Embedded Linux from Source - Version GIT-0.0.1-20130730-arm
       </h4>
       <h3>
         Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools
@@ -39,7 +39,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130717-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130730-arm">Home</a>
         </li>
       </ul>
     </div>
@@ -101,7 +101,7 @@ echo export CLFS_ENDIAN=\""${CLFS_ENDIAN}\"" &gt;&gt; ~/.bashrc
         </p>
         <pre class="userinput">
 <kbd class="command">
-export CLFS_ARM_MODE="arm"
+export CLFS_ARM_MODE=arm
 echo export CLFS_ARM_MODE=\""${CLFS_ARM_MODE}\"" &gt;&gt; ~/.bashrc
 </kbd>
 </pre>
@@ -129,13 +129,25 @@ export CLFS_FLOAT=soft
 echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc
 </kbd>
 </pre>
+        <p>
+          In all cases the has to support a floating point emulation. If the
+          floating point support is hard/softp this emulation needs to line
+          up with the hardware. Based on the review of
+          ${CLFS}/boot/config-2.6.38.2 we will set CLFS_FPU as follows:
+        </p>
+        <pre class="userinput">
+<kbd class="command">
+export CLFS_FPU=vfp
+echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc
+</kbd>
+</pre>
         <div class="table">
-          <a id="idp3775824" name="idp3775824"></a>
+          <a id="idp3784616" name="idp3784616"></a>
           <p class="title">
-            <b>Table&nbsp;6.2.&nbsp;ARM Archiecture Choices</b>
+            <b>Table&nbsp;6.2.&nbsp;ARM Architecture Choices</b>
           </p>
           <div class="table-contents">
-            <table summary="ARM Archiecture Choices" border="1">
+            <table summary="ARM Architecture Choices" border="1">
               <colgroup>
                 <col />
                 <col />
@@ -230,7 +242,7 @@ echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc
           </div>
         </div><br class="table-break" />
         <div class="table">
-          <a id="idp3784328" name="idp3784328"></a>
+          <a id="idp3793120" name="idp3793120"></a>
           <p class="title">
             <b>Table&nbsp;6.3.&nbsp;ARM Hard Floating Point Versions</b>
           </p>
@@ -350,7 +362,7 @@ echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc
           The following table gives examples:
         </p>
         <div class="table">
-          <a id="idp3795616" name="idp3795616"></a>
+          <a id="idp3803728" name="idp3803728"></a>
           <p class="title">
             <b>Table&nbsp;6.4.&nbsp;Example Processor Type, ABI, and Target
             Triplets</b>
@@ -495,7 +507,7 @@ echo export CLFS_TARGET=\""${CLFS_TARGET}\"" &gt;&gt; ~/.bashrc
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130717-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130730-arm">Home</a>
         </li>
       </ul>
     </div>

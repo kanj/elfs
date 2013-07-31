@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
     "text/css" media="print" />
   </head>
-  <body class="clfs" id="clfs-GIT-0.0.1-20130717-x86">
+  <body class="clfs" id="clfs-GIT-0.0.1-20130730-x86">
     <div class="navheader">
       <h4>
-        Embedded Linux from Source - Version GIT-0.0.1-20130717-x86
+        Embedded Linux from Source - Version GIT-0.0.1-20130730-x86
       </h4>
       <h3>
         Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools
@@ -29,10 +29,10 @@
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="gcc-final.html" title=
-          "GCC-4.6.0 - Cross Compiler Final">Next</a>
+          <a accesskey="n" href="../part4.html" title=
+          "Building the CLFS System">Next</a>
           <p>
-            GCC-4.6.0 - Cross Compiler Final
+            Building the CLFS System
           </p>
         </li>
         <li class="up">
@@ -41,7 +41,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130717-x86">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130730-x86">Home</a>
         </li>
       </ul>
     </div>
@@ -74,44 +74,41 @@
             installation.
           </p>
         </div>
-        <p>
-          The following patch contains the default configurations for the
-          architectures covered in this book:
-        </p>
         <pre class="userinput">
-<kbd class="command">patch -Np1 -i ../uClibc-0.9.31-configs-2.patch</kbd>
-</pre>
-        <p>
-          For the ARM architecture, there are two different configurations of
-          uClibc that can be used: the EABI configuration and the OABI
-          configuration. We will first copy the OABI configuration and, if
-          the EABI was selected, modify it to use the EABI:
-        </p>
-        <pre class="userinput">
-<kbd class="command">cp -v clfs/config.${CLFS_ARCH}.${CLFS_ENDIAN} .config
-sed -i '/.size*/d' libc/sysdeps/linux/${CLFS_ARCH}/crtn.S
+<kbd class="command">
+
+make ARCH=${CLFS_ARCH} defconfig 
+sed -i -e s#/usr/include#${CLFS}/usr/include# .config
+sed -i -e 's#/usr/$(TARGET_ARCH)-linux-uclibc##' .config
+sed -i -e's/# UCLIBC_HAS_RPC is not set/UCLIBC_HAS_RPC=y/' .config 
+sed -i -e's/# UCLIBC_SUSV3_LEGACY is not set/UCLIBC_SUSV3_LEGACY=y/' .config 
 </kbd>
 </pre>
-        <p>
-          The config is a basic working system, but there are some options
-          that are architecture specifc that need to be set. The following
-          command will only bring up items that need a value that we did not
-          specify in our generic config file patch:
-        </p>
-        <pre class="userinput">
-<kbd class="command">make oldconfig</kbd>
+        <div class="admon note">
+          <img alt="[Note]" src="../images/note.png" />
+          <h3>
+            Note
+          </h3>
+          <p>
+            We need to patch the source code for a minor bug.
+          </p>
+          <pre class="userinput">
+<kbd class=
+"command">sed -i '/.size*/d' libc/sysdeps/linux/${CLFS_ARCH}/crtn.S </kbd>
 </pre>
+        </div>
         <p>
           Compile the package:
         </p>
         <pre class="userinput">
-<kbd class="command">make</kbd>
+<kbd class="command">make CROSS_COMPILER_PREFIX=${CLFS_TARGET}- </kbd>
 </pre>
         <p>
           Install the package:
         </p>
         <pre class="userinput">
-<kbd class="command">make PREFIX=${CLFS} install</kbd>
+<kbd class=
+"command">make CROSS_COMPILER_PREFIX=${CLFS_TARGET}- PREFIX=${CLFS} install</kbd>
 </pre>
       </div>
       <div class="content" lang="en" xml:lang="en">
@@ -250,10 +247,10 @@ sed -i '/.size*/d' libc/sysdeps/linux/${CLFS_ARCH}/crtn.S
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="gcc-final.html" title=
-          "GCC-4.6.0 - Cross Compiler Final">Next</a>
+          <a accesskey="n" href="../part4.html" title=
+          "Building the CLFS System">Next</a>
           <p>
-            GCC-4.6.0 - Cross Compiler Final
+            Building the CLFS System
           </p>
         </li>
         <li class="up">
@@ -262,7 +259,7 @@ sed -i '/.size*/d' libc/sysdeps/linux/${CLFS_ARCH}/crtn.S
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130717-x86">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130730-x86">Home</a>
         </li>
       </ul>
     </div>

@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
     "text/css" media="print" />
   </head>
-  <body class="clfs" id="clfs-GIT-0.0.1-20130717-mips">
+  <body class="clfs" id="clfs-GIT-0.0.1-20130730-mips">
     <div class="navheader">
       <h4>
-        Embedded Linux from Source - Version GIT-0.0.1-20130717-mips
+        Embedded Linux from Source - Version GIT-0.0.1-20130730-mips
       </h4>
       <h3>
         Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools
@@ -29,10 +29,10 @@
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="gcc-final.html" title=
-          "GCC-4.6.0 - Cross Compiler Final">Next</a>
+          <a accesskey="n" href="../part4.html" title=
+          "Building the CLFS System">Next</a>
           <p>
-            GCC-4.6.0 - Cross Compiler Final
+            Building the CLFS System
           </p>
         </li>
         <li class="up">
@@ -41,7 +41,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130717-mips">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130730-mips">Home</a>
         </li>
       </ul>
     </div>
@@ -74,34 +74,47 @@
             installation.
           </p>
         </div>
-        <p>
-          The following patch contains the default configurations for the
-          architectures covered in this book:
-        </p>
         <pre class="userinput">
-<kbd class="command">patch -Np1 -i ../uClibc-0.9.31-configs-2.patch</kbd>
+<kbd class="command">
+
+make ARCH=${CLFS_ARCH} defconfig 
+sed -i -e s#/usr/include#${CLFS}/usr/include# .config
+sed -i -e 's#/usr/$(TARGET_ARCH)-linux-uclibc##' .config
+sed -i -e's/# UCLIBC_HAS_RPC is not set/UCLIBC_HAS_RPC=y/' .config 
+sed -i -e's/# UCLIBC_SUSV3_LEGACY is not set/UCLIBC_SUSV3_LEGACY=y/' .config 
+</kbd>
 </pre>
+        <div class="admon note">
+          <img alt="[Note]" src="../images/note.png" />
+          <h3>
+            Note
+          </h3>
+          <p>
+            We need to patch the source code for a minor bug.
+          </p>
+          <pre class="userinput">
+<kbd class="command">sed -i '/ent/d' libc/sysdeps/linux/mips/crtn.S </kbd>
+</pre>
+        </div>
         <p>
           For the MIPS architecture, there are many different combinations of
           configurations that can be used when building uClibc based on the
           choices made previously for: endianess, ABI, and MIPS level. To
-          ensure that the proper configuration is used based on those
-          choices, first copy the configuration matching the endianess
-          chosen, then update the ABI and MIPS level:
+          update the default configuration execute the following:
         </p>
         <pre class="userinput">
 <kbd class="command">
 
-sed -i '/ent/d' libc/sysdeps/linux/mips/crtn.S
-
-
-cp -v clfs/config.${CLFS_ARCH}.${CLFS_ENDIAN} .config
 if [ "${CLFS_ABI}" == "n32" ]; \
 then sed -i s/CONFIG_MIPS_O32_ABI/CONFIG_MIPS_N32_ABI/g .config; \
 elif [ "${CLFS_ABI}" == "64" ]; \
 then sed -i s/CONFIG_MIPS_O32_ABI/CONFIG_MIPS_N64_ABI/g .config; fi; \
 if [ "${CLFS_MIPS_LEVEL}" == "3" ]; \
-then sed -i s/CONFIG_MIPS_ISA_1/CONFIG_MIPS_ISA_3/g .config; fi</kbd>
+then sed -i s/CONFIG_MIPS_ISA_1/CONFIG_MIPS_ISA_3/g .config; fi
+if [ "${CLFS_ENDIAN}" == "little" ];
+    then sed -i -e 's/BIG_ENDIAN=/LITTLE_ENDIAN=/g' -e 's/LITTLE_ENDIAN is/BIG_ENDIAN is/g' .config; fi  
+
+</kbd>
 </pre>
         <p>
           The config is a basic working system, but there are some options
@@ -110,7 +123,7 @@ then sed -i s/CONFIG_MIPS_ISA_1/CONFIG_MIPS_ISA_3/g .config; fi</kbd>
           specify in our generic config file patch:
         </p>
         <pre class="userinput">
-<kbd class="command">make oldconfig</kbd>
+<kbd class="command">yes"" | make oldconfig </kbd>
 </pre>
         <p>
           Compile the package:
@@ -122,7 +135,8 @@ then sed -i s/CONFIG_MIPS_ISA_1/CONFIG_MIPS_ISA_3/g .config; fi</kbd>
           Install the package:
         </p>
         <pre class="userinput">
-<kbd class="command">make PREFIX=${CLFS} install</kbd>
+<kbd class=
+"command">make CROSS_COMPILER_PREFIX=${CLFS_TARGET}- PREFIX=${CLFS} install</kbd>
 </pre>
       </div>
       <div class="content" lang="en" xml:lang="en">
@@ -261,10 +275,10 @@ then sed -i s/CONFIG_MIPS_ISA_1/CONFIG_MIPS_ISA_3/g .config; fi</kbd>
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="gcc-final.html" title=
-          "GCC-4.6.0 - Cross Compiler Final">Next</a>
+          <a accesskey="n" href="../part4.html" title=
+          "Building the CLFS System">Next</a>
           <p>
-            GCC-4.6.0 - Cross Compiler Final
+            Building the CLFS System
           </p>
         </li>
         <li class="up">
@@ -273,7 +287,7 @@ then sed -i s/CONFIG_MIPS_ISA_1/CONFIG_MIPS_ISA_3/g .config; fi</kbd>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130717-mips">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130730-mips">Home</a>
         </li>
       </ul>
     </div>

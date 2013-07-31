@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      7.5.&nbsp;Iana-Etc-2.30
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20130730-arm">
+    <div class="navheader">
+      <h4>
+        Embedded Linux from Source - Version GIT-0.0.1-20130730-arm
+      </h4>
+      <h3>
+        Chapter&nbsp;7.&nbsp;Installing Basic System Software
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="busyboxMusl.html" title=
+          "Busybox-1.18.4">Prev</a>
+          <p>
+            Busybox-1.18.4
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="../systembuild/chapter.html" title=
+          "System Build">Next</a>
+          <p>
+            System Build
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;7.&nbsp;Installing Basic System Software">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20130730-arm">Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-system-iana-etc" name="ch-system-iana-etc"></a>7.5.
+        Iana-Etc-2.30
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The Iana-Etc package provides data for network services and
+          protocols.
+        </p>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          7.5.1. Installation of Iana-Etc
+        </h2>
+        <p>
+          Iana-Etc comes with outdated data and IANA has changed the download
+          location used to obtain up-to-date data. Apply the following patch
+          to use more up to date data and to correct the download location:
+        </p>
+        <pre class="userinput">
+<kbd class="command">patch -Np1 -i ../iana-etc-2.30-update-1.patch</kbd>
+</pre>
+        <div class="admon note">
+          <img alt="[Note]" src="../images/note.png" />
+          <h3>
+            Note
+          </h3>
+          <p>
+            If you have an internet connection and would like even more
+            up-to-date data to be used when building Iana-Etc, execute:
+          </p>
+          <pre class="userinput">
+<kbd class="command">make get</kbd>
+</pre>
+        </div>
+        <p>
+          The following command converts the raw data provided by IANA into
+          the correct formats for the <code class=
+          "filename">/etc/protocols</code> and <code class=
+          "filename">/etc/services</code> data files:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make</kbd>
+</pre>
+        <p>
+          This package does not come with a test suite.
+        </p>
+        <p>
+          Install the package:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make DESTDIR=${CLFS} install</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="contents-iana-etc" name="contents-iana-etc"></a>7.5.2.
+          Contents of Iana-Etc
+        </h2>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class="segtitle">Installed files:</strong> <span class=
+              "segbody">/etc/protocols and /etc/services</span>
+            </div>
+          </div>
+        </div>
+        <div class="variablelist">
+          <h3>
+            Short Descriptions
+          </h3>
+          <table border="0">
+            <col align="left" valign="top" />
+            <tbody>
+              <tr>
+                <td>
+                  <p>
+                    <a id="protocols" name="protocols"></a><span class=
+                    "term"><code class=
+                    "filename">/etc/protocols</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Describes the various DARPA Internet protocols that are
+                    available from the TCP/IP subsystem
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="services" name="services"></a><span class=
+                    "term"><code class="filename">/etc/services</code></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Provides a mapping between friendly textual names for
+                    internet services, and their underlying assigned port
+                    numbers and protocol types
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="busyboxMusl.html" title=
+          "Busybox-1.18.4">Prev</a>
+          <p>
+            Busybox-1.18.4
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="../systembuild/chapter.html" title=
+          "System Build">Next</a>
+          <p>
+            System Build
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;7.&nbsp;Installing Basic System Software">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20130730-arm">Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

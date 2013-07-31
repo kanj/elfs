@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
     "text/css" media="print" />
   </head>
-  <body class="clfs" id="clfs-GIT-0.0.1-20130717-mips">
+  <body class="clfs" id="clfs-GIT-0.0.1-20130730-mips">
     <div class="navheader">
       <h4>
-        Embedded Linux from Source - Version GIT-0.0.1-20130717-mips
+        Embedded Linux from Source - Version GIT-0.0.1-20130730-mips
       </h4>
       <h3>
         Chapter&nbsp;9.&nbsp;Making the CLFS System Bootable
@@ -41,7 +41,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130717-mips">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130730-mips">Home</a>
         </li>
       </ul>
     </div>
@@ -102,13 +102,13 @@
         </div>
         <pre class="userinput">
 <kbd class="command">
-cp ~/myConfig .config
+cp ${CLFS}/boot/config-2.6.38.2 .config
 
 sed -i 's/# CONFIG_BLK_DEV_INITRD is not set/CONFIG_BLK_DEV_INITRD=y/g' .config
 
 sed -i 's/# CONFIG_INPUT_KEYBOARD is not set/CONFIG_INPUT_KEYBOARD=y/g' .config 
 
-yes "" | make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- oldconfig</kbd>
+</kbd>
 </pre>
         <p>
           Alternatively, <span class="command"><strong>make
@@ -327,7 +327,7 @@ yes "" | make ARCH=${CLFS_ARCH} CROSS_COMPILE=${CLFS_TARGET}- oldconfig</kbd>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130717-mips">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130730-mips">Home</a>
         </li>
       </ul>
     </div>

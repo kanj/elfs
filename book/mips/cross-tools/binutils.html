@@ -5,17 +5,17 @@
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=iso-8859-1" />
     <title>
-      6.9.&nbsp;Cross Binutils-2.21.1
+      6.9.&nbsp;Cross Binutils-2.23.2
     </title>
     <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
     <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
     "text/css" media="print" />
   </head>
-  <body class="clfs" id="clfs-GIT-0.0.1-20130717-mips">
+  <body class="clfs" id="clfs-GIT-0.0.1-20130730-mips">
     <div class="navheader">
       <h4>
-        Embedded Linux from Source - Version GIT-0.0.1-20130717-mips
+        Embedded Linux from Source - Version GIT-0.0.1-20130730-mips
       </h4>
       <h3>
         Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools
@@ -40,14 +40,14 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130717-mips">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130730-mips">Home</a>
         </li>
       </ul>
     </div>
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-cross-tools-binutils" name=
-        "ch-cross-tools-binutils"></a>6.9. Cross Binutils-2.21.1
+        "ch-cross-tools-binutils"></a>6.9. Cross Binutils-2.23.2
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
@@ -77,7 +77,7 @@ cd ../binutils-build</kbd>
         </p>
         <pre class="userinput">
 <kbd class=
-"command">../binutils-2.21.1/configure --prefix=${CLFS}/cross-tools \
+"command">../binutils-2.23.2/configure --prefix=${CLFS}/cross-tools \
    --target=${CLFS_TARGET} --with-sysroot=${CLFS} --disable-nls \
    --enable-shared --disable-multilib</kbd>
 </pre>
@@ -186,7 +186,7 @@ make</kbd>
         </p>
         <pre class="userinput">
 <kbd class=
-"command">cp -v ../binutils-2.21.1/include/libiberty.h ${CLFS}/usr/include</kbd>
+"command">cp -v ../binutils-2.23.2/include/libiberty.h ${CLFS}/usr/include</kbd>
 </pre>
       </div>
       <div class="content" lang="en" xml:lang="en">
@@ -516,7 +516,7 @@ make</kbd>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130717-mips">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130730-mips">Home</a>
         </li>
       </ul>
     </div>
