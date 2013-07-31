@@ -20,10 +20,6 @@
 
   <para>Create the required directory by running the following:</para>
 
-<screen><userinput>install -dv ${CLFS}/cross-tools{,/bin}</userinput></screen>
-
- <para>Create the required directory for storing the completed system as follows:</para>
-
-<screen><userinput>install -dv ${CLFS}/build</userinput></screen>
+<screen><userinput>install -dv ${CLFS}/cross-tools{,/bin,/include}</userinput></screen>
 
 </sect1>

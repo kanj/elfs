@@ -18,7 +18,7 @@
   <screen><userinput>
   
     qemu-system-arm -kernel ${CLFS}/boot/clfskernel-&linux-version; \
-    -initrd ${CLFS}/build/initramfs -M vexpress-a9 -redir tcp:5555::80 -m 128 -serial stdio -append "rdinit=/sbin/init console=tty1"
+    -initrd ${CLFS}/build/initramfs -M versatilepb -redir tcp:5555::80 -m 128 -serial stdio -append "rdinit=/sbin/init console=tty1"
 
 </userinput></screen>
    

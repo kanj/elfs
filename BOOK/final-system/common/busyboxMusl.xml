@@ -37,12 +37,9 @@
 <screen os="p2"><userinput>patch -Np1 -i ../&busybox-fixes-patch;</userinput></screen>
 -->
 
-    <para os="a">The following patch contains a default configuration for busybox:</para>
+   <para os="a1">First ensure the BusyBox source is completely clean:</para>
 
-<screen os="b"><userinput>
-cp ../busybox.stage1.config .config
-
-</userinput></screen>
+<screen os="b1"><userinput> make distclean</userinput></screen>
 
     <note os="c">
       <para>Currently we are just telling Busybox to use a generic
@@ -51,7 +48,16 @@ cp ../busybox.stage1.config .config
       configuration for your build.</para>
     </note>
 
-    <para os="d">The following tells BusyBox to validate the configuration,
+    <para os="a">The following patch contains a default configuration for BusyBox:</para>
+
+<screen os="b"><userinput>
+
+patch -Np1 -i ../busybox-&busybox-version;-config-2.patch
+cp -v clfs/config .config
+sed -i -e's/CONFIG_EXTRA_CFLAGS=""/CONFIG_EXTRA_CFLAGS="-D_GNU_SOURCE -Dfdprintf=dprintf"/' .config
+</userinput></screen>
+    
+ <para os="d">The following tells BusyBox to validate the configuration,
     and makes sure all required options are defined:</para>
 
 <screen os="e"><userinput>yes "" | make oldconfig</userinput></screen>

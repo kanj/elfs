@@ -32,15 +32,18 @@
 cd ${CLFS}/build
 
 chown -Rv root:root final
+</userinput></screen>
+
+<para>The following device nodes need to be created for some systems to
+  boot correctly:</para>
+
+<screen><userinput>
 
 mknod -m 0666 ${CLFS}/build/final/dev/null c 1 3
 mknod -m 0600 ${CLFS}/build/final/dev/console c 5 1
 
-cd final 
-
-( find . | cpio -o --format=newc | gzip ) > ../initramfs
-
 </userinput></screen>
+
 
   <para>The following files should not to belong to the
   <systemitem class="groupname">root</systemitem> group, they should belong
@@ -48,10 +51,12 @@ cd final
 
 <screen><userinput>chgrp -v 13 ${CLFS}/build/final/var/run/utmp ${CLFS}/build/final/var/log/lastlog</userinput></screen>
 
-  <para>The following device nodes need to be created for some systems to
-  boot correctly:</para>
+<para>Finally we create a initramfs as follows:</para>
 
-<screen><userinput>mknod -m 0666 ${CLFS}/build/final/dev/null c 1 3
-mknod -m 0600 ${CLFS}/build/final/dev/console c 5 1</userinput></screen>
+<screen><userinput>
+cd final 
+
+( find . | cpio -o --format=newc | gzip ) > ../initramfs
+</userinput></screen>
 
 </sect1>

@@ -1,10 +1,11 @@
 To add a new book
 
-    1)  Pick a name e.g. <arch> might be mipsEglibc
+    1)  Pick a name e.g. <arch> for example mipsEglibc
     2)  Create <arch>.ent
     3)  Create a <arch>-index.html
     4)  Add <arch> to the list of archs in Makefile
+    5)  Update stylesheets/top-index.xsl
     
 To Automate Book
     1)  Create <arch>.xml in scripts/config/OOM
-    2)  Add install-<arch> target. (This s/b be replicated automatically    
+    

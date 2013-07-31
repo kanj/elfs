@@ -99,33 +99,38 @@ hr {
         <ul>
           <li>
             <h4>
-              <a href="x86">
+              <a href="x86/index.html">
                 <xsl:text>x86 and x86_64</xsl:text>
               </a>
+              <p> This is a build for a generic pc using uClibc. It is a work in process.</p>
             </h4>
           </li>
           <li>
             <h4>
-              <a href="mips">
+              <a href="mips/index.html">
                 <xsl:text>MIPS</xsl:text>
               </a>
+              <p> This is a build for a Malta board using uClibc. It is a work in process.</p>
             </h4>
           </li>
           <li>
             <h4>
-              <a href="arm">
-                <xsl:text>ARM</xsl:text>
+              <a href="arm/index.html">
+                <xsl:text>ARM uClibc</xsl:text>
               </a>
+              <p> This is a build for a Versatilepb board using uClibc. It has been succesfully built using the makefile.</p>
             </h4>
           </li>
           <li>
             <h4>
-              <a href="wrt">
-                <xsl:text>Wireless Routers -- MIPS Based</xsl:text>
-              </a>
+              <a href="armMusl/index.html">
+                <xsl:text>ARM Musl</xsl:text>
+               </a>
+                <p> This is a build for a Vexpress-a9 board using Musl libc. It has been succesfully built using the makefile.</p>
+              
             </h4>
           </li>
-        </ul>
+          </ul>
       </div>
     </div>
   </xsl:template>

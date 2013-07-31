@@ -1,0 +1,4 @@
+sed -i -e's/# UCLIBC_HAS_RPC is not set/UCLIBC_HAS_RPC=y/' .config 
+
+sed -i -e's/# UCLIBC_SUSV3_LEGACY is not set/UCLIBC_SUSV3_LEGACY=y/' .config 
+UCLIBC_SUSV3_LEGACY

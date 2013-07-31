@@ -36,13 +36,17 @@
 
 <screen os="p2"><userinput>patch -Np1 -i ../&busybox-fixes-patch;</userinput></screen>
 -->
+<para os="a1">First ensure the BusyBox source is completely clean:</para>
 
-    <para os="a">The following patch contains a default configuration for busybox:</para>
+<screen os="b1"><userinput> make distclean</userinput></screen>
 
-<screen os="b"><userinput>patch -Np1 -i ../&busybox-config-patch;
+<para os="a">The following patch contains a default configuration for BusyBox:</para>
+
+<screen os="b"><userinput>
+
+patch -Np1 -i ../busybox-&busybox-version;-config-1.patch
 cp -v clfs/config .config
-cp ../busybox.stage1.config .config
-
+sed -i -e's/CONFIG_FEATURE_IPV6=y/# CONFIG_FEATURE_IPV6 is not set/' .config
 </userinput></screen>
 
     <note os="c">
@@ -53,7 +57,8 @@ cp ../busybox.stage1.config .config
     </note>
 
     <para os="d">The following tells BusyBox to validate the configuration,
-    and makes sure all required options are defined:</para>
+    and makes sure all required options are defined. Using yes "" autonmatically hits return and uses the
+    default value.</para>
 
 <screen os="e"><userinput>yes "" | make oldconfig</userinput></screen>
 
