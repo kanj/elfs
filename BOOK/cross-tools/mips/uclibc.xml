@@ -26,11 +26,11 @@
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"
-    xpointer="xpointer(//*[@os='a'])"/>
+    xpointer="xpointer(//*[@os='c'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"
-    xpointer="xpointer(//*[@os='b'])"/>
+    xpointer="xpointer(//*[@os='d'])"/>
 
        
     <note os="c">

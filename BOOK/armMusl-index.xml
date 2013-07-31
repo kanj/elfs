@@ -59,7 +59,7 @@
     <title>Cleanup and Boot</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="cleanup/chapter.xml"/>
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="the-end/arm-chapter.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="the-end/armMusl-chapter.xml"/>
 
   </part>
 

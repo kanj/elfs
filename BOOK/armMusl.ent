@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 
+<!ENTITY busybox-config-patch "busybox-&busybox-version;-config-2.patch">
+<!ENTITY busybox-config-patch-md5 "bd06ac3799960df8c72f73bb4ad27e30">
+<!ENTITY busybox-config-patch-size "26 KB">
+
 <!ENTITY linux-dl-version "3.x">
 
 <!ENTITY linux-version "3.0.80">
