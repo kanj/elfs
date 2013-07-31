@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 
-<!ENTITY linux-dl-version "2.6">
+<!ENTITY linux-dl-version "3.x">
 
 <!ENTITY linux-version "3.0.80">
 <!ENTITY linux-size "73,037 KB">
@@ -21,4 +21,4 @@
 <!ENTITY clfs_endian "little">
 <!ENTITY clfs_target "armel-unknown-linux-gnueabi">
 <!ENTITY clfs_float "soft">
-
+<!ENTITY clfs_fpu "vfp" >

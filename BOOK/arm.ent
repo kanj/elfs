@@ -20,4 +20,5 @@
 <!ENTITY clfs_endian "little">
 <!ENTITY clfs_target "armv5l-unknown-linux-uclibc">
 <!ENTITY clfs_float "soft">
+<!ENTITY clfs_fpu "vfp" >
 
