@@ -4,7 +4,7 @@
 
 <!-- Note: For empty *-home entities use " " not "" -->
 
-<!ENTITY binutils-version "2.21.1">
+<!ENTITY binutils-version "2.23.2">
 <!ENTITY binutils-size "18,304 KB">
 <!ENTITY binutils-url "&gnu;binutils/binutils-&binutils-version;.tar.bz2">
 <!ENTITY binutils-md5 "c84c5acc9d266f1a7044b51c85a823f5">
@@ -20,7 +20,7 @@
 <!ENTITY clfs-bootscripts-size "4 KB">
 <!ENTITY clfs-bootscripts-url "&packages-root;clfs-embedded-bootscripts-&clfs-bootscripts-version;.tar.bz2">
 <!ENTITY clfs-bootscripts-md5 "e20e3e285fb7fe3ff941e3e505f96023">
-<!ENTITY clfs-bootscripts-home " ">
+<!ENTITY clfs-bootscripts-home " not ">
 
 <!ENTITY eglibc-version "2.17">
 <!ENTITY eglibc-svn-rev "23226">
@@ -48,7 +48,7 @@
 <!ENTITY iana-etc-home "http://sethwklein.net/iana-etc">
 
 <!ENTITY libc-name "uClibc">
-<!ENTITY libc-version "0.9.33.2">
+<!ENTITY libc-version "0.9.31">
 <!ENTITY libc-size "2,244 KB">
 <!ENTITY libc-url "http://www.uclibc.org/downloads/uClibc-&libc-version;.tar.bz2">
 <!ENTITY libc-md5 "52fb8a494758630c8d3ddd7f1e0daafd">
