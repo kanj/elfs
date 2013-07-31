@@ -10,7 +10,7 @@
 <sect1 id="ch-cross-tools-uclibc" role="wrap">
   <?dbhtml filename="uclibc.html"?>
 
-  <title>uClibc-&uclibc-version;</title>
+  <title>uClibc-&libc-version;</title>
 
   <indexterm zone="ch-cross-tools-uclibc">
     <primary sortas="a-uClibc">uClibc</primary>
@@ -32,27 +32,17 @@
     href="../common/uclibc.xml"
     xpointer="xpointer(//*[@os='b'])"/>
 
+   <note os="c">
+      <para>We need to patch the source code for a minor bug.</para>
+      <screen ><userinput>sed -i '/.size*/d' libc/sysdeps/linux/${CLFS_ARCH}/crtn.S </userinput></screen>
+    </note>   
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"
     xpointer="xpointer(//*[@os='c'])"/>
-
-
-   <para os="d">For the ARM architecture, there are two different configurations
-   of uClibc that can be used: the EABI configuration and the OABI configuration.
-   We will first copy the OABI configuration and, if the EABI was selected, modify
-   it to use the EABI:</para>
-
-<screen os="e"><userinput>cp -v clfs/config.${CLFS_ARCH}.${CLFS_ENDIAN} .config
-sed -i '/.size*/d' libc/sysdeps/linux/${CLFS_ARCH}/crtn.S
-</userinput></screen>
-
+    
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"
-    xpointer="xpointer(//*[@os='f'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-    href="../common/uclibc.xml"
-    xpointer="xpointer(//*[@os='g'])"/>
+    xpointer="xpointer(//*[@os='d'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"

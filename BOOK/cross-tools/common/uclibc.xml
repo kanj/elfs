@@ -30,36 +30,43 @@
   <sect2 role="installation">
     <title>Installation of uClibc</title>
 
-    <note os="a">
+
+
+<note os="c">
       <para>Below we are just telling uClibc to use its default configuration.
       For those who are more adventurous, you can use make menuconfig and
       do a more custom build for your uClibc installation.</para>
     </note>
 
-    <para os="b">The following patch contains the default configurations for
-    the architectures covered in this book:</para>
+    
 
-<screen os="c"><userinput>patch -Np1 -i ../&uclibc-configs-patch;</userinput></screen>
+<screen os="d"><userinput>
 
-   <para os="d">Now we will copy the configuration file best matching this
-   build and use that as the base:</para>
+make ARCH=${CLFS_ARCH} defconfig 
+sed -i -e s#/usr/include#${CLFS}/usr/include# .config
+sed -i -e 's#/usr/$(TARGET_ARCH)-linux-uclibc##' .config
+sed -i -e's/# UCLIBC_HAS_RPC is not set/UCLIBC_HAS_RPC=y/' .config 
+sed -i -e's/# UCLIBC_SUSV3_LEGACY is not set/UCLIBC_SUSV3_LEGACY=y/' .config 
+</userinput></screen>
 
-<screen os="e"><userinput>cp -v clfs/config.${CLFS_ARCH}.${CLFS_ENDIAN} .config</userinput></screen>
+   
 
-    <para os="f">The config is a basic working system, but there are some
+<para os="f">The config is a basic working system, but there are some
     options that are architecture specifc that need to be set. The following
     command will only bring up items that need a value that we did not
     specify in our generic config file patch:</para>
 
-<screen os="g"><userinput>yes"" | make oldconfig</userinput></screen>
+
+    
+ <screen os="g"><userinput>yes"" | make oldconfig </userinput></screen>   
 
     <para os="h">Compile the package:</para>
 
-<screen os="i"><userinput>make</userinput></screen>
+<screen os="i"><userinput>make CROSS_COMPILER_PREFIX=${CLFS_TARGET}- </userinput></screen>
 
     <para os="l">Install the package:</para>
 
-<screen os="j"><userinput>make PREFIX=${CLFS} install</userinput></screen>
+<screen os="j"><userinput>make CROSS_COMPILER_PREFIX=${CLFS_TARGET}- PREFIX=${CLFS} install</userinput></screen>
 
   </sect2>
 

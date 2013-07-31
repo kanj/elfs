@@ -10,7 +10,7 @@
 <sect1 id="ch-cross-tools-uclibc" role="wrap">
   <?dbhtml filename="uclibc.html"?>
 
-  <title>uClibc-&uclibc-version;</title>
+  <title>uClibc-&libc-version;</title>
 
   <indexterm zone="ch-cross-tools-uclibc">
     <primary sortas="a-uClibc">uClibc</primary>
@@ -32,28 +32,38 @@
     href="../common/uclibc.xml"
     xpointer="xpointer(//*[@os='b'])"/>
 
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+       
+    <note os="c">
+      <para>We need to patch the source code for a minor bug.</para>
+      <screen ><userinput>sed -i '/ent/d' libc/sysdeps/linux/mips/crtn.S </userinput></screen>
+</note>  
+
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"
     xpointer="xpointer(//*[@os='c'])"/>
 
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../common/uclibc.xml"
+    xpointer="xpointer(//*[@os='d'])"/>
+    
+    
     <para os="d">For the MIPS architecture, there are many different combinations
     of configurations that can be used when building uClibc based on the choices
-    made previously for: endianess, ABI, and MIPS level.  To ensure that the
-    proper configuration is used based on those choices, first copy the configuration
-    matching the endianess chosen, then update the ABI and MIPS level:</para>
+    made previously for: endianess, ABI, and MIPS level.  To update the default configuration
+    execute the following:</para>
 
 <screen os="e"><userinput>
 
-sed -i '/ent/d' libc/sysdeps/linux/mips/crtn.S
-
-
-cp -v clfs/config.${CLFS_ARCH}.${CLFS_ENDIAN} .config
 if [ "${CLFS_ABI}" == "n32" ]; \
 then sed -i s/CONFIG_MIPS_O32_ABI/CONFIG_MIPS_N32_ABI/g .config; \
 elif [ "${CLFS_ABI}" == "64" ]; \
 then sed -i s/CONFIG_MIPS_O32_ABI/CONFIG_MIPS_N64_ABI/g .config; fi; \
 if [ "${CLFS_MIPS_LEVEL}" == "3" ]; \
-then sed -i s/CONFIG_MIPS_ISA_1/CONFIG_MIPS_ISA_3/g .config; fi</userinput></screen>
+then sed -i s/CONFIG_MIPS_ISA_1/CONFIG_MIPS_ISA_3/g .config; fi
+if [ "${CLFS_ENDIAN}" == "little" ];
+    then sed -i -e 's/BIG_ENDIAN=/LITTLE_ENDIAN=/g' -e 's/LITTLE_ENDIAN is/BIG_ENDIAN is/g' .config; fi  
+
+</userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"

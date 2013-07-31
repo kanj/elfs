@@ -26,27 +26,34 @@
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"
-    xpointer="xpointer(//*[@os='a'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-    href="../common/uclibc.xml"
-    xpointer="xpointer(//*[@os='b'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-    href="../common/uclibc.xml"
     xpointer="xpointer(//*[@os='c'])"/>
 
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../common/uclibc.xml"
+    xpointer="xpointer(//*[@os='d'])"/>
 
-   <para os="d">For the ARM architecture, there are two different configurations
+<note os="c">
+      <para>We need to patch the source code for a minor bug.</para>
+      <screen ><userinput>sed -i '/.size*/d' libc/sysdeps/linux/arm/crtn.S </userinput></screen>
+</note>   
+
+
+    
+<para os="d">For the ARM architecture, there are two different configurations
    of uClibc that can be used: the EABI configuration and the OABI configuration.
    We will first copy the OABI configuration and, if the EABI was selected, modify
-   it to use the EABI:</para>
+   it to use the EABI. Additionally the endianness needs to be set appropriately</para>
 
-<screen os="e"><userinput>cp -v clfs/config.${CLFS_ARCH}.${CLFS_ENDIAN} .config
-sed -i '/.size*/d' libc/sysdeps/linux/arm/crtn.S
+<screen os="e"><userinput>
 
 if [ "${CLFS_ABI}" == "aapcs" ] || [ "${CLFS_ABI}" == "aapcs-linux" ]; \
-  then sed -i -e s/OABI=/EABI=/g -e s/'EABI is'/'OABI is'/g .config; fi</userinput></screen>
+  then sed -i -e s/OABI=/EABI=/g -e s/'EABI is'/'OABI is'/g .config; fi
+  
+  
+if [ "${CLFS_ENDIAN}" == "little" ];
+    then sed -i -e 's/BIG_ENDIAN=/LITTLE_ENDIAN=/g' -e 's/LITTLE_ENDIAN is/BIG_ENDIAN is/g' .config; fi  
+      
+</userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"
@@ -55,7 +62,7 @@ if [ "${CLFS_ABI}" == "aapcs" ] || [ "${CLFS_ABI}" == "aapcs-linux" ]; \
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"
     xpointer="xpointer(//*[@os='g'])"/>
-
+    
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"
     xpointer="xpointer(//*[@os='h'])"/>

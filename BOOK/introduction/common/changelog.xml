@@ -36,6 +36,19 @@
     </listitem>
 -->
 
+    <listitem>
+      <para>July 30, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updated cross-tools/uclibc to use defconfig rather than externally generated patchfile.
+         </para>
+        </listitem>
+      </itemizedlist>
+      </listitem> 
+
+
+
+
         <listitem>
       <para>July 27, 2013</para>
       <itemizedlist>
