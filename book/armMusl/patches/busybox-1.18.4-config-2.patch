@@ -66,7 +66,7 @@ diff -Naur busybox-1.18.4.orig/clfs/config busybox-1.18.4/clfs/config
 +#
 +# Build Options
 +#
-+CONFIG_STATIC=y
++# CONFIG_STATIC is not set
 +# CONFIG_PIE is not set
 +# CONFIG_NOMMU is not set
 +# CONFIG_BUILD_LIBBUSYBOX is not set
