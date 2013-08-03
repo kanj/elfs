@@ -15,7 +15,7 @@
 <screen os="b"><userinput>export ${CLFS}=/mnt/clfs</userinput></screen>
 
   <para os="c">To ensure a clean separation between host and build environments 
-  we will create a custum .bashrc file. This file will be read when invoking a non-login
+  we will create a custom .bashrc file. This file will be read when invoking a non-login
   instance of bash. </para>
 
   <para os="d">The new instance of the shell is a <emphasis>non-login</emphasis>
@@ -78,8 +78,11 @@ EOF</userinput></screen>
   temporary tools, source the just-created user profile:</para>
 
 <screen os="l"> 
-To access the special environment launch the bash shell as follows: export CLFS=/mnt/clfs; bash --rcfile ${CLFS}/.bashrc 
-To use this environment in a shell script do as follows:    export CLFS=/mnt/clfs ; source ${CLFS}/.bashrc
+To access the special environment launch the bash shell as follows: 
+    export CLFS=/mnt/clfs; bash --rcfile ${CLFS}/.bashrc 
+    
+To use this environment in a shell script do as follows:    
+    export CLFS=/mnt/clfs ; source ${CLFS}/.bashrc
 </screen>
 
 </sect1>

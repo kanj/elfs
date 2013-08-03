@@ -105,7 +105,33 @@ cp ${CLFS}/usr/include/net/if_arp.h ${CLFS}/usr/include/linux/if_arp.h
 </userinput></screen>
 
   </sect2>
+<sect2 id="dynamic-linking-musl" role="dynamicLinking">
+    <title>Dynamic Linking</title>
 
+ <para >To allow for dynamic linking we need to complete two additional steps, the first ensures a link between the C library and the linker. </para>
+
+  <screen><userinput> 
+  
+  ln -f ${CLFS}/lib/libc.so ${CLFS}/lib/ld-musl-${CLFS_ARCH}.so.1
+  
+  </userinput></screen> 
+  <para >The second step is to ensure that the correct library is pointed two: </para>
+  
+  <screen><userinput> 
+  
+  cd  ${CLFS}/cross-tools/lib/gcc/${CLFS_TARGET}/&gcc-version;
+  
+  ${CLFS_TARGET}-gcc -dumpspecs >specs
+  
+  sed -i -e"s@ld-linux.so.3@ld-musl-${CLFS_ARCH}.so.1@g" specs
+  
+  </userinput></screen> 
+  
+  </sect2>
+  
+  
+  
+  
   <sect2 id="contents-musl" role="content">
     <title>Contents of Musl</title>
 

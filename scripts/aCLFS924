@@ -1,9 +1,10 @@
 #!/bin/bash
 
 set -e
-# Version  
+# Version 2013-07-30 
 #   Updated doDownload to look in the correct directory
 #   Updated makeReport to remove cat build.config
+
 
 # Version 2013-07-17
 #   Added .tgz archives
@@ -232,7 +233,7 @@ do
     returnCode=$( grep -e "exitCode" ${BUILDDIR}/sources/logs/$log 2>/dev/null | cut -d= -f2)
     [ "$returnCode" = "0"  ] && continue
     
-    initDU=$( du -ks ${BUILDDIR} 2>/dev/null | cut -f1 ) 
+    initDU=$( du -ks  ${BUILDDIR} 2>/dev/null | cut -f1 ) 
     
     [ "$initDU" = "" ] && initDU=0
     
@@ -271,7 +272,7 @@ do
    
     
     
-    finalDU=$( du -ks ${BUILDDIR} | cut -f1 )  
+    finalDU=$( du -ks  ${BUILDDIR} | cut -f1 )  
     echo "finalDU="$finalDU >> log
     [ -d `dirname ${BUILDDIR}/sources/logs/$log` ] || sudo -u $( who -m | awk '{print $1;}' )  mkdir -pv `dirname ${BUILDDIR}/sources/logs/$log`
     mv log  ${BUILDDIR}/sources/logs/$log
