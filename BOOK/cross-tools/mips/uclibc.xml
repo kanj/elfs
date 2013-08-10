@@ -38,14 +38,7 @@
       <screen ><userinput>sed -i '/ent/d' libc/sysdeps/linux/mips/crtn.S </userinput></screen>
 </note>  
 
-<xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-    href="../common/uclibc.xml"
-    xpointer="xpointer(//*[@os='c'])"/>
-
-<xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-    href="../common/uclibc.xml"
-    xpointer="xpointer(//*[@os='d'])"/>
-    
+   
     
     <para os="d">For the MIPS architecture, there are many different combinations
     of configurations that can be used when building uClibc based on the choices

@@ -43,7 +43,7 @@
 
 
 CROSS_COMPILE=${CLFS_TARGET}-  ./configure --prefix=${CLFS} --disable-gcc-wrapper \
-    --host=${CLFS_TARGET} --build=${CLFS_HOST} --syslibdir=${CLFS}/lib --includedir=${CLFS}/usr/include
+    --target=${CLFS_TARGET} --build=${CLFS_HOST} --syslibdir=${CLFS}/lib --includedir=${CLFS}/usr/include
     
     </userinput></screen>
     <variablelist os="dg">
@@ -55,8 +55,7 @@ CROSS_COMPILE=${CLFS_TARGET}-  ./configure --prefix=${CLFS} --disable-gcc-wrappe
           <para>This sets Musl to use the cross-tools that have been built.  </para>
         </listitem>
       </varlistentry>
-
-      
+     
 
       <varlistentry os="dg3">
         <term><parameter>--disable-gcc-wrapper</parameter></term>
@@ -112,7 +111,7 @@ cp ${CLFS}/usr/include/net/if_arp.h ${CLFS}/usr/include/linux/if_arp.h
 
   <screen><userinput> 
   
-  ln -f ${CLFS}/lib/libc.so ${CLFS}/lib/ld-musl-${CLFS_ARCH}.so.1
+  ln -f ${CLFS}/lib/libc.so `ls ${CLFS}/lib/*musl*` 
   
   </userinput></screen> 
   <para >The second step is to ensure that the correct library is pointed two: </para>
@@ -121,9 +120,16 @@ cp ${CLFS}/usr/include/net/if_arp.h ${CLFS}/usr/include/linux/if_arp.h
   
   cd  ${CLFS}/cross-tools/lib/gcc/${CLFS_TARGET}/&gcc-version;
   
+  newInterperter=$(basename `ls ${CLFS}/lib/*musl*` )
+  
+    echo 'main(){}' > dummy.c
+    ${CLFS_TARGET}-gcc dummy.c
+    oldInterperter=`readelf -l a.out | grep ': /lib' | cut -d/ -f3 | cut -d] -f1`
+    rm dummy.c a.out
+  
   ${CLFS_TARGET}-gcc -dumpspecs >specs
   
-  sed -i -e"s@ld-linux.so.3@ld-musl-${CLFS_ARCH}.so.1@g" specs
+  sed -i -e"s#${oldInterperter}#${newInterperter}#g" specs
   
   </userinput></screen> 
   

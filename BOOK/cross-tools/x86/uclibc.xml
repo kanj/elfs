@@ -26,23 +26,17 @@
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"
-    xpointer="xpointer(//*[@os='a'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-    href="../common/uclibc.xml"
-    xpointer="xpointer(//*[@os='b'])"/>
-
-   <note os="c">
-      <para>We need to patch the source code for a minor bug.</para>
-      <screen ><userinput>sed -i '/.size*/d' libc/sysdeps/linux/${CLFS_ARCH}/crtn.S </userinput></screen>
-    </note>   
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
-    href="../common/uclibc.xml"
     xpointer="xpointer(//*[@os='c'])"/>
     
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"
     xpointer="xpointer(//*[@os='d'])"/>
+
+   <note os="c">
+      <para>We need to patch the source code for a minor bug.</para>
+      <screen ><userinput>sed -i '/.size*/d' libc/sysdeps/linux/${CLFS_ARCH}/crtn.S </userinput></screen>
+    </note>   
+   
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
     href="../common/uclibc.xml"

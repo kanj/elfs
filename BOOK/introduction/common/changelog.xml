@@ -37,6 +37,28 @@
 -->
 
     <listitem>
+      <para>August 10, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Update cross-tools/musl.xml to better identify old and new interperter. Updated to Musl-0.9.12 and Busybox-1.21.1
+         </para>
+        </listitem>
+      </itemizedlist>
+      </listitem> 
+
+
+     <listitem>
+      <para>July 30, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updated cross-tools/musl to support dynamic linking with Musl libc. Updated busybox config to support dynamic linking.
+          Updated final-preps/settingenvironment correct spelling and improve layout.
+         </para>
+        </listitem>
+      </itemizedlist>
+      </listitem> 
+
+    <listitem>
       <para>July 30, 2013</para>
       <itemizedlist>
         <listitem>

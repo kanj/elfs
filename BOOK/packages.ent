@@ -55,8 +55,6 @@
 <!ENTITY libc-home "http://uclibc.org/">
 
 
-
-
 <!ENTITY linux-dl-version "2.6">
 
 <!ENTITY linux-version "2.6.38.2">
@@ -77,14 +75,6 @@
 <!ENTITY mpfr-url "http://gforge.inria.fr/frs/download.php/&mpfr-dlid;/mpfr-&mpfr-version;.tar.bz2">
 <!ENTITY mpfr-md5 "f45bac3584922c8004a10060ab1a8f9f">
 <!ENTITY mpfr-home "http://www.mpfr.org/">
-
-<!ENTITY musl-version "0.9.11">
-<!ENTITY musl-url "http://www.musl-libc.org/releases/musl-&musl-version;.tar.gz">
-
-
-
-
-
 
 
 <!-- Beyond CLFS library packages -->

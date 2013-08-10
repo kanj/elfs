@@ -20,7 +20,7 @@ SYSBUILD	:=	$(shell dirname $(PWD))/sysBuild
 CHUNK_QUIET	:= 1
 ROOT_ID		:=
 
-ARCHS		:= x86 mips arm armMusl
+ARCHS		:= armMusl mipsMusl x86Musl
 
 ifdef V
   Q =

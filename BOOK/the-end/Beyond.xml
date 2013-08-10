@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-finish-beyond">
+  <?dbhtml filename="beyond.html"?>
+
+  <title>Beyond the Book</title>
+
+  <para>The repository allows for even more possibilities: automatically building the system described in a book, adding packages to a build, and adding your own book. </para>
+  
+  <sect2 role="AutoBuild">
+<title>Automatic Build </title>
+<para>
+
+The same makefile that generates the book can also be used to automatically build a system.
+
+It's as easy as this:
+    $ git clone git://github.com/kanj/elfs
+    $ cd BOOK
+    $ make armMusl-build
+    
+Over the next several hours a complete system will be built in the ../sysBuild/clfs_armMusl    
+
+
+</para>
+
+</sect2>
+
+  <sect2 role="addPackage">
+<title>Add a Package </title>
+<para>
+
+   Starting from the main directory adding a package is as easy as:
+   
+    $ cd BELFS
+    $ make ARCH=armMusl slang-add
+
+See appendix for status of supported packages. 
+
+
+</para>
+
+</sect2>
+  
+<sect2 role="addBook">
+<title>Add a Book </title>
+<para>
+
+   
+
+
+</para>
+
+</sect2>
+ 
+
+</sect1>

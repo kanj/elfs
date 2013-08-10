@@ -99,26 +99,18 @@ hr {
         <ul>
           <li>
             <h4>
-              <a href="x86/index.html">
+              <a href="x86Musl/index.html">
                 <xsl:text>x86 and x86_64</xsl:text>
               </a>
-              <p> This is a build for a generic pc using uClibc. It is a work in process.</p>
+              <p> This is a build for a generic pc using Musl. It has been succesfully built using the makefile </p>
             </h4>
           </li>
           <li>
             <h4>
-              <a href="mips/index.html">
+              <a href="mipsMusl/index.html">
                 <xsl:text>MIPS</xsl:text>
               </a>
-              <p> This is a build for a Malta board using uClibc. It is a work in process.</p>
-            </h4>
-          </li>
-          <li>
-            <h4>
-              <a href="arm/index.html">
-                <xsl:text>ARM uClibc</xsl:text>
-              </a>
-              <p> This is a build for a Versatilepb board using uClibc. It has been succesfully built using the makefile.</p>
+              <p> This is a build for a Malta board using Musl. Unable to test with QEMU. qemu: uncaught target signal 11 </p>
             </h4>
           </li>
           <li>

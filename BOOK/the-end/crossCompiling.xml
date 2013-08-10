@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-finish-beyond">
+  <?dbhtml filename="crosscompiling.html"?>
+
+  <title>Make a Cross Compilation Environment</title>
+
+  <para>
+  In this section we will go over the construction of a cross compilation environment optimized for adding packages using the Beyond Linux From Scratch Book. In most cases the instruction will work right out of the book. The process consists of two steps: updating the .bashrc file and creating a chroot jail </para>
+  
+
+  
+  
+  <sect2 role="bash update">
+<title>Update .bashrc </title>
+<para>
+
+<screen><userinput>
+echo <literal>export host_alias=\""${CLFS_TARGET}\""</literal> &gt;&gt; ~/.bashrc
+echo <literal>export DESTDIR=\""${CLFS}-ar\""</literal> &gt;&gt; ~/.bashrc
+source ~/.bashrc</userinput></screen>
+
+In a compliant configure script host_alias is equivalent to the --host= option. A compliant configure script will prepend DESTDIR to any installation directories. 
+
+</para>
+
+</sect2>
+
+  <sect2 role="chrootJail">
+<title>Making the Chroot Jail</title>
+<para>
+
+<screen><userinput>
+
+cd sysBuild
+
+cat &gt; makeJail &lt;&lt; "EOF"
+#!/bin/sh
+# Create a custom chroot jail for cross-compilation
+#execute from sysBuild
+
+ARCH=$1
+CLFS=$PWD/blfs_$ARCH
+jail=$PWD/"jail_"$ARCH
+
+mkdir $jail
+
+
+
+for i in /bin /usr/bin /usr/src $CLFS 
+do
+    echo $i
+	mkdir -pv $jail/`dirname $i`
+	ln -s $i $jail/$i
+done
+
+for i in /usr/include /lib /usr/lib /etc
+do
+	mkdir -pv $jail/`dirname $i`
+	ln -s $CLFS$i $jail$i 
+done
+
+mkdir $jail/tmp
+
+
+ln -s $CLFS/.bashrc $jail/$HOME/.bashrc
+source ~/.bashrc
+EOF
+
+./makeJail armMusl
+
+
+</userinput></screen>
+   
+To enter the cross compilation jail simply to the following:
+
+<userinput><screen>
+fakechroot -s chroot blfs_armMusl
+</userinput></screen>
+
+In the majority of cases you will be able to execute the instructions directly from the BLFS book.
+
+</para>
+
+</sect2>
+
+<sect2 role="Results">
+<title>Results</title>
+<para>
+
+   
+
+
+</para>
+
+</sect2>
+  
+<sect2 role="addBook">
+<title>Add a Book </title>
+<para>
+
+   
+
+
+</para>
+
+</sect2>
+ 
+
+</sect1>
