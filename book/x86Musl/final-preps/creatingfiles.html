@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      4.5.&nbsp;Creating the passwd, group, and log Files
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20130803-x86">
+    <div class="navheader">
+      <h4>
+        Embedded Linux from Source - Version GIT-0.0.1-20130803-x86
+      </h4>
+      <h3>
+        Chapter&nbsp;4.&nbsp;Final Preparations
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="creatingcrossdir.html" title=
+          "Creating the ${CLFS}/cross-tools Directory">Prev</a>
+          <p>
+            Creating the ${CLFS}/cross-tools Directory
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="../systemprep/chapter.html" title=
+          "System Prep">Next</a>
+          <p>
+            System Prep
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;4.&nbsp;Final Preparations">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20130803-x86">Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-final-preps-creatingfiles" name=
+        "ch-final-preps-creatingfiles"></a>4.5. Creating the passwd, group,
+        and log Files
+      </h1>
+      <p>
+        A proper Linux system maintains a list of the mounted file systems in
+        the file <code class="filename">/etc/mtab</code>. With the way our
+        embedded system is is designed, we will be using a symlink to
+        <code class="filename">/proc/mounts</code>:
+      </p>
+      <pre class="userinput">
+<kbd class="command">ln -svf ../proc/mounts ${CLFS}/etc/mtab</kbd>
+</pre>
+      <p>
+        In order for user <code class="systemitem">root</code> to be able to
+        login and for the name &ldquo;<span class="quote">root</span>&rdquo;
+        to be recognized, there must be relevant entries in the <code class=
+        "filename">/etc/passwd</code> and <code class=
+        "filename">/etc/group</code> files.
+      </p>
+      <p>
+        Create the <code class="filename">/etc/passwd</code> file by running
+        the following command:
+      </p>
+      <pre class="userinput">
+<kbd class="command">cat &gt; ${CLFS}/etc/passwd &lt;&lt; "EOF"
+<code class="literal">root::0:0:root:/root:/bin/ash</code>
+EOF</kbd>
+</pre>
+      <p>
+        The actual password for <code class="systemitem">root</code> (the
+        &ldquo;<span class="quote">::</span>&rdquo; used here is just a
+        placeholder and allow you to login with no password) will be set
+        later.
+      </p>
+      <div class="variablelist">
+        <p class="title">
+          <b>Additional users you may want to add:</b>
+        </p>
+        <dl>
+          <dt>
+            <span class="term"><code class=
+            "literal">bin:x:1:1:bin:/bin:/bin/false</code></span>
+          </dt>
+          <dd>
+            <p>
+              Can be useful for compatibility with legacy applications.
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">daemon:x:2:6:daemon:/sbin:/bin/false</code></span>
+          </dt>
+          <dd>
+            <p>
+              It is often recommended to use an unprivileged User ID/Group ID
+              for daemons in order to limit their access to the system.
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">adm:x:3:16:adm:/var/adm:/bin/false</code></span>
+          </dt>
+          <dd>
+            <p>
+              Was used for programs that performed administrative tasks.
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">lp:x:10:9:lp:/var/spool/lp:/bin/false</code></span>
+          </dt>
+          <dd>
+            <p>
+              Used by programs for printing.
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">mail:x:30:30:mail:/var/mail:/bin/false</code></span>
+          </dt>
+          <dd>
+            <p>
+              Often used by email programs.
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">news:x:31:31:news:/var/spool/news:/bin/false</code></span>
+          </dt>
+          <dd>
+            <p>
+              Often used for network news servers.
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">uucp:x:32:32:uucp:/var/spool/uucp:/bin/false</code></span>
+          </dt>
+          <dd>
+            <p>
+              Often used for Unix-to-Unix Copy of files from one server to
+              the next
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">operator:x:50:0:operator:/root:/bin/ash</code></span>
+          </dt>
+          <dd>
+            <p>
+              Often used to allow system operators to access the system.
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">postmaster:x:51:30:postmaster:/var/spool/mail:/bin/false</code></span>
+          </dt>
+          <dd>
+            <p>
+              Generally used as an account that receives all the information
+              of troubles with the mail server.
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">nobody:x:65534:65534:nobody:/:/bin/false</code></span>
+          </dt>
+          <dd>
+            <p>
+              Used by NFS.
+            </p>
+          </dd>
+        </dl>
+      </div>
+      <p>
+        Create the <code class="filename">/etc/group</code> file by running
+        the following command:
+      </p>
+      <pre class="userinput">
+<kbd class="command">cat &gt; ${CLFS}/etc/group &lt;&lt; "EOF"
+<code class="literal">root:x:0:
+bin:x:1:
+sys:x:2:
+kmem:x:3:
+tty:x:4:
+tape:x:5:
+daemon:x:6:
+floppy:x:7:
+disk:x:8:
+lp:x:9:
+dialout:x:10:
+audio:x:11:
+video:x:12:
+utmp:x:13:
+usb:x:14:
+cdrom:x:15:</code>
+EOF</kbd>
+</pre>
+      <div class="variablelist">
+        <p class="title">
+          <b>Additional groups you may want to add</b>
+        </p>
+        <dl>
+          <dt>
+            <span class="term"><code class=
+            "literal">adm:x:16:root,adm,daemon</code></span>
+          </dt>
+          <dd>
+            <p>
+              All users in this group are allowed to do administrative tasks
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">console:x:17:</code></span>
+          </dt>
+          <dd>
+            <p>
+              This group has direct access to the console
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class="literal">cdrw:x:18:</code></span>
+          </dt>
+          <dd>
+            <p>
+              This group is allowed to use the CDRW drive
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">mail:x:30:mail</code></span>
+          </dt>
+          <dd>
+            <p>
+              Used by MTAs (Mail Transport Agents)
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">news:x:31:news</code></span>
+          </dt>
+          <dd>
+            <p>
+              Used by Network News Servers
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">uucp:x:32:uucp</code></span>
+          </dt>
+          <dd>
+            <p>
+              Used by the Unix-to-Unix copy users
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">users:x:100:</code></span>
+          </dt>
+          <dd>
+            <p>
+              The default GID used by shadow for new users
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">nogroup:x:65533:</code></span>
+          </dt>
+          <dd>
+            <p>
+              This is a default group used by some programs that do not
+              require a group
+            </p>
+          </dd>
+          <dt>
+            <span class="term"><code class=
+            "literal">nobody:x:65534:</code></span>
+          </dt>
+          <dd>
+            <p>
+              This is used by NFS
+            </p>
+          </dd>
+        </dl>
+      </div>
+      <p>
+        The created groups are not part of any standard&mdash;they are groups
+        decided on in part by the requirements of the Udev configuration in
+        this chapter, and in part by common convention employed by a number
+        of existing Linux distributions. The Linux Standard Base (LSB,
+        available at <a class="ulink" href=
+        "http://www.linuxbase.org">http://www.linuxbase.org</a>) recommends
+        only that, besides the group <code class="systemitem">root</code>
+        with a Group ID (GID) of 0, a group <code class=
+        "systemitem">bin</code> with a GID of 1 be present. All other group
+        names and GIDs can be chosen freely by the system administrator since
+        well-written programs do not depend on GID numbers, but rather use
+        the group's name.
+      </p>
+      <p>
+        The <span class="command"><strong>login</strong></span>, <span class=
+        "command"><strong>agetty</strong></span>, and <span class=
+        "command"><strong>init</strong></span> programs (and others) use a
+        number of log files to record information such as who was logged into
+        the system and when. However, these programs will not write to the
+        log files if they do not already exist. Initialize the log files and
+        give them proper permissions:
+      </p>
+      <pre class="userinput">
+<kbd class=
+"command">touch ${CLFS}/var/run/utmp ${CLFS}/var/log/{btmp,lastlog,wtmp}
+chmod -v 664 ${CLFS}/var/run/utmp ${CLFS}/var/log/lastlog</kbd>
+</pre>
+      <p>
+        The <code class="filename">/var/run/utmp</code> file records the
+        users that are currently logged in. The <code class=
+        "filename">/var/log/wtmp</code> file records all logins and logouts.
+        The <code class="filename">/var/log/lastlog</code> file records when
+        each user last logged in. The <code class=
+        "filename">/var/log/btmp</code> file records the bad login attempts.
+      </p>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="creatingcrossdir.html" title=
+          "Creating the ${CLFS}/cross-tools Directory">Prev</a>
+          <p>
+            Creating the ${CLFS}/cross-tools Directory
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="../systemprep/chapter.html" title=
+          "System Prep">Next</a>
+          <p>
+            System Prep
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;4.&nbsp;Final Preparations">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20130803-x86">Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

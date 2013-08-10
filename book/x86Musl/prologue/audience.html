@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      Audience
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20130803-x86">
+    <div class="navheader">
+      <h4>
+        Embedded Linux from Source - Version GIT-0.0.1-20130803-x86
+      </h4>
+      <h3>
+        Preface
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="foreword.html" title="Foreword">Prev</a>
+          <p>
+            Foreword
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="prerequisites.html" title=
+          "Prerequisites">Next</a>
+          <p>
+            Prerequisites
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="preface.html" title="Preface">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20130803-x86">Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="pre-audience" name="pre-audience"></a>ii. Audience
+      </h1>
+      <p>
+        There are many reasons why somebody would want to read this book. The
+        principal reason is to install a Linux system from the source code. A
+        question many people raise is, &ldquo;<span class="quote">why go
+        through all the hassle of manually building a Linux system from
+        scratch when you can just download and install an existing
+        one?</span>&rdquo; That is a good question and is the impetus for
+        this section of the book.
+      </p>
+      <p>
+        One important reason for the existence of CLFS is to help people
+        understand how a Linux system works. Building an CLFS system helps
+        demonstrate what makes Linux tick, and how things work together and
+        depend on each other. One of the best things this learning experience
+        provides is the ability to customize Linux to your own tastes and
+        needs.
+      </p>
+      <p>
+        A key benefit of CLFS is that it allows users to have more control
+        over their system without any reliance on a Linux implementation
+        designed by someone else. With CLFS, <span class=
+        "emphasis"><em>you</em></span> are in the driver's seat and dictate
+        every aspect of the system, such as the directory layout and
+        bootscript setup. You also dictate where, why, and how programs are
+        installed.
+      </p>
+      <p>
+        Another benefit of CLFS is the ability to create a very compact Linux
+        system. When installing a regular distribution, one is often forced
+        to include several programs which are probably never used. These
+        programs waste disk space or CPU cycles. It is not difficult to build
+        an CLFS system of less than 100 megabytes (MB), which is
+        substantially smaller than the majority of existing installations.
+        Does this still sound like a lot of space? A few of us have been
+        working on creating a very small embedded CLFS system. We
+        successfully built a system that was specialized to run the Apache
+        web server with approximately 8MB of disk space used. Further
+        stripping could bring this down to 5 MB or less. Try that with a
+        regular distribution! This is only one of the many benefits of
+        designing your own Linux implementation.
+      </p>
+      <p>
+        We could compare Linux distributions to a hamburger purchased at a
+        fast-food restaurant&mdash;you have no idea what might be in what you
+        are eating. CLFS, on the other hand, does not give you a hamburger.
+        Rather, CLFS provides the recipe to make the exact hamburger desired.
+        This allows users to review the recipe, omit unwanted ingredients,
+        and add your own ingredients to enhance the flavor of the burger.
+        When you are satisfied with the recipe, move on to preparing it. It
+        can be made to exact specifications&mdash;broil it, bake it, deep-fry
+        it, or barbecue it.
+      </p>
+      <p>
+        Another analogy that we can use is that of comparing CLFS with a
+        finished house. CLFS provides the skeletal plan of a house, but it is
+        up to you to build it. CLFS maintains the freedom to adjust plans
+        throughout the process, customizing it to the needs and preferences
+        of the user.
+      </p>
+      <p>
+        Security is an additional advantage of a custom built Linux system.
+        By compiling the entire system from source code, you are empowered to
+        audit everything and apply all the security patches desired. It is no
+        longer necessary to wait for somebody else to compile binary packages
+        that fix a security hole. Unless you examine the patch and implement
+        it yourself, you have no guarantee that the new binary package was
+        built correctly and adequately fixes the problem.
+      </p>
+      <p>
+        The goal of Cross Linux From Scratch is to build a complete and
+        usable foundation-level system. Readers who do not wish to build
+        their own Linux system from scratch may not benefit from the
+        information in this book. If you only want to know what happens while
+        the computer boots, we recommend the &ldquo;<span class="quote">From
+        Power Up To Bash Prompt</span>&rdquo; HOWTO located at <a class=
+        "ulink" href=
+        "http://axiom.anu.edu.au/~okeefe/p2b/">http://axiom.anu.edu.au/~okeefe/p2b/</a>
+        or on The Linux Documentation Project's (TLDP) website at <a class=
+        "ulink" href=
+        "http://www.tldp.org/HOWTO/From-PowerUp-To-Bash-Prompt-HOWTO.html">http://www.tldp.org/HOWTO/From-PowerUp-To-Bash-Prompt-HOWTO.html</a>.
+        The HOWTO builds a system which is similar to that of this book, but
+        it focuses strictly on creating a system capable of booting to a BASH
+        prompt. Consider your objective. If you wish to build a Linux system
+        and learn along the way, this book is your best choice.
+      </p>
+      <p>
+        There are too many good reasons to build your own CLFS system to list
+        them all here. This section is only the tip of the iceberg. As you
+        continue in your CLFS experience, you will find the power that
+        information and knowledge truly bring.
+      </p>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="foreword.html" title="Foreword">Prev</a>
+          <p>
+            Foreword
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="prerequisites.html" title=
+          "Prerequisites">Next</a>
+          <p>
+            Prerequisites
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="preface.html" title="Preface">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20130803-x86">Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
