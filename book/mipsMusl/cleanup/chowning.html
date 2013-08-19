@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      12.2.&nbsp;Changing the Ownership of the CLFS System
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20130818-mips">
+    <div class="navheader">
+      <h4>
+        Embedded Linux from Source - Version GIT-0.0.1-20130818-mips
+      </h4>
+      <h3>
+        Chapter&nbsp;12.&nbsp;Backup and Cleanup
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="remove-files.html" title=
+          "Remove Unnecessary Files">Prev</a>
+          <p>
+            Remove Unnecessary Files
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="../the-end/chapter.html" title=
+          "The End">Next</a>
+          <p>
+            The End
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;12.&nbsp;Backup and Cleanup">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20130818-mips">Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-bootable-chowning" name="ch-bootable-chowning"></a>12.2.
+        Changing the Ownership of the CLFS System
+      </h1>
+      <p>
+        Throughout the book, every package has been compiled and installed as
+        the <code class="systemitem">clfs</code> user. The final system
+        should be owned by <code class="systemitem">root</code>.
+      </p>
+      <div class="admon important">
+        <img alt="[Important]" src="../images/important.png" />
+        <h3>
+          Important
+        </h3>
+        <p>
+          The commands on this page of the book must be performed while
+          logged in as <code class="systemitem">root</code>, or in a fakeroot
+          session. Check that ${CLFS} is still set:
+        </p>
+        <pre class="userinput">
+<kbd class="command">echo ${CLFS}</kbd>
+</pre>
+      </div>
+      <p>
+        Make <code class="systemitem">root</code> the owner of the entire
+        CLFS system:
+      </p>
+      <pre class="userinput">
+<kbd class="command">
+
+cd ${CLFS}/build
+
+chown -Rv root:root final
+</kbd>
+</pre>
+      <p>
+        The following device nodes need to be created for some systems to
+        boot correctly:
+      </p>
+      <pre class="userinput">
+<kbd class="command">
+
+mknod -m 0666 ${CLFS}/build/final/dev/null c 1 3
+mknod -m 0600 ${CLFS}/build/final/dev/console c 5 1
+
+</kbd>
+</pre>
+      <p>
+        The following files should not to belong to the <code class=
+        "systemitem">root</code> group, they should belong to the
+        <code class="systemitem">utmp</code> group (group 13):
+      </p>
+      <pre class="userinput">
+<kbd class=
+"command">chgrp -v 13 ${CLFS}/build/final/var/run/utmp ${CLFS}/build/final/var/log/lastlog</kbd>
+</pre>
+      <p>
+        Finally we create a initramfs as follows:
+      </p>
+      <pre class="userinput">
+<kbd class="command">
+cd final 
+
+( find . | cpio -o --format=newc | gzip ) &gt; ../initramfs
+</kbd>
+</pre>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="remove-files.html" title=
+          "Remove Unnecessary Files">Prev</a>
+          <p>
+            Remove Unnecessary Files
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="../the-end/chapter.html" title=
+          "The End">Next</a>
+          <p>
+            The End
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;12.&nbsp;Backup and Cleanup">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20130818-mips">Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      3.1.&nbsp;Introduction
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20130818-mips">
+    <div class="navheader">
+      <h4>
+        Embedded Linux from Source - Version GIT-0.0.1-20130818-mips
+      </h4>
+      <h3>
+        Chapter&nbsp;3.&nbsp;Packages and Patches
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="chapter.html" title=
+          "Packages and Patches">Prev</a>
+          <p>
+            Packages and Patches
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="packages.html" title="All Packages">Next</a>
+          <p>
+            All Packages
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;3.&nbsp;Packages and Patches">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20130818-mips">Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-materials-introduction" name=
+        "ch-materials-introduction"></a>3.1. Introduction
+      </h1>
+      <p>
+        This chapter includes a list of packages that need to be downloaded
+        for building a basic Linux system. The listed version numbers
+        correspond to versions of the software that are known to work, and
+        this book is based on their use. We highly recommend not using newer
+        versions because the build commands for one version may not work with
+        a newer version. The newest package versions may also have problems
+        that require work-arounds. These work-arounds will be developed and
+        stabilized in the development version of the book.
+      </p>
+      <p>
+        The packages will be broken up into two groups. The first group of
+        packages are to build the following: toolchain, and a root file
+        system. The second group of packages are the Board Support Packages.
+        These packages will include the Kernel, and may include a bootloader
+      </p>
+      <p>
+        Download locations may not always be accessible. If a download
+        location has changed since this book was published, Google (<a class=
+        "ulink" href="http://www.google.com/">http://www.google.com/</a>)
+        provides a useful search engine for most packages. If this search is
+        unsuccessful, try one of the alternative means of downloading
+        discussed at <a class="ulink" href=
+        "http://cross-lfs.org/files/packages/embedded-0.0.1/">http://cross-lfs.org/files/packages/embedded-0.0.1/</a>.
+      </p>
+      <p>
+        Downloaded packages and patches will need to be stored somewhere that
+        is conveniently available throughout the entire build. The automated
+        version will look in /usr/src for the packages. If not found it will
+        download to ${CLFS}/usr/src. A working directory is also required to
+        unpack the sources and build them. <code class=
+        "filename">${CLFS}/sources</code> can be used both as the place to
+        store the tarballs and patches and as a working directory. By using
+        this directory, the required elements will be located on the CLFS
+        partition and will be available during all stages of the building
+        process.
+      </p>
+      <p>
+        To create this directory, execute, the following command before
+        starting the download session:
+      </p>
+      <pre class="userinput">
+<kbd class="command">mkdir -v ${CLFS}/sources</kbd>
+</pre>
+      <p>
+        Make this directory writable and sticky. When a directory is marked
+        &ldquo;<span class="quote">sticky</span>&rdquo;, that means that even
+        if multiple users have write permission on that directory, any file
+        within that directory can only be deleted or modified by its owner.
+        The following command will enable the write and sticky modes:
+      </p>
+      <pre class="userinput">
+<kbd class="command">chmod -v a+wt ${CLFS}/sources</kbd>
+</pre>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="chapter.html" title=
+          "Packages and Patches">Prev</a>
+          <p>
+            Packages and Patches
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="packages.html" title="All Packages">Next</a>
+          <p>
+            All Packages
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;3.&nbsp;Packages and Patches">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20130818-mips">Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

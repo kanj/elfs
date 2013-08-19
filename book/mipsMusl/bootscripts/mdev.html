@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      10.3.&nbsp;Configure mdev
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20130818-mips">
+    <div class="navheader">
+      <h4>
+        Embedded Linux from Source - Version GIT-0.0.1-20130818-mips
+      </h4>
+      <h3>
+        Chapter&nbsp;10.&nbsp;Setting Up System Bootscripts
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="bootscripts.html" title=
+          "CLFS-Bootscripts-1.0-pre5">Prev</a>
+          <p>
+            CLFS-Bootscripts-1.0-pre5
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="profile.html" title=
+          "Creating /etc/profile">Next</a>
+          <p>
+            Creating /etc/profile
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;10.&nbsp;Setting Up System Bootscripts">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20130818-mips">Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-scripts-mdev" name="ch-scripts-mdev"></a>10.3. Configure
+        mdev
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          Is a Busybox replacement of udev. With a different rule base.
+        </p>
+      </div>
+      <div class="sect2" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          10.3.1. Creating /etc/mdev.conf
+        </h2>
+        <p>
+          Now we will create the mdev.conf file for use with our system:
+        </p>
+        <pre class="userinput">
+<kbd class="command">cat &gt; ${CLFS}/etc/mdev.conf&lt;&lt; "EOF"
+<code class="literal"># /etc/mdev/conf
+
+# Devices:
+# Syntax: %s %d:%d %s
+# devices user:group mode
+
+# null does already exist; therefore ownership has to be changed with command
+null    root:root 0666  @chmod 666 $MDEV
+zero    root:root 0666
+grsec   root:root 0660
+full    root:root 0666
+
+random  root:root 0666
+urandom root:root 0444
+hwrandom root:root 0660
+
+# console does already exist; therefore ownership has to be changed with command
+#console        root:tty 0600   @chmod 600 $MDEV &amp;&amp; mkdir -p vc &amp;&amp; ln -sf ../$MDEV vc/0
+console root:tty 0600 @mkdir -pm 755 fd &amp;&amp; cd fd &amp;&amp; for x in 0 1 2 3 ; do ln -sf /proc/self/fd/$x $x; done
+
+fd0     root:floppy 0660
+kmem    root:root 0640
+mem     root:root 0640
+port    root:root 0640
+ptmx    root:tty 0666
+
+# ram.*
+ram([0-9]*)     root:disk 0660 &gt;rd/%1
+loop([0-9]+)    root:disk 0660 &gt;loop/%1
+sd[a-z].*       root:disk 0660 */lib/mdev/usbdisk_link
+hd[a-z][0-9]*   root:disk 0660 */lib/mdev/ide_links
+md[0-9]         root:disk 0660
+
+tty             root:tty 0666
+tty[0-9]        root:root 0600
+tty[0-9][0-9]   root:tty 0660
+ttyS[0-9]*      root:tty 0660
+pty.*           root:tty 0660
+vcs[0-9]*       root:tty 0660
+vcsa[0-9]*      root:tty 0660
+
+ttyLTM[0-9]     root:dialout 0660 @ln -sf $MDEV modem
+ttySHSF[0-9]    root:dialout 0660 @ln -sf $MDEV modem
+slamr           root:dialout 0660 @ln -sf $MDEV slamr0
+slusb           root:dialout 0660 @ln -sf $MDEV slusb0
+fuse            root:root  0666
+
+# dri device
+card[0-9]       root:video 0660 =dri/
+
+# alsa sound devices and audio stuff
+pcm.*           root:audio 0660 =snd/
+control.*       root:audio 0660 =snd/
+midi.*          root:audio 0660 =snd/
+seq             root:audio 0660 =snd/
+timer           root:audio 0660 =snd/
+
+adsp            root:audio 0660 &gt;sound/
+audio           root:audio 0660 &gt;sound/
+dsp             root:audio 0660 &gt;sound/
+mixer           root:audio 0660 &gt;sound/
+sequencer.*     root:audio 0660 &gt;sound/
+
+# misc stuff
+agpgart         root:root 0660  &gt;misc/
+psaux           root:root 0660  &gt;misc/
+rtc             root:root 0664  &gt;misc/
+
+# input stuff
+event[0-9]+     root:root 0640 =input/
+mice            root:root 0640 =input/
+mouse[0-9]      root:root 0640 =input/
+ts[0-9]         root:root 0600 =input/
+
+# v4l stuff
+vbi[0-9]        root:video 0660 &gt;v4l/
+video[0-9]      root:video 0660 &gt;v4l/
+
+# dvb stuff
+dvb.*           root:video 0660 */lib/mdev/dvbdev
+
+# load drivers for usb devices
+usbdev[0-9].[0-9]       root:root 0660 */lib/mdev/usbdev
+usbdev[0-9].[0-9]_.*    root:root 0660
+
+# net devices
+tun[0-9]*       root:root 0600 =net/
+tap[0-9]*       root:root 0600 =net/
+
+# zaptel devices
+zap(.*)         root:dialout 0660 =zap/%1
+dahdi!(.*)      root:dialout 0660 =dahdi/%1
+
+# raid controllers
+cciss!(.*)      root:disk 0660 =cciss/%1
+ida!(.*)        root:disk 0660 =ida/%1
+rd!(.*)         root:disk 0660 =rd/%1
+
+sr[0-9]         root:cdrom 0660 @ln -sf $MDEV cdrom 
+
+# hpilo
+hpilo!(.*)      root:root 0660 =hpilo/%1
+
+# xen stuff
+xvd[a-z]        root:root 0660 */lib/mdev/xvd_links</code>
+EOF</kbd>
+</pre>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="bootscripts.html" title=
+          "CLFS-Bootscripts-1.0-pre5">Prev</a>
+          <p>
+            CLFS-Bootscripts-1.0-pre5
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="profile.html" title=
+          "Creating /etc/profile">Next</a>
+          <p>
+            Creating /etc/profile
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;10.&nbsp;Setting Up System Bootscripts">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20130818-mips">Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
