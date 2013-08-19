@@ -36,6 +36,17 @@
     </listitem>
 -->
 
+     <listitem>
+      <para>August 18, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Update final-system/toolchain.xml to add standard CFLAGS. Update final-system/busyboxMusl.xml to remove specifc flags. Updated ../scripts/OOM/mipsMusl.xml files to execute final-system/toolchain.
+         </para>
+        </listitem>
+      </itemizedlist>
+      </listitem> 
+
+
     <listitem>
       <para>August 10, 2013</para>
       <itemizedlist>

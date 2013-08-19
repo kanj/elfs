@@ -52,9 +52,9 @@
 
 <screen os="b"><userinput>
 
-patch -Np1 -i ../busybox-&busybox-version;-config-2.patch
+patch -Np1 -i ../&busybox-config-patch;
 cp -v clfs/config .config
-sed -i -e's/CONFIG_EXTRA_CFLAGS=""/CONFIG_EXTRA_CFLAGS="-D_GNU_SOURCE -Dfdprintf=dprintf"/' .config
+
 </userinput></screen>
     
  <para os="d">The following tells BusyBox to validate the configuration,
