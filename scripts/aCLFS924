@@ -1,6 +1,11 @@
 #!/bin/bash
 
 set -e
+# Version 2013-09-08 
+#   Updated doDownload to update config.sub using updConfigSub
+#   Updated elfs.sed to remove <literal> tag
+#   Updated configs/OOM/*.xml to add bootscripts/network.html
+
 # Version 2013-07-30 
 #   Updated doDownload to look in the correct directory
 #   Updated makeReport to remove cat build.config
@@ -74,6 +79,28 @@ SED=$PWD/sed.tmp
 
 }
 
+updConfigSub () {
+
+find ${BUILDDIR}/sources/${pkgFolder} -name \config.sub -print  > config.sub.find
+
+while read confFile
+do
+    echo "Reviewing config.sub timestamp "
+    muslDate=`grep -m 1 -e 'timestamp' $confFile | cut -d= -f2`
+
+    if [ "$muslDate" \< "'2012-08-18'" ]
+    then
+        confDir=`dirname $confFile`  
+        cp `dirname $0`/configs/config.sub $confDir
+        echo "config.sub updated "
+    else
+        echo "Current timestamp more recent "  
+    fi  
+done < config.sub.find
+
+}
+
+
 doDownload () {
 
         
@@ -113,7 +140,7 @@ doDownload () {
 
       esac
    
-   
+updConfigSub   
   
    
    [ -z $patchUrl ] || cp ../patches/$patchUrl ${BUILDDIR}/sources/$patchUrl > /dev/null 2>>log

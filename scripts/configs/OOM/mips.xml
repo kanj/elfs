@@ -31,6 +31,7 @@ bootscripts/mdev.html#clfs#$PWD###
 bootscripts/profile.html#clfs#$PWD### 
 bootscripts/inittab.html#clfs#$PWD### 
 bootscripts/hostname.html#clfs#$PWD### 
+bootscripts/network.html#clfs#$PWD### 
 cleanup/remove-files.html#clfs#$PWD### 
 cleanup/chowning.html#root#$PWD### 
 the-end/theend.html#clfs#$PWD### 
