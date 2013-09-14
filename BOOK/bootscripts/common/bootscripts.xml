@@ -43,7 +43,7 @@
     <filename>${CLFS}/etc/init.d</filename> directory and a symlink:</para>
 
 <screen><userinput>install -dv ${CLFS}/etc/init.d
-ln -sv ../rc.d/startup ${CLFS}/etc/init.d/rcS</userinput></screen>
+ln -sfv ../rc.d/startup ${CLFS}/etc/init.d/rcS</userinput></screen>
 
   </sect2>
 

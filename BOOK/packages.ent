@@ -10,7 +10,7 @@
 <!ENTITY binutils-md5 "c84c5acc9d266f1a7044b51c85a823f5">
 <!ENTITY binutils-home "http://sourceware.org/binutils/">
 
-<!ENTITY busybox-version "1.18.4">
+<!ENTITY busybox-version "1.21.1">
 <!ENTITY busybox-size "2,081 KB">
 <!ENTITY busybox-url "http://busybox.net/downloads/busybox-&busybox-version;.tar.bz2">
 <!ENTITY busybox-md5 "b03c5b46ced732679e525a920a1a62f5">
@@ -29,7 +29,7 @@
 <!ENTITY eglibc-md5 "4190f48bb7172335d6ca2507cd1d3b90">
 <!ENTITY eglibc-home "http://www.eglibc.org/">
 
-<!ENTITY gcc-version "4.6.0">
+<!ENTITY gcc-version "4.6.4">
 <!ENTITY gcc-size "69,902 KB">
 <!ENTITY gcc-url "ftp://gcc.gnu.org/pub/gcc/releases/gcc-&gcc-version;/gcc-&gcc-version;.tar.bz2">
 <!ENTITY gcc-md5 "93d1c436bf991564524701259b6285a2">
@@ -47,12 +47,12 @@
 <!ENTITY iana-etc-md5 "3ba3afb1d1b261383d247f46cb135ee8">
 <!ENTITY iana-etc-home "http://sethwklein.net/iana-etc">
 
-<!ENTITY libc-name "uClibc">
-<!ENTITY libc-version "0.9.31">
+<!ENTITY libc-name "Musl">
+<!ENTITY libc-version "0.9.13">
 <!ENTITY libc-size "2,244 KB">
-<!ENTITY libc-url "http://www.uclibc.org/downloads/uClibc-&libc-version;.tar.bz2">
+<!ENTITY libc-url "http://www.musl-libc.org/releases/musl-&libc-version;.tar.gz">
 <!ENTITY libc-md5 "52fb8a494758630c8d3ddd7f1e0daafd">
-<!ENTITY libc-home "http://uclibc.org/">
+<!ENTITY libc-home "http://www.musl-libc.org/">
 
 
 <!ENTITY linux-dl-version "2.6">
@@ -125,49 +125,6 @@
 <!ENTITY e2fsprogs-md5 "05f70470aea2ef7efbb0845b2b116720">
 <!ENTITY e2fsprogs-home "http://e2fsprogs.sourceforge.net">
 
-<!-- WRT Specific packages -->
-
-<!ENTITY mtdutils-version "1.2.0">
-<!ENTITY mtdutils-size "270 KB">
-<!ENTITY mtdutils-url "ftp://ftp.infradead.org/pub/mtd-utils/mtd-utils-&mtdutils-version;.tar.bz2">
-<!ENTITY mtdutils-md5 "ca41f1fbaa056e8b8d71e8d52c0b1bad">
-<!ENTITY mtdutils-home "http://www.linux-mtd.infradead.org/">
-
-<!ENTITY trx-version "svn">
-<!ENTITY trx-size "13 KB">
-<!ENTITY trx-url "&svn-clfs-software;trx/trx.c">
-<!ENTITY trx-md5 "cb0141dd59a90d34a72693139e31e49a">
-<!ENTITY trx-home "http://www.openwrt.org/">
-
-<!ENTITY addpattern-version "svn">
-<!ENTITY addpattern-size "5 KB">
-<!ENTITY addpattern-url "&svn-clfs-software;addpattern/addpattern.c">
-<!ENTITY addpattern-md5 "ff13bf18d640c3a2a75032a34bf5858b">
-<!ENTITY addpattern-home "http://www.openwrt.org/">
-
-<!ENTITY fwcutter-version "012">
-<!ENTITY fwcutter-size "14 KB">
-<!ENTITY fwcutter-url "http://bu3sch.de/b43/fwcutter/b43-fwcutter-&fwcutter-version;.tar.bz">
-<!ENTITY fwcutter-md5 "69eadf67b459f313a8d6b37aaabef96c">
-<!ENTITY fwcutter-home "http://bcm43xx.berlios.de/">
-
-<!ENTITY bcmfw-version "4.150.10.5">
-<!ENTITY bcmfw-size "3797 KB">
-<!ENTITY bcmfw-url "http://downloads.openwrt.org/sources/broadcom-wl-&bcmfw-version;.tar.bz2">
-<!ENTITY bcmfw-md5 "0c6ba9687114c6b598e8019e262d9a60">
-<!ENTITY bcmfw-home "http://linuxwireless.org/en/users/Drivers/bcm43xx">
-
-<!ENTITY linux-bcm47xx-config-version "&linux-version;">
-<!ENTITY linux-bcm47xx-config-size "5 KB">
-<!ENTITY linux-bcm47xx-config-url "&svn-clfs-config;linux-bcm47xx-&linux-bcm47xx-config-version;.config">
-<!ENTITY linux-bcm47xx-config-md5 "720eae8e462d56a4f1bc227eb2afe271">
-<!ENTITY linux-bcm47xx-config-home " ">
-
-<!ENTITY bcm47xx-utils-version "1.0">
-<!ENTITY bcm47xx-utils-size "43 KB">
-<!ENTITY bcm47xx-utils-url "http://cross-lfs.org/~mlankhorst/bcm47xx-utils-&bcm47xx-utils-version;.tar.bz2">
-<!ENTITY bcm47xx-utils-md5 "93bdd469c6cff2e18778d26d1185ca84">
-<!ENTITY bcm47xx-utils-home "http://openwrt.org">
 
 <!-- MIPS Bootloaders -->
 

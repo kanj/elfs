@@ -13,7 +13,7 @@
   <para>This is version &version; of the Cross-Compiled Linux From Scratch book, dated
   &releasedate;. If this book is more than six months old, a newer and better
   version is probably already available. To find out, please check one of the
-  mirrors via <ulink url="&clfs-wiki;"/>.</para>
+  mirrors via <ulink url="http://kanj.github.io/elfs/"/>.</para>
 
   <para>Below is a list of detailed changes made since the previous release of
    the book.</para>
@@ -35,7 +35,15 @@
       </itemizedlist>
     </listitem>
 -->
-
+    <listitem>
+      <para>Sept 14, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Upates to cross-tools/gcc-static, materials/packages, materials/patches and final-system/toolchain to support Musl-0.9.13 and *-linux-musl* toolchains.
+         </para>
+        </listitem>
+      </itemizedlist>
+      </listitem> 
      <listitem>
       <para>August 18, 2013</para>
       <itemizedlist>
