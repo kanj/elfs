@@ -5,17 +5,17 @@
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=iso-8859-1" />
     <title>
-      6.11.&nbsp;Musl-0.9.11
+      6.11.&nbsp;Musl-0.9.13
     </title>
     <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
     <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
     "text/css" media="print" />
   </head>
-  <body class="clfs" id="clfs-GIT-0.0.1-20130803-arm">
+  <body class="clfs" id="clfs-GIT-0.0.1-20130914-arm">
     <div class="navheader">
       <h4>
-        Embedded Linux from Source - Version GIT-0.0.1-20130803-arm
+        Embedded Linux from Source - Version GIT-0.0.1-20130914-arm
       </h4>
       <h3>
         Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools
@@ -23,9 +23,9 @@
       <ul>
         <li class="prev">
           <a accesskey="p" href="gcc-static.html" title=
-          "Cross GCC-4.6.0 - Static">Prev</a>
+          "Cross GCC-4.6.4 - Static">Prev</a>
           <p>
-            Cross GCC-4.6.0 - Static
+            Cross GCC-4.6.4 - Static
           </p>
         </li>
         <li class="next">
@@ -41,14 +41,14 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130803-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130914-arm">Home</a>
         </li>
       </ul>
     </div>
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-cross-tools-musl" name="ch-cross-tools-musl"></a>6.11.
-        Musl-0.9.11
+        Musl-0.9.13
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
@@ -147,49 +147,9 @@ cp ${CLFS}/usr/include/net/if_arp.h ${CLFS}/usr/include/linux/if_arp.h
 </kbd>
 </pre>
       </div>
-      <div class="dynamicLinking" lang="en" xml:lang="en">
-        <h2 class="sect2">
-          <a id="dynamic-linking-musl" name=
-          "dynamic-linking-musl"></a>6.11.2. Dynamic Linking
-        </h2>
-        <p>
-          To allow for dynamic linking we need to complete two additional
-          steps, the first ensures a link between the C library and the
-          linker.
-        </p>
-        <pre class="userinput">
-<kbd class="command"> 
-  
-  ln -f ${CLFS}/lib/libc.so `ls ${CLFS}/lib/*musl*` 
-  
-  </kbd>
-</pre>
-        <p>
-          The second step is to ensure that the correct library is pointed
-          two:
-        </p>
-        <pre class="userinput">
-<kbd class="command"> 
-  
-  cd  ${CLFS}/cross-tools/lib/gcc/${CLFS_TARGET}/4.6.0
-  
-  newInterperter=$(basename `ls ${CLFS}/lib/*musl*` )
-  
-    echo 'main(){}' &gt; dummy.c
-    ${CLFS_TARGET}-gcc dummy.c
-    oldInterperter=`readelf -l a.out | grep ': /lib' | cut -d/ -f3 | cut -d] -f1`
-    rm dummy.c a.out
-  
-  ${CLFS_TARGET}-gcc -dumpspecs &gt;specs
-  
-  sed -i -e"s#${oldInterperter}#${newInterperter}#g" specs
-  
-  </kbd>
-</pre>
-      </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-musl" name="contents-musl"></a>6.11.3. Contents of
+          <a id="contents-musl" name="contents-musl"></a>6.11.2. Contents of
           Musl
         </h2>
         <div class="segmentedlist">
@@ -315,9 +275,9 @@ cp ${CLFS}/usr/include/net/if_arp.h ${CLFS}/usr/include/linux/if_arp.h
       <ul>
         <li class="prev">
           <a accesskey="p" href="gcc-static.html" title=
-          "Cross GCC-4.6.0 - Static">Prev</a>
+          "Cross GCC-4.6.4 - Static">Prev</a>
           <p>
-            Cross GCC-4.6.0 - Static
+            Cross GCC-4.6.4 - Static
           </p>
         </li>
         <li class="next">
@@ -333,7 +293,7 @@ cp ${CLFS}/usr/include/net/if_arp.h ${CLFS}/usr/include/linux/if_arp.h
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130803-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130914-arm">Home</a>
         </li>
       </ul>
     </div>

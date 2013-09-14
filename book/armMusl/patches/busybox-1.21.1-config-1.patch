@@ -74,7 +74,7 @@ diff -Naur busybox-1.18.4.orig/clfs/config busybox-1.18.4/clfs/config
 +# CONFIG_FEATURE_SHARED_BUSYBOX is not set
 +CONFIG_LFS=y
 +CONFIG_CROSS_COMPILER_PREFIX=""
-+CONFIG_EXTRA_CFLAGS=""
++CONFIG_EXTRA_CFLAGS="-Dfdprintf=dprintf"
 +
 +#
 +# Debugging Options

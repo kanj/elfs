@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
     "text/css" media="print" />
   </head>
-  <body class="clfs" id="clfs-GIT-0.0.1-20130803-arm">
+  <body class="clfs" id="clfs-GIT-0.0.1-20130914-arm">
     <div class="navheader">
       <h4>
-        Embedded Linux from Source - Version GIT-0.0.1-20130803-arm
+        Embedded Linux from Source - Version GIT-0.0.1-20130914-arm
       </h4>
       <h3>
         Chapter&nbsp;7.&nbsp;Installing Basic System Software
@@ -30,9 +30,9 @@
         </li>
         <li class="next">
           <a accesskey="n" href="busyboxMusl.html" title=
-          "Busybox-1.18.4">Next</a>
+          "Busybox-1.21.1">Next</a>
           <p>
-            Busybox-1.18.4
+            Busybox-1.21.1
           </p>
         </li>
         <li class="up">
@@ -41,7 +41,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130803-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130914-arm">Home</a>
         </li>
       </ul>
     </div>
@@ -71,6 +71,12 @@ echo <code class=
 "literal">export READELF=\""${CLFS_TARGET}-readelf\""</code> &gt;&gt; ~/.bashrc
 echo <code class=
 "literal">export STRIP=\""${CLFS_TARGET}-strip\""</code> &gt;&gt; ~/.bashrc
+echo <code class=
+"literal">export CFLAGS=\""-static -nostdinc -I${CLFS}/usr/include\""</code> &gt;&gt; ~/.bashrc
+echo <code class=
+"literal">export host_alias=\""${CLFS_TARGET}""</code> &gt;&gt; ~/.bashrc
+echo <code class=
+"literal">export DESTDIR=\""${CLFS}""</code> &gt;&gt; ~/.bashrc
 source ~/.bashrc</kbd>
 </pre>
     </div>
@@ -85,9 +91,9 @@ source ~/.bashrc</kbd>
         </li>
         <li class="next">
           <a accesskey="n" href="busyboxMusl.html" title=
-          "Busybox-1.18.4">Next</a>
+          "Busybox-1.21.1">Next</a>
           <p>
-            Busybox-1.18.4
+            Busybox-1.21.1
           </p>
         </li>
         <li class="up">
@@ -96,7 +102,7 @@ source ~/.bashrc</kbd>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130803-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130914-arm">Home</a>
         </li>
       </ul>
     </div>
