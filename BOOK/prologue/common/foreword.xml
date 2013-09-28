@@ -10,6 +10,15 @@
 
   <title>Foreword</title>
 
+    <para>The Embedded Linux From Source Project is a fork from the CLFS embedded project. 
+    Certain changes to the order of operations have been made to facilitate automation. One can build a 
+    complete system automatically using the same make file that generates the book. The other big difference is that this project
+    utilizes the Musl  C library rather than uClibc. A special thanks to Andrew Bradford for helping me thru the process, and roflor for suggesting Musl on the CLFS list. </para>
+
+<literallayout>--
+Kirk Terrell
+</literallayout>
+
   <para>The Linux From Scratch Project has seen many changes in the
   few years of its existence.  I personally became involved with the
   project in 2000, around the time of the 3.x releases.  At that time,

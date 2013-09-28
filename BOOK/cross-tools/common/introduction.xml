@@ -23,7 +23,8 @@
       <para>Before issuing the build instructions for a package, the package
       should be unpacked in the ${CLFS}/sources directory ,
       and a <command>cd</command> into the created directory should be
-      performed. The build instructions assume that the <command>bash</command>
+      performed. It is important to update any config.sub files with a current config.sub file that supports a Musl toolchain.
+      A link to this file is provided in the patches section. The build instructions assume that the <command>bash</command>
       shell is in use.</para>
     </important>
 

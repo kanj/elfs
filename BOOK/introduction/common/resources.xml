@@ -13,7 +13,7 @@
     <sect2 id="ch-intro-notCLFS">
     <title>Not CLFS</title>
 
-    <para>This is a fork from CLFS-embedded. The following resouces are geared to CLFS, but are likely to be informative</para>
+    <para>This is a fork from CLFS-embedded. Some of the following resouces are geared to CLFS, but are likely to be informative</para>
 
   </sect2>
 
@@ -25,6 +25,14 @@
     errors, have any questions, or think there is a typo in the book,
     please start by consulting the Frequently Asked Questions (FAQ)
     that is located at <ulink url="&clfs-wiki;"/>.</para>
+
+  </sect2>
+
+ <sect2 id="ch-intro-issues" xreflabel="Chapter 1 - Issues Tracking">
+    <title>Issues Tracking </title>
+
+    <para>This project maintains issue tracking at <ulink url="https://github.com/kanj/elfs/issues"/> </para>
+   
 
   </sect2>
 
@@ -72,8 +80,7 @@
   <sect2 id="ch-intro-contactinfo">
     <title>Contact Information</title>
 
-    <para>Please direct all your questions and comments to one of the
-    CLFS mailing lists (see above).</para>
+    <para>See <ulink url="https://github.com/kanj/"/> for ELFS contact information.</para>
 
   </sect2>
 

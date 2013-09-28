@@ -35,6 +35,19 @@
       </itemizedlist>
     </listitem>
 -->
+
+    <listitem>
+      <para>Sept 28, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updates to all sections of the Introduction chapter to distinguish the ELFS and CLFS projects. Updates to cross-tools/variables section to reflect Musl based tool chains. Updates to materials chapter to reflect Musl as the sole supported C library. Improvement to the Musl library build process in cross-tools/musl.
+         </para>
+        </listitem>
+      </itemizedlist>
+      </listitem> 
+
+
+
     <listitem>
       <para>Sept 14, 2013</para>
       <itemizedlist>

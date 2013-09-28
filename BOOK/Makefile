@@ -115,6 +115,7 @@ ARCHS_NOCHUNKS := $(ARCHS:%=%-nochunks)
 nochunks: $(ARCHS_NOCHUNKS)
 $(ARCHS_NOCHUNKS): override arch = $(@:%-nochunks=%)
 $(ARCHS_NOCHUNKS):
+	ln -sf $(arch).ent bsp.ent
 	@$(MAKE) --no-print-directory $(arch)-profiled-xml
 
 	@echo "Rendering Single File HTML of $(arch)..."

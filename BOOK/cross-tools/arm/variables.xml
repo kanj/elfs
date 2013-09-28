@@ -206,7 +206,7 @@ echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc
   armv5l-unknown-linux-uclibeabi, ARM arch of armv5t, float of softfp, and fpu
   of either none or softvfp. ARM9 processors do not always have hardware
   floating point abilities. If your processor is a Cortex-A8 or Cortex-A9, good
-  choices include: triplet of armv7a-unknown-linux-uclibceabi, ARM arch of
+  choices include: triplet of armv7a-unknown-linux-musleabi, ARM arch of
   armv7-a, float of hard, and fpu of vfpv3-d16.</para>
 <para os="c">Now we will set the architecture and endianess of the CPU based
   on the target triplet provided above:</para>
@@ -236,40 +236,28 @@ echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc
 
       <tbody>
         <row>
-          <entry>Generic arm</entry>
-          <entry>little</entry>
-          <entry>OABI</entry>
-          <entry>arm-unknown-linux-uclibc</entry>
-        </row>
-        <row>
-          <entry>Generic arm, version 4</entry>
-          <entry>little</entry>
-          <entry>OABI</entry>
-          <entry>armv4-unknown-linux-uclibc</entry>
-        </row>
-        <row>
           <entry>Generic arm, version 5</entry>
           <entry>little</entry>
           <entry>EABI</entry>
-          <entry>armv5l-unknown-linux-uclibceabi</entry>
+          <entry>armv5l-unknown-linux-musleabi</entry>
         </row>
         <row>
           <entry>Generic arm, version 5</entry>
           <entry>big</entry>
           <entry>EABI</entry>
-          <entry>armv5b-unknown-linux-uclibceabi</entry>
+          <entry>armv5b-unknown-linux-musleabi</entry>
         </row>
         <row>
           <entry>Generic arm</entry>
           <entry>little</entry>
           <entry>EABI</entry>
-          <entry>arm-unknown-linux-uclibceabi</entry>
+          <entry>arm-unknown-linux-musleabi</entry>
         </row>
         <row>
           <entry>Generic arm, version 7-a </entry>
           <entry>little</entry>
           <entry>EABI</entry>
-          <entry>armv7a-unknown-linux-uclibceabi</entry>
+          <entry>armv7a-unknown-linux-musleabi</entry>
         </row>
       </tbody>
 

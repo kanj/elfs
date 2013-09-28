@@ -21,9 +21,7 @@ echo <literal>export LD=\""${CLFS_TARGET}-ld\""</literal> &gt;&gt; ~/.bashrc
 echo <literal>export RANLIB=\""${CLFS_TARGET}-ranlib\""</literal> &gt;&gt; ~/.bashrc
 echo <literal>export READELF=\""${CLFS_TARGET}-readelf\""</literal> &gt;&gt; ~/.bashrc
 echo <literal>export STRIP=\""${CLFS_TARGET}-strip\""</literal> &gt;&gt; ~/.bashrc
-echo <literal>export CFLAGS=\""-static -nostdinc -I${CLFS}/usr/include\""</literal> &gt;&gt; ~/.bashrc
-echo <literal>export host_alias=\""${CLFS_TARGET}""</literal> &gt;&gt; ~/.bashrc
-echo <literal>export DESTDIR=\""${CLFS}""</literal> &gt;&gt; ~/.bashrc
+echo <literal>export CFLAGS=\""-nostdinc -I${CLFS}/usr/include\""</literal> &gt;&gt; ~/.bashrc
 source ~/.bashrc</userinput></screen>
 
 </sect1>

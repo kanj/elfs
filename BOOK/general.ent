@@ -2,7 +2,7 @@
 
 <!ENTITY month "09"> <!-- Use two digits -->
 <!ENTITY month_name "September">
-<!ENTITY day "14"> <!-- Use two digits -->
+<!ENTITY day "28"> <!-- Use two digits -->
 <!ENTITY year "2013"> <!-- Use four digits -->
 
 <!ENTITY releasedate "&month_name; &day;, &year;">
@@ -18,7 +18,7 @@
 <!ENTITY version-x86 "&version;-x86">
 <!ENTITY version-mips "&version;-mips">
 <!ENTITY version-arm "&version;-arm">
-<!ENTITY version-wrt "&version;-wrt">
+
 
 <!ENTITY lfs-root "http://www.linuxfromscratch.org/">
 <!ENTITY clfs-root "http://cross-lfs.org/">
@@ -44,11 +44,12 @@
 <!ENTITY testsuites "Test suite depends on">
 <!ENTITY before "Must be installed before">
 
-<!ENTITY % boardSupport-entities SYSTEM "bsp.ent">
-%boardSupport-entities;
 
 <!ENTITY % packages-entities SYSTEM "packages.ent">
 %packages-entities;
 
 <!ENTITY % patches-entities SYSTEM "patches.ent">
 %patches-entities;
+
+<!ENTITY % boardSupport-entities SYSTEM "bsp.ent">
+%boardSupport-entities;

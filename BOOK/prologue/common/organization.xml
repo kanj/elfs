@@ -53,6 +53,15 @@
 
   </sect2>
 
+    <sect2>
+    <title>Part VI - Supporting Beyond Linux From Scratch (BLFS) </title>
+
+    <para>Part VI  provides instructions on extending the system so as to make use of BLFS.</para>
+
+  </sect2>
+
+
+
   <sect2>
     <title>Appendices</title>
 

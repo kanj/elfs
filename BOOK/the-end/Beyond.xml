@@ -19,12 +19,22 @@
 The same makefile that generates the book can also be used to automatically build a system.
 
 It's as easy as this:
-    $ git clone git://github.com/kanj/elfs
-    $ cd BOOK
-    $ make armMusl-build
+
+  <itemizedlist>
+    <listitem>
+      <para>$ git clone git://github.com/kanj/elfs</para>
+     </listitem>
+     <listitem>
+      <para>$ cd BOOK</para>
+     </listitem>  
+     <listitem>
+      <para>$ make armMusl-build</para>
+     </listitem>  
+  </itemizedlist>
     
 Over the next several hours a complete system will be built in the ../sysBuild/clfs_armMusl    
 
+Caution:   The posted version of the book may reflect as yet uncommited changes.
 
 </para>
 
@@ -34,12 +44,7 @@ Over the next several hours a complete system will be built in the ../sysBuild/c
 <title>Add a Package </title>
 <para>
 
-   Starting from the main directory adding a package is as easy as:
-   
-    $ cd BELFS
-    $ make ARCH=armMusl slang-add
-
-See appendix for status of supported packages. 
+   Work in Process
 
 
 </para>
@@ -50,7 +55,7 @@ See appendix for status of supported packages.
 <title>Add a Book </title>
 <para>
 
-   
+   Work in Process
 
 
 </para>

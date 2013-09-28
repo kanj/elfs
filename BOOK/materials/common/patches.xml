@@ -18,6 +18,7 @@
 
   <variablelist role="materials">
 
+
     <varlistentry>
       <term>Busybox Config Patch - <token>&busybox-config-patch-size;</token>:</term>
       <listitem>
@@ -26,6 +27,17 @@
         <para>MD5 sum: <literal>&busybox-config-patch-md5;</literal></para>
       </listitem>
     </varlistentry>
+
+    <varlistentry>
+      <term>Config.sub - <token>&busybox-config-patch-size;</token>:</term>
+      <listitem>
+        <para>Download: <ulink
+        url="http://git.savannah.gnu.org/cgit/autoconf.git/plain/build-aux/config.sub"/></para>
+        <para>MD5 sum: <literal>N/A</literal></para>
+      </listitem>
+    </varlistentry>
+
+
 
 <!--
     <varlistentry>

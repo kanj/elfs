@@ -38,7 +38,7 @@
 
  
   <para os="m1">Now you will need to set the MIPS LEVEL. This determines how your
-  GCC and uClibc are built. There are currently 5 MIPS ISA Levels. To keep things 
+  GCC and musl are built. There are currently 5 MIPS ISA Levels. To keep things 
   simple we are only using two. See the following table to dsetermine the appropriate level. For more information, see
   <ulink url="http://www.linux-mips.org/wiki/Instruction_Set_Architecture"/></para>
 
@@ -83,25 +83,25 @@ echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc
         <row>
             <entry>CONFIG_CPU_MIPS32</entry>
           <entry>MIPS 32 bits Little Endian</entry>
-          <entry>mipsel-unknown-linux-uclibc</entry>
+          <entry>mipsel-unknown-linux-musl</entry>
           <entry>1</entry>
         </row>
         <row>
             <entry>CONFIG_CPU_MIPS32</entry>
           <entry>MIPS 32 bits Big Endian</entry>
-          <entry>mips-unknown-linux-uclibc</entry>
+          <entry>mips-unknown-linux-musl</entry>
           <entry>1</entry>
         </row>
         <row>
             <entry></entry>
           <entry>MIPS 64 bits Little Endian</entry>
-          <entry>mips64el-unknown-linux-uclibc</entry>
+          <entry>mips64el-unknown-linux-musl</entry>
           <entry>3</entry>
         </row>
         <row>
             <entry></entry>
           <entry>MIPS 64 bits Big Endian</entry>
-          <entry>mips64-unknown-linux-uclibc</entry>
+          <entry>mips64-unknown-linux-musl</entry>
           <entry>3</entry>
         </row>
       </tbody>

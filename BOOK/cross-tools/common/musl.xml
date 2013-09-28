@@ -5,7 +5,7 @@
   %general-entities;
 ]>
 
-<!-- Common EGLIBC -->
+
 
 <sect1 id="ch-cross-tools-musl" role="wrap">
   <?dbhtml filename="musl.html"?>
@@ -17,15 +17,14 @@
     <secondary>cross tools</secondary>
   </indexterm>
 
-  <sect2 role="package">
-    <title/>
+ 
 
     <para>The Musl package contains the main C library. This library provides
     the basic routines for allocating memory, searching directories, opening and
     closing files, reading and writing files, string handling, pattern matching,
     arithmetic, and so on.</para>
 
-  </sect2>
+
 
   <sect2 role="installation">
     <title>Installation of Musl libc </title>
@@ -104,39 +103,26 @@ cp ${CLFS}/usr/include/net/if_arp.h ${CLFS}/usr/include/linux/if_arp.h
 </userinput></screen>
 
   </sect2>
-<sect2 id="dynamic-linking-musl" role="dynamicLinking">
-    <title>Dynamic Linking</title>
 
- <para >To allow for dynamic linking we need to complete two additional steps, the first ensures a link between the C library and the linker. </para>
+ <sect2 role="linker">
+    <title>Dynamic Linker Configuration </title>
 
-  <screen><userinput> 
-  
-  ln -f ${CLFS}/lib/libc.so `ls ${CLFS}/lib/*musl*` 
-  
-  </userinput></screen> 
-  <para >The second step is to ensure that the correct library is pointed two: </para>
-  
-  <screen><userinput> 
-  
-  cd  ${CLFS}/cross-tools/lib/gcc/${CLFS_TARGET}/&gcc-version;
-  
-  newInterperter=$(basename `ls ${CLFS}/lib/*musl*` )
-  
-    echo 'main(){}' > dummy.c
-    ${CLFS_TARGET}-gcc dummy.c
-    oldInterperter=`readelf -l a.out | grep ': /lib' | cut -d/ -f3 | cut -d] -f1`
-    rm dummy.c a.out
-  
-  ${CLFS_TARGET}-gcc -dumpspecs >specs
-  
-  sed -i -e"s#${oldInterperter}#${newInterperter}#g" specs
-  
-  </userinput></screen> 
-  
-  </sect2>
-  
-  
-  
+    <para>The Musl package is also a dynamic linker. The GCC tool chain point to /lib/ld-musl-${ARCH}.so.1 as the dynamic linker.
+    This is actually just a link to libc.so. The linker will scan certain directories to search for the required library. The following configuration file will direct the linker as to which directories to search:</para>
+
+<screen os="e"><userinput>cat &gt; ${CLFS}/etc/ld-musl-${CLFS_ARCH}.path &lt;&lt; "EOF"
+<literal>/lib:/usr/lib</literal>
+EOF</userinput></screen>
+
+<para>The Musl package is also a dynamic linker. The GCC tool chain point to /lib/ld-musl-${ARCH}.so.1 as the dynamic linker.
+    This is actually just a soft link to libc.so. To ensure the link works after being copied to a new file system we need to replace it with a hard link as follows:
+    </para>
+
+<screen os="f"><userinput>
+ln -f ${CLFS}/lib/libc.so  ${CLFS}/lib/ld-musl-${CLFS_ARCH}.so.1 
+</userinput></screen>
+
+  </sect2> 
   
   <sect2 id="contents-musl" role="content">
     <title>Contents of Musl</title>
@@ -157,7 +143,7 @@ cp ${CLFS}/usr/include/net/if_arp.h ${CLFS}/usr/include/linux/if_arp.h
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
-      <varlistentry id="ld-EGLIBC">
+      <varlistentry id="ld-musl">
         <term><filename class="libraryfile">ld</filename></term>
         <listitem>
           <para>The dynamic linker / loader</para>

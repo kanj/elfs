@@ -3,8 +3,7 @@
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
-   <!ENTITY clfs_target "i686-pc-linux-uclibc">
-   <!ENTITY clfs_cpu "i686">
+   
 ]>
 
 <sect1 id="ch-cross-tools-variables">
@@ -56,35 +55,35 @@
         <row>
              <entry>CONFIG_M486</entry>
           <entry>486 Compatibles</entry>
-          <entry>i486-pc-linux-uclibc</entry>
+          <entry>i486-pc-linux-musl</entry>
           <entry>i486</entry>
           <entry>Intel's i486</entry>
         </row>
         <row>
             <entry></entry>
           <entry>Pentium, K6, 586 Compatibles</entry>
-          <entry>i586-pc-linux-uclibc</entry>
+          <entry>i586-pc-linux-musl</entry>
           <entry>i586</entry>
           <entry>Intel Pentium without MMX</entry>
         </row>
         <row>
              <entry>CONFIG_M686</entry>
           <entry>Pentium II, Pentium III, Pentium 4</entry>
-          <entry>i686-pc-linux-uclibc</entry>
+          <entry>i686-pc-linux-musl</entry>
           <entry>i686</entry>
           <entry>PentiumPro instruction set</entry>
         </row>
         <row>
              <entry></entry>
           <entry>Athlon</entry>
-          <entry>i686-pc-linux-uclibc</entry>
+          <entry>i686-pc-linux-musl</entry>
           <entry>athlon</entry>
           <entry>AMD 32 bit Athlon</entry>
         </row>
         <row>
              <entry></entry>
           <entry>Opteron</entry>
-          <entry>x86_64-unknown-linux-uclibc</entry>
+          <entry>x86_64-unknown-linux-musl</entry>
           <entry>k8</entry>
           <entry>AMD K8 processors with x86-64</entry>
         </row>
