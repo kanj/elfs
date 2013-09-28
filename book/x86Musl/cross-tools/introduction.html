@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
     "text/css" media="print" />
   </head>
-  <body class="clfs" id="clfs-GIT-0.0.1-20130803-x86">
+  <body class="clfs" id="clfs-GIT-0.0.1-20130928-x86">
     <div class="navheader">
       <h4>
-        Embedded Linux from Source - Version GIT-0.0.1-20130803-x86
+        Embedded Linux from Source - Version GIT-0.0.1-20130928-x86
       </h4>
       <h3>
         Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools
@@ -40,7 +40,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130803-x86">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130928-x86">Home</a>
         </li>
       </ul>
     </div>
@@ -71,9 +71,11 @@
             Before issuing the build instructions for a package, the package
             should be unpacked in the ${CLFS}/sources directory , and a
             <span class="command"><strong>cd</strong></span> into the created
-            directory should be performed. The build instructions assume that
-            the <span class="command"><strong>bash</strong></span> shell is
-            in use.
+            directory should be performed. It is important to update any
+            config.sub files with a current config.sub file that supports a
+            Musl toolchain. A link to this file is provided in the patches
+            section. The build instructions assume that the <span class=
+            "command"><strong>bash</strong></span> shell is in use.
           </p>
         </div>
         <p>
@@ -127,7 +129,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130803-x86">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130928-x86">Home</a>
         </li>
       </ul>
     </div>

@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
     "text/css" media="print" />
   </head>
-  <body class="clfs" id="clfs-GIT-0.0.1-20130914-arm">
+  <body class="clfs" id="clfs-GIT-0.0.1-20130928-arm">
     <div class="navheader">
       <h4>
-        Embedded Linux from Source - Version GIT-0.0.1-20130914-arm
+        Embedded Linux from Source - Version GIT-0.0.1-20130928-arm
       </h4>
       <h3>
         Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools
@@ -39,7 +39,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130914-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130928-arm">Home</a>
         </li>
       </ul>
     </div>
@@ -133,7 +133,7 @@ echo export CLFS_FLOAT=\""${CLFS_FLOAT}\"" &gt;&gt; ~/.bashrc
           In all cases the has to support a floating point emulation. If the
           floating point support is hard/softp this emulation needs to line
           up with the hardware. Based on the review of
-          ${CLFS}/boot/config-3.0.80 we will set CLFS_FPU as follows:
+          ${CLFS}/boot/config-2.6.38.2 we will set CLFS_FPU as follows:
         </p>
         <pre class="userinput">
 <kbd class="command">
@@ -142,7 +142,7 @@ echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc
 </kbd>
 </pre>
         <div class="table">
-          <a id="idp156176" name="idp156176"></a>
+          <a id="idp3814256" name="idp3814256"></a>
           <p class="title">
             <b>Table&nbsp;6.2.&nbsp;ARM Architecture Choices</b>
           </p>
@@ -242,7 +242,7 @@ echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc
           </div>
         </div><br class="table-break" />
         <div class="table">
-          <a id="idp165168" name="idp165168"></a>
+          <a id="idp3822760" name="idp3822760"></a>
           <p class="title">
             <b>Table&nbsp;6.3.&nbsp;ARM Hard Floating Point Versions</b>
           </p>
@@ -349,8 +349,8 @@ echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc
           softfp, and fpu of either none or softvfp. ARM9 processors do not
           always have hardware floating point abilities. If your processor is
           a Cortex-A8 or Cortex-A9, good choices include: triplet of
-          armv7a-unknown-linux-uclibceabi, ARM arch of armv7-a, float of
-          hard, and fpu of vfpv3-d16.
+          armv7a-unknown-linux-musleabi, ARM arch of armv7-a, float of hard,
+          and fpu of vfpv3-d16.
         </p>
         <p>
           Now we will set the architecture and endianess of the CPU based on
@@ -362,7 +362,7 @@ echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc
           The following table gives examples:
         </p>
         <div class="table">
-          <a id="idp3862624" name="idp3862624"></a>
+          <a id="idp3833368" name="idp3833368"></a>
           <p class="title">
             <b>Table&nbsp;6.4.&nbsp;Example Processor Type, ABI, and Target
             Triplets</b>
@@ -393,34 +393,6 @@ echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc
               <tbody>
                 <tr>
                   <td>
-                    Generic arm
-                  </td>
-                  <td>
-                    little
-                  </td>
-                  <td>
-                    OABI
-                  </td>
-                  <td>
-                    arm-unknown-linux-uclibc
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Generic arm, version 4
-                  </td>
-                  <td>
-                    little
-                  </td>
-                  <td>
-                    OABI
-                  </td>
-                  <td>
-                    armv4-unknown-linux-uclibc
-                  </td>
-                </tr>
-                <tr>
-                  <td>
                     Generic arm, version 5
                   </td>
                   <td>
@@ -430,7 +402,7 @@ echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc
                     EABI
                   </td>
                   <td>
-                    armv5l-unknown-linux-uclibceabi
+                    armv5l-unknown-linux-musleabi
                   </td>
                 </tr>
                 <tr>
@@ -444,7 +416,7 @@ echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc
                     EABI
                   </td>
                   <td>
-                    armv5b-unknown-linux-uclibceabi
+                    armv5b-unknown-linux-musleabi
                   </td>
                 </tr>
                 <tr>
@@ -458,7 +430,7 @@ echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc
                     EABI
                   </td>
                   <td>
-                    arm-unknown-linux-uclibceabi
+                    arm-unknown-linux-musleabi
                   </td>
                 </tr>
                 <tr>
@@ -472,7 +444,7 @@ echo export CLFS_FPU=\""${CLFS_FPU}\"" &gt;&gt; ~/.bashrc
                     EABI
                   </td>
                   <td>
-                    armv7a-unknown-linux-uclibceabi
+                    armv7a-unknown-linux-musleabi
                   </td>
                 </tr>
               </tbody>
@@ -507,7 +479,7 @@ echo export CLFS_TARGET=\""${CLFS_TARGET}\"" &gt;&gt; ~/.bashrc
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130914-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130928-arm">Home</a>
         </li>
       </ul>
     </div>

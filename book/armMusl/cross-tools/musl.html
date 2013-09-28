@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
     "text/css" media="print" />
   </head>
-  <body class="clfs" id="clfs-GIT-0.0.1-20130914-arm">
+  <body class="clfs" id="clfs-GIT-0.0.1-20130928-arm">
     <div class="navheader">
       <h4>
-        Embedded Linux from Source - Version GIT-0.0.1-20130914-arm
+        Embedded Linux from Source - Version GIT-0.0.1-20130928-arm
       </h4>
       <h3>
         Chapter&nbsp;6.&nbsp;Constructing Cross-Compile Tools
@@ -41,7 +41,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130914-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130928-arm">Home</a>
         </li>
       </ul>
     </div>
@@ -50,14 +50,12 @@
         <a id="ch-cross-tools-musl" name="ch-cross-tools-musl"></a>6.11.
         Musl-0.9.13
       </h1>
-      <div class="package" lang="en" xml:lang="en">
-        <p>
-          The Musl package contains the main C library. This library provides
-          the basic routines for allocating memory, searching directories,
-          opening and closing files, reading and writing files, string
-          handling, pattern matching, arithmetic, and so on.
-        </p>
-      </div>
+      <p>
+        The Musl package contains the main C library. This library provides
+        the basic routines for allocating memory, searching directories,
+        opening and closing files, reading and writing files, string
+        handling, pattern matching, arithmetic, and so on.
+      </p>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
           6.11.1. Installation of Musl libc
@@ -147,9 +145,40 @@ cp ${CLFS}/usr/include/net/if_arp.h ${CLFS}/usr/include/linux/if_arp.h
 </kbd>
 </pre>
       </div>
+      <div class="linker" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          6.11.2. Dynamic Linker Configuration
+        </h2>
+        <p>
+          The Musl package is also a dynamic linker. The GCC tool chain point
+          to /lib/ld-musl-${ARCH}.so.1 as the dynamic linker. This is
+          actually just a link to libc.so. The linker will scan certain
+          directories to search for the required library. The following
+          configuration file will direct the linker as to which directories
+          to search:
+        </p>
+        <pre class="userinput">
+<kbd class=
+"command">cat &gt; ${CLFS}/etc/ld-musl-${CLFS_ARCH}.path &lt;&lt; "EOF"
+<code class="literal">/lib:/usr/lib</code>
+EOF</kbd>
+</pre>
+        <p>
+          The Musl package is also a dynamic linker. The GCC tool chain point
+          to /lib/ld-musl-${ARCH}.so.1 as the dynamic linker. This is
+          actually just a soft link to libc.so. To ensure the link works
+          after being copied to a new file system we need to replace it with
+          a hard link as follows:
+        </p>
+        <pre class="userinput">
+<kbd class="command">
+ln -f ${CLFS}/lib/libc.so  ${CLFS}/lib/ld-musl-${CLFS_ARCH}.so.1 
+</kbd>
+</pre>
+      </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-musl" name="contents-musl"></a>6.11.2. Contents of
+          <a id="contents-musl" name="contents-musl"></a>6.11.3. Contents of
           Musl
         </h2>
         <div class="segmentedlist">
@@ -178,7 +207,7 @@ cp ${CLFS}/usr/include/net/if_arp.h ${CLFS}/usr/include/linux/if_arp.h
               <tr>
                 <td>
                   <p>
-                    <a id="ld-EGLIBC" name="ld-EGLIBC"></a><span class=
+                    <a id="ld-musl" name="ld-musl"></a><span class=
                     "term"><code class="filename">ld</code></span>
                   </p>
                 </td>
@@ -293,7 +322,7 @@ cp ${CLFS}/usr/include/net/if_arp.h ${CLFS}/usr/include/linux/if_arp.h
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130914-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20130928-arm">Home</a>
         </li>
       </ul>
     </div>
