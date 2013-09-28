@@ -44,6 +44,8 @@
 <!ENTITY testsuites "Test suite depends on">
 <!ENTITY before "Must be installed before">
 
+<!ENTITY % boardSupport-entities SYSTEM "bsp.ent">
+%boardSupport-entities;
 
 <!ENTITY % packages-entities SYSTEM "packages.ent">
 %packages-entities;
@@ -51,5 +53,4 @@
 <!ENTITY % patches-entities SYSTEM "patches.ent">
 %patches-entities;
 
-<!ENTITY % boardSupport-entities SYSTEM "bsp.ent">
-%boardSupport-entities;
+
