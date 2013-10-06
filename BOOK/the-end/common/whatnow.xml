@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
-  <!ENTITY % general-entities SYSTEM "../general.ent">
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 ]>
 
@@ -10,11 +10,11 @@
 
   <title>What Now?</title>
 
-  <para>Thank you for reading this CLFS book. We hope that you have
+  <para>Thank you for reading this ELFS book. We hope that you have
   found this book helpful and have learned more about the system
   creation process.</para>
 
-  <para>Now that the CLFS system is installed, you may be wondering
+  <para>Now that the ELFS system is installed, you may be wondering
   <quote>What next?</quote> To answer that question, we have compiled
   a list of resources for you.</para>
 
@@ -24,7 +24,7 @@
       <para>Maintenance</para>
 
       <para>Bugs and security notices are reported regularly for all software.
-      Since an CLFS system is compiled from source, it is up to you to keep
+      Since an ELFS system is compiled from source, it is up to you to keep
       abreast of such reports.  There are several online resources that track
       such reports, some of which are shown below:</para>
 
@@ -65,7 +65,7 @@
 
       <para>The Community Driven Beyond Linux From Scratch wiki provides
       information, installation procedures, and other tips for a large variety
-      of software that can be installed on a CLFS system.  The CBLFS wiki is
+      of software that can be installed on a ELFS system.  The CBLFS wiki is
       located at <ulink url="&cblfs-wiki;"/>.</para>
     </listitem>
 

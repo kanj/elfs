@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
-  <!ENTITY % general-entities SYSTEM "../general.ent">
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 ]>
 
@@ -14,15 +14,15 @@
     <primary sortas="e-/etc/clfs-release">/etc/clfs-release</primary>
   </indexterm>
 
-  <para>Well done! The new CLFS system is installed! We wish you much
+  <para>Well done! The new ELFS system is installed! We wish you much
   success with your shiny new custom-built Linux system.</para>
 
   <para>It may be a good idea to create an
-  <filename>/etc/clfs-release</filename> file. By having this file, it is
+  <filename>/etc/elfs-release</filename> file. By having this file, it is
   very easy for you (and for us if you need to ask for help at some
-  point) to find out which CLFS version is installed on the system.
+  point) to find out which ELFS version is installed on the system.
   Create this file by running:</para>
 
-<screen><userinput>echo CLFS-Embedded-&version; &gt; ${CLFS}/etc/clfs-release</userinput></screen>
+<screen><userinput>echo ELFS-&year;&month;&day;-&clfs_arch; &gt; ${CLFS}/etc/elfs-release</userinput></screen>
 
 </sect1>

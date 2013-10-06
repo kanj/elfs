@@ -27,7 +27,7 @@
 </userinput></screen>
    
 
-  <para>When the boot is complete, the embedded CLFS system is ready for use!</para>
+  <para>When the boot is complete, the embedded ELFS system is ready for use!</para>
 
 
 <variablelist os="ag">

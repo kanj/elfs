@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
-  <!ENTITY % general-entities SYSTEM "../general.ent">
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 ]>
 
@@ -22,19 +22,18 @@ It's as easy as this:
 
   <itemizedlist>
     <listitem>
-      <para>$ git clone git://github.com/kanj/elfs</para>
+      <para>$ git clone -b elfsMusl-&year;&month;&day; git://github.com/kanj/elfs</para>
      </listitem>
      <listitem>
       <para>$ cd BOOK</para>
      </listitem>  
      <listitem>
-      <para>$ make armMusl-build</para>
+      <para>$ make &clfs_book;-build</para>
      </listitem>  
   </itemizedlist>
     
-Over the next several hours a complete system will be built in the ../sysBuild/clfs_armMusl    
+Over the next several hours a complete system will be built in the ../sysBuild/&clfs_book;_&year;&month;&day;    
 
-Caution:   The posted version of the book may reflect as yet uncommited changes.
 
 </para>
 

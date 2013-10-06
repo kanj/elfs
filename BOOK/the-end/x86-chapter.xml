@@ -11,9 +11,9 @@
 
   <title>The End</title>
 
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="theend.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="getcounted.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="common/theend.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="common/getcounted.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="x86/boot.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="whatnow.xml"/>
-
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="common/whatnow.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="common/Beyond.xml"/>    
 </chapter>

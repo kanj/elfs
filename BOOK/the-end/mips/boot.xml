@@ -16,13 +16,13 @@
   <screen><userinput>
   
   gnome-terminal -x \
-    qemu-system-mipsel -kernel ${CLFS}/boot/clfskernel-&linux-version; \
+    qemu-system-mips -kernel ${CLFS}/boot/clfskernel-&linux-version; \
     -initrd ${CLFS}/build/initramfs -M malta -redir tcp:5555::80 -m 128 -nographic -append "rdinit=/sbin/init console=ttyS0"
 
 </userinput></screen>
    
 
-  <para>When the boot is complete, the embedded CLFS system is ready for use!</para>
+  <para>When the boot is complete, the embedded ELFS system is ready for use!</para>
 
 <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
   href="../common/boot.xml"
