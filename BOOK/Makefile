@@ -17,6 +17,8 @@ DLLISTDIR	:= $(RENDERDIR)/download-list
 
 SYSBUILD	:=	$(shell dirname $(PWD))/sysBuild
 
+VER := $(shell git symbolic-ref HEAD | cut -d- -f2 ) 
+
 CHUNK_QUIET	:= 1
 ROOT_ID		:=
 
@@ -238,5 +240,35 @@ ARCHS_BUILD := $(ARCHS:%=%-build)
 $(ARCHS_BUILD): override arch = $(@:%-build=%)
 $(ARCHS_BUILD):	
 	make $(arch)-html
-	../scripts/aCLFS924 $(arch) $(SYSBUILD)/clfs_$(arch)
-
+	../scripts/aCLFS924 $(arch) $(SYSBUILD)/$(arch)_$(VER)
+	
+ARCHS_BUSYBOX := 	$(ARCHS:%=%-busybox)	
+$(ARCHS_BUSYBOX): override arch = $(@:%-busybox=%)
+$(ARCHS_BUSYBOX):	
+	@rm -f $(SYSBUILD)/clfs_$(arch)/sources/logs/final-system/busyboxMusl.log
+	@../scripts/aCLFS924 $(arch) $(SYSBUILD)/clfs_$(arch)
+	
+ARCHS_MUSL := 	$(ARCHS:%=%-musl)	
+$(ARCHS_MUSL): override arch = $(@:%-musl=%)
+$(ARCHS_MUSL):	
+	@rm -f $(SYSBUILD)/clfs_$(arch)/sources/logs/cross-tools/musl.log
+	@../scripts/aCLFS924 $(arch) $(SYSBUILD)/clfs_$(arch)
+	
+ARCHS_KERNEL := 	$(ARCHS:%=%-kernel)	
+$(ARCHS_KERNEL): override arch = $(@:%-kernel=%)
+$(ARCHS_KERNEL):
+	@rm -f $(SYSBUILD)/clfs_$(arch)/sources/logs/cross-tools/linux-headers.log
+	@rm -f $(SYSBUILD)/clfs_$(arch)/sources/logs/bootable/kernel.log
+	@../scripts/aCLFS924 $(arch) $(SYSBUILD)/clfs_$(arch)	
+	
+ARCHS_REIMAGE := 	$(ARCHS:%=%-reimage)	
+$(ARCHS_REIMAGE): override arch = $(@:%-reimage=%)
+$(ARCHS_REIMAGE):	
+	@rm -rf $(SYSBUILD)/clfs_$(arch)/build/final/
+	@rm -f $(SYSBUILD)/clfs_$(arch)/sources/logs/cleanup/remove-files.log
+	@rm -f $(SYSBUILD)/clfs_$(arch)/sources/logs/cleanup/chowning.log
+	@rm -f $(SYSBUILD)/clfs_$(arch)/sources/logs/the-end/reboot.log
+	@../scripts/aCLFS924 $(arch) $(SYSBUILD)/clfs_$(arch)
+		
+checkBLFS:
+	@cd ../scripts/BLFS;./checkBLFS2.sh	

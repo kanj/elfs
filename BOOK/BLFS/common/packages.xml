@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-BLFS-packages-common">
+  <?dbhtml filename="packages.html"?>
+
+  <title>BLFS Support Packages</title>
+
+  <para>Download or otherwise obtain the following packages:</para>
+
+  <variablelist role="blfs-support">
+
+    <varlistentry>
+      <term>CMake (&cmake-version;) - <token>&cmake-size;</token>:</term>
+      <listitem>
+        <para>Home page: <ulink url="&cmake-home;"/></para>
+        <para>Download: <ulink url="&cmake-url;"/></para>
+        <para>MD5 sum: <literal>&cmake-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+
+     <varlistentry>
+      <term>Ncurses (&ncurses-version;) - <token>&ncurses-size;</token>:</term>
+      <listitem>
+        <para>Home page: <ulink url="&ncurses-home;"/></para>
+        <para>Download: <ulink url="&ncurses-url;"/></para>
+        <para>MD5 sum: <literal>&ncurses-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+  <para os="a">Total size of these packages: about <returnvalue/></para>
+
+</sect1>

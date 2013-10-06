@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-BLFS-gnuBuild">
+  <?dbhtml filename="gnuBuild.html"?>
+
+  <title>GNU Build System</title>
+
+  <para>Of the approximately 550 packages supported by BLFS nearly 400 use the GNU Build System. This system uses "configure/make/make install" to compile and install source code. In the GNU Build System the configure script makes use of config.sub to generate canonical system names. For this reason it is important to update the default config.sub in a package with a more recent config.sub that recognizes the Musl toolchain. Setting two variables in the environment will be useful. DESTDIR, which the is variable prepended to each installed target file. The variable host_alias will drive proper identification of the host system and cross-compilation. Thus making the following additions to the ~/.bashrc will drive cross-compliation and installation into the ${CLFS} directory without changing the instructions given in BLFS:</para>
+
+<screen><userinput>
+echo <literal>export host_alias=\""${CLFS_TARGET}\""</literal> &gt;&gt; ~/.bashrc
+echo <literal>export DESTDIR=\""${CLFS}\""</literal> &gt;&gt; ~/.bashrc
+source ~/.bashrc</userinput></screen>
+
+<para> Other instructions given in BLFS may include absolute paths, or the configuration process may reference absolute paths. For example S-Lang looks in hardwired directories for the termios header file. This update the environment will not affect that behaviour. </para>
+
+</sect1>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<!-- Common GCC-Final -->
+
+<sect1 id="ch-BLFS-cmake" role="wrap">
+  <?dbhtml filename="cmake.html"?>
+
+  <title>Installation of CMake-&cmake-version; </title>
+
+  <indexterm zone="ch-BLFS-cmake">
+    <primary sortas="a-CMake">CMake</primary>
+    <secondary>BLFS, final</secondary>
+  </indexterm>
+
+ 
+  
+<sect2 role="package">
+    <title/>
+
+    <para>The CMake package contains a modern toolset used for generating Makefiles. It is a successor of the auto-generated configure script and aims to be platform- and compiler-independent. A significant user of CMake is KDE since version 4.</para>
+
+  </sect2>
+
+<sect2 role="installation">
+      <title os="a">Installation of CMake</title>
+
+
+
+    <para os="e">CMake can be installed using an existing version of CMake or relying on a bootstrap version. We will use the bootstrap version. Prepare CMake for compilation:</para>
+
+<!-- This is the common configure line for GCC-Static. -->
+<!-- It's not actually used by any arch but is here for reference. -->
+<screen os="ae"><userinput>
+
+unset host_alias CC CXX CFLAGS DESTDIR
+
+export DESTDIR=~/cross-tools
+
+
+./bootstrap --prefix=/usr       \
+            --mandir=/share/man \
+            --no-system-libs \
+            --docdir=/share/doc/cmake-&cmake-version;</userinput></screen>
+
+    <variablelist os="af">
+      <title>The meaning of the configure options:</title>
+
+      <varlistentry os="af1">
+        <term><parameter>--no-system-libs.</parameter></term>
+        <listitem>
+          <para>This switch forces the build system to build versions Zlib, Bzip2, cURL, Expat and libarchive, rather than use the  installed version.</para>
+        </listitem>
+      </varlistentry>
+
+     
+
+    </variablelist>
+
+    <para os="ah">Continue with compiling the package:</para>
+
+<screen os="ai"><userinput>make </userinput></screen>
+
+    <para os="aj">Install the package:</para>
+
+<screen os="ak"><userinput>make install</userinput></screen>
+
+<para os="aj">Reset standard environment:</para>
+
+<screen os="ak"><userinput>source ~/.bashrc</userinput></screen>
+
+
+
+  </sect2>
+
+  <sect2 id="contents-CMake" role="content">
+    <title>Contents of GCC</title>
+
+    <segmentedlist>
+      <segtitle>Installed programs</segtitle>
+      <segtitle>Installed libraries</segtitle>
+
+      <seglistitem>
+        <seg>ccmake, cmake, cmake-gui, cpack and ctest</seg>
+        <seg>None</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="ccmake">
+        <term><command>ccmake</command></term>
+        <listitem>
+          <para>is a curses based interactive frontend to cmake.</para>
+          <indexterm zone="ch-BLFS-cmake ccmake">
+            <primary sortas="b-ccmake">ccmake</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="cmake">
+        <term><command>cmake</command></term>
+        <listitem>
+          <para>is the makefile generator.</para>
+          <indexterm zone="ch-BLFS-cmake cmake">
+            <primary sortas="b-cmake">gcc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+           
+    </variablelist>
+
+  </sect2>
+
+</sect1>

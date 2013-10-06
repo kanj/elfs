@@ -8,7 +8,7 @@
 <book>
 
   <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="prologue/arm/bookinfo.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="prologue/preface.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="prologue/chapter.xml"/>
 
   <part id="part1">
     <?dbhtml filename="part1.html"?>
@@ -24,8 +24,8 @@
 
     <title>Preparing for the Build</title>
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="create-dir/arm-chapter.xml"/>
-    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="materials/arm-chapter.xml"/>
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="final-preps/chapter.xml"/>
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="materials/arm-chapter.xml"/>
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="system-prep/arm-chapter.xml"/>
   </part>
 
@@ -41,7 +41,7 @@
   <part id="part4">
     <?dbhtml filename="part4.html"?>
 
-    <title>Building the CLFS System</title>
+    <title>Building the ELFS System</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="final-system/armMusl-chapter.xml"/>
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="system-build/arm-chapter.xml"/>
@@ -63,8 +63,19 @@
 
   </part>
 
-  <part id="part6">
+ <part id="part6">
     <?dbhtml filename="part6.html"?>
+
+    <title>Supporting Beyond Linux From Scratch </title>
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="BLFS/armMusl-chapter.xml"/>
+    
+
+  </part>
+
+
+
+  <part id="part7">
+    <?dbhtml filename="part7.html"?>
 
     <title>Appendices</title>
 

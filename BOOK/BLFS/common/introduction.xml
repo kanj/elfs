@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-bclfs-introduction">
+  <?dbhtml filename="introduction.html"?>
+
+  <title>Introduction</title>
+
+  <para os="a">Now that we have our base system built, we may add some optional
+  additional functionality.</para>
+
+  <para os="b">In this section, we explain how to make use of the Beyond Linux From Scratch project to add additional functionality. This will be done by updating the shell environment and by adding (select) packages that are part of the LFS build. Support for additional packages will come thru added support for different build systems, and by supporting pre-requisites that are part of the LFS/CLFS system but not part of the ELFS minimal root system. The most common build system is the GNU Build System (GBS), the next being CMake. For missing pre-requisites we will need to build the libstdc++ library, and ncurses.
+  </para>
+  
+  <para> A build system is a set of tools that facilitates turning source code into an executable. We have been using the GNU Build System for  a number of packages alaready. In the next section we will adjust the standard environment so that the same configure and make commands in the BLFS bok have the desired effect when using ELFS. </para>
+  
+  
+  <para> For a list of packages and information about its build system and added pre-requisites see: <ulink url="http://kanj.github.io/elfs/book/index.html"/>. </para>
+  
+  
+  <para> In the ideal case you would enter the commands as given in BLFS for configuration and compilation. For installation you would execute the commands as the standard user, but then repeat steps in section 12 to create a new image. Results given in the BLFS compatability is based on this approach. </para>
+  
+  
+  
+  
+  
+  
+  
+        
+  
+</sect1>

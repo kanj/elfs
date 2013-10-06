@@ -1,0 +1,13 @@
+cifsutils^ mtab.c:89:11: error: '_PATH_MOUNTED' undeclared
+rsync^ Version 3.0.9 succesfully compiled on ELFS-GIT-0.0.1-20130818-arm
+ncftp^ Version 3.2.5 succesfully compiled on ELFS-GIT-0.0.1-20130818-arm
+libevent^ Version 2.0.21 succesfully compiled on ELFS-GIT-0.0.1-20130818-arm
+eject^  Version 2.1.5 succesfully compiled on ELFS-GIT-0.0.1-20130818-arm
+popt^ Version 1.16 succesfully compiled on ELFS-GIT-0.0.1-20130818-arm
+libusb^ io.c:2279:3: warning: value computed is not used [-Wunused-value]
+itools^ str.c:5:19: fatal error: error.h: No such file or directory
+libxml2^ ${CLFS}/usr/include/pthread.h:116:5: note: previous declaration of 'pthread_cond_signal' was here
+fribidi^ Version 0.19.5 succesfully compiled on ELFS-GIT-0.0.1-20130818-arm
+babl^ Version 0.1.10 succesfully compiled on ELFS-GIT-0.0.1-20130818-arm
+libarchive^ Version 3.1.2 succesfully compiled on ELFS-GIT-0.0.1-20130818-arm
+emacs^ Failed to identify ncurses prerequisite

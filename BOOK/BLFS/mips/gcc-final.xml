@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<!-- ARM GCC-Final -->
+
+<sect1 id="ch-BLFS-gcc-final" role="wrap">
+  <?dbhtml filename="gcc-final.html"?>
+
+  <title>GCC-&gcc-version; - Cross Compiler Final</title>
+
+  <indexterm zone="ch-BLFS-gcc-final">
+    <primary sortas="a-GCC">GCC</primary>
+    <secondary>BLFS, gcc</secondary>
+  </indexterm>
+
+<para> In this section we build the c++ cross compiler and libstdc++ library that will be needed by a number of packages that are beyond the ELFS build. </para>
+ 
+
+  <sect2 role="installation">
+    <title>Installation of GCC Cross Compiler</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../cross-tools/common/gcc-static.xml"
+    xpointer="xpointer(//*[@os='b'])"/>
+    
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../cross-tools/common/gcc-static.xml"
+    xpointer="xpointer(//*[@os='c'])"/>
+    
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../cross-tools/common/gcc-static.xml"
+    xpointer="xpointer(//*[@os='d'])"/>
+    
+     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../cross-tools/common/gcc-static.xml"
+    xpointer="xpointer(//*[@os='e'])"/>
+    
+    <screen os="ae"><userinput>
+    AR=ar LDFLAGS="-Wl,-rpath,${CLFS}/cross-tools/lib" \
+  ../gcc-&gcc-version;/configure --prefix=${CLFS}/cross-tools \
+  --build=${CLFS_HOST} --target=${CLFS_TARGET} --host=${CLFS_HOST} \
+  --with-sysroot=${CLFS} --disable-nls --enable-shared \
+  --enable-languages=c,c++ --enable-c99 --enable-long-long \
+  --disable-libmudflap \
+  --with-mpfr=${CLFS}/cross-tools --with-gmp=${CLFS}/cross-tools \
+  --with-mpc=${CLFS}/cross-tools --disable-multilib \
+  --with-abi=${CLFS_ABI} --with-arch=mips${CLFS_MIPS_LEVEL} \
+  --with-float=${CLFS_FLOAT} --with-endian=${CLFS_ENDIAN}  
+    </userinput></screen>
+    
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../cross-tools/common/gcc-static.xml"
+    xpointer="xpointer(//*[@os='af'])"/>
+    
+    <para os="ah">Continue with compiling the package:</para>
+
+<screen os="ai"><userinput>make </userinput></screen>
+
+    <para os="aj">Install the package:</para>
+
+<screen os="ak"><userinput>make install </userinput></screen>
+
+ </sect2>  
+
+
+
+
+</sect1>

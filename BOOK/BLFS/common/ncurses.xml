@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<!-- Common GCC-Final -->
+
+<sect1 id="ch-BLFS-ncurses" role="wrap">
+  <?dbhtml filename="ncurses.html"?>
+
+  <title>Ncurses-&ncurses-version; </title>
+
+  <indexterm zone="ch-BLFS-ncurses">
+    <primary sortas="a-ncurses">ncurses</primary>
+    <secondary>ncurses</secondary>
+  </indexterm>
+
+ <sect2 role="package">
+    <title/>
+
+    <para>The Ncurses package contains libraries for terminal-independent handling of character screens..</para>
+
+  </sect2> 
+
+  <sect2 role="installation">
+    <title>Installation of Ncurses</title>
+
+   
+ <para os="e"> Prepare Ncurses for compilation:</para>
+
+<!-- This is the common configure line for GCC-Static. -->
+<!-- It's not actually used by any arch but is here for reference. -->
+<screen os="ae"><userinput>
+
+
+./configure  --with-shared \
+    --without-debug --without-ada </userinput></screen>
+  
+  
+  <variablelist os="af">
+      <title>The meaning of the configure options:</title>
+
+       <varlistentry os="af1">
+        <term><parameter>--without-ada.</parameter></term>
+        <listitem>
+          <para>This ensures that Ncurses does not build support for the Ada compiler which may be present on the host but will not be available once we enter the chroot environment.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+  
+  <para os="ah">Continue with compiling the package:</para>
+
+<screen os="ai"><userinput>make </userinput></screen>
+
+    <para os="aj">Install the package:</para>
+
+<screen os="ak"><userinput>make install</userinput></screen>
+
+<para os="aj">Reset standard environment:</para>
+  
+    
+  </sect2>
+
+
+ <sect2 id="contents-Ncurses" role="content">
+    <title>Contents of Ncurses</title>
+
+    <segmentedlist>
+      <segtitle>Installed programs</segtitle>
+      <segtitle>Installed libraries</segtitle>
+
+      <seglistitem>
+        <seg>captoinfo (link to tic), clear, infocmp, infotocap (link to tic), ncursesw5-config, reset (link to tset), tabs, tic, toe, tput, and tset</seg>
+        <seg>libcursesw.{a,so} (symlink and linker script to libncursesw.{a,so}), libformw.{a,so}, libmenuw.{a,so}, libncurses++w.a, libncursesw.{a,so}, libpanelw.{a,so} and their non-wide-character counterparts without "w" in the library names.</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    
+
+  </sect2>
+
+
+
+</sect1>
