@@ -5,7 +5,7 @@
   %general-entities;
 ]>
 <sect>
-workingDir/mkdir.html#clfs$$PWD###
+create-dir/builddir.html#clfs$$PWD###
 final-preps/aboutlfs.html#clfs#$PWD###  
 final-preps/settingenvironment.html#clfs#$HOME###  
 final-preps/creatingdirs.html#clfs#$PWD###  
@@ -13,7 +13,6 @@ final-preps/creatingcrossdir.html#clfs#$PWD###
 final-preps/creatingfiles.html#clfs#$PWD###  
 cross-tools/cflags.html#clfs#$HOME###  
 cross-tools/linux-headers.html#clfs#${BUILDDIR}/sources/linux-&linux-version;#&kernel;linux/kernel/v&linux-dl-version;/linux-&linux-version;.tar.bz2##  
-cross-tools/abi.html#clfs#$HOME###  
 cross-tools/variables.html#clfs#$HOME#### 
 cross-tools/gmp.html#clfs#${BUILDDIR}/sources/gmp-&gmp-version;#&gnu;gmp/gmp-&gmp-version;.tar.bz2##  
 cross-tools/mpfr.html#clfs#${BUILDDIR}/sources/mpfr-&mpfr-version;#http://gforge.inria.fr/frs/download.php/&mpfr-dlid;/mpfr-&mpfr-version;.tar.bz2##  

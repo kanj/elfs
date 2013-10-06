@@ -2,14 +2,22 @@
 *.swp
 \#*#
 *~
+#Ignore files generated while building a system
 /BOOK/log
 /BOOK/sed.tmp
 /BOOK/shellScript
+/BOOK/config.sub.find
 /sysBuild/
 /scripts/configs/OOM/*.oom
 /BOOK/bsp.ent
+# /config is a trash bin
 /config/*
 /elfs.web/*
 /Ticket*/*
 /Issue*/*
+/scripts/BLFS/sources
+/scripts/BLFS/usr
+/scripts/BLFS/blfs-book-7.4-html/
+/scripts/BLFS/tmp
+
 
