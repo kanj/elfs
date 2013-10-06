@@ -56,7 +56,7 @@ gzip -9 ${CLFS}/boot/vmlinux</userinput></screen>
   <sect2 role="configuration">
     <title>Configuration of Colo</title>
 
-  <para os="e">Your shiny new CLFS system is almost complete. One of the last
+  <para os="e">Your shiny new ELFS system is almost complete. One of the last
   things to do is ensure you can boot it. The instructions below apply
   only to Cobalt RaQ1/RaQ2/Cube2 servers. Information on <quote>boot
   loading</quote> for other architectures should be available in the

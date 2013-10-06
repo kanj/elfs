@@ -10,7 +10,7 @@
 
   <title>Package Management</title>
 
-  <para>Package Management is an often-requested addition to the CLFS Book. A
+  <para>Package Management is an often-requested addition to the ELFS Book. A
   Package Manager allows tracking the installation of files making it easy to
   remove and upgrade packages. Before you begin to wonder, NO&mdash;this section
   will not talk about nor recommend any particular package manager. What it
@@ -20,7 +20,7 @@
   issues that may arise when upgrading packages.</para>
 
   <para>Some reasons why no specific package manager is recommended in
-  CLFS or BLFS include:</para>
+  ELFS or BLFS include:</para>
 
   <itemizedlist>
     <listitem>
@@ -43,7 +43,7 @@
     <title>Upgrade Issues</title>
 
     <para>A Package Manager makes it easy to upgrade to newer versions when they
-    are released. Generally the instructions in the CLFS and BLFS Book can be
+    are released. Generally the instructions in the ELFS and BLFS Book can be
     used to upgrade to the newer versions. Here are some points that you should
     be aware of when upgrading packages, especially on a running system.</para>
 
@@ -51,7 +51,7 @@
       <listitem>
         <para>If one of the toolchain packages (Glibc, GCC or Binutils) needs
         to be upgraded to a newer minor version, it is safer to
-        rebuild CLFS. Though you <emphasis>may</emphasis> be able to get by
+        rebuild ELFS. Though you <emphasis>may</emphasis> be able to get by
         rebuilding all the packages in their dependency order, we do not
         recommend it. For example, if glibc-2.2.x needs to be updated to
         glibc-2.3.x, it is safer to rebuild. For micro version updates, a
@@ -221,7 +221,7 @@ make DESTDIR=/usr/pkg/libfoo/1.1 install</userinput></screen>
       url="http://lsbbook.gforge.freestandards.org/package.html#RPM">Linux
       Standard Base Specification</ulink>), pkg-utils, Debian's apt, and
       Gentoo's Portage system.  A hint describing how to adopt this style of
-      package management for CLFS systems is located at <ulink
+      package management for ELFS systems is located at <ulink
       url="&hints-root;/fakeroot.txt"/>.</para>
 
     </sect3>

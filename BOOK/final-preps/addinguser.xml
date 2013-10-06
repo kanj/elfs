@@ -8,7 +8,7 @@
 <sect1 id="ch-final-preps-addinguser">
   <?dbhtml filename="addinguser.html"?>
 
-  <title>Adding the CLFS User</title>
+  <title>Adding the ELFS User</title>
 
   <para>When logged in as user <systemitem class="username">root</systemitem>,
   making a single mistake can damage or destroy a system. Therefore, we

@@ -10,13 +10,13 @@
 
   <title>Setting Up the Environment</title>
 
-  
+
 
 <screen os="b"><userinput>export ${CLFS}=/mnt/clfs</userinput></screen>
 
   <para os="c">To ensure a clean separation between host and build environments 
   we will create a custom .bashrc file. This file will be read when invoking a non-login
-  instance of bash. </para>
+  instance of bash.   </para>
 
   <para os="d">The new instance of the shell is a <emphasis>non-login</emphasis>
   shell, which does not read the <filename>/etc/profile</filename> or
@@ -29,7 +29,7 @@
 umask 022
 CLFS=/mnt/clfs
 HOME=/mnt/clfs
-PS1='clfs-\u:\w\$'
+PS1='clfs-\u:\w\$ '
 LC_ALL=POSIX
 PATH=${CLFS}/cross-tools/bin:/bin:/usr/bin
 export CLFS LC_ALL PATH</literal>
@@ -84,5 +84,18 @@ To access the special environment launch the bash shell as follows:
 To use this environment in a shell script do as follows:    
     export CLFS=/mnt/clfs ; source ${CLFS}/.bashrc
 </screen>
+
+<screen os="m"> 
+The following script will make it easier to open a shell with the desired environment:
+
+cat &gt; ${CLFS}/launch.sh &lt;&lt; "EOF"
+<literal>#!/bin/sh
+
+bash --rcfile `dirname $0`/.bashrc</literal>
+EOF
+
+chmod +x ${CLFS}/launch.sh
+</screen>
+
 
 </sect1>

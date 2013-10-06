@@ -14,7 +14,7 @@
   <xref linkend="chapter-cross-tools"/> will be installed under
   <filename class="directory">${CLFS}/cross-tools</filename> to keep them
   separate from the host programs. The programs compiled here are
-  cross-tools and will not be a part of the final CLFS system or the
+  cross-tools and will not be a part of the final ELFS system or the
   temp-system. By keeping these programs in a separate directory, they
   can easily be discarded later after their use.</para>
 

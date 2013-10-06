@@ -28,7 +28,7 @@ A good overview of ABIs is provided by the following wikipedia entry:
 echo export CLFS_ABI=\""${CLFS_ABI}\"" &gt;&gt; ~/.bashrc</userinput></screen>
 
   <para os="c">The following table gives the entires for the different ABI's 
-  that CLFS Embedded supports. Make sure you select one for your build, this
+  that ELFS Embedded supports. Make sure you select one for your build, this
   will ensure capatibilty of your build with your target architecture.</para>
 </sect2>
 

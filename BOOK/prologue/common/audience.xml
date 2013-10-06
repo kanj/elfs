@@ -17,28 +17,28 @@
   and install an existing one?</quote> That is a good question and is the
   impetus for this section of the book.</para>
 
-  <para>One important reason for the existence of CLFS is to help people
-  understand how a Linux system works.  Building an CLFS system helps
+  <para>One important reason for the existence of ELFS is to help people
+  understand how a Linux system works.  Building an ELFS system helps
   demonstrate what makes Linux tick, and how things work together and
   depend on each other. One of the best things this learning experience
   provides is the ability to customize Linux to your own
   tastes and needs.</para>
 
-  <para>A key benefit of CLFS is that it allows users to have more control
+  <para>A key benefit of ELFS is that it allows users to have more control
   over their system without any reliance on a Linux implementation designed
-  by someone else.  With CLFS, <emphasis>you</emphasis> are in the driver's
+  by someone else.  With ELFS, <emphasis>you</emphasis> are in the driver's
   seat and dictate every aspect of the system, such as the directory layout
   and bootscript setup. You also dictate where, why, and how programs are
   installed.</para>
 
-  <para>Another benefit of CLFS is the ability to create a very compact
+  <para>Another benefit of ELFS is the ability to create a very compact
   Linux system. When installing a regular distribution, one is often forced
   to include several programs which are probably never used. These programs
-  waste disk space or CPU cycles.  It is not difficult to build an CLFS
+  waste disk space or CPU cycles.  It is not difficult to build an ELFS
   system of less than 100 megabytes (MB), which is substantially smaller
   than the majority of existing installations.  Does this still sound like a
   lot of space? A few of us have been working on creating a very small
-  embedded CLFS system. We successfully built a system that was specialized
+  embedded ELFS system. We successfully built a system that was specialized
   to run the Apache web server with approximately 8MB of disk space used.
   Further stripping could bring this down to 5 MB or less. Try that with a
   regular distribution! This is only one of the many benefits of designing
@@ -46,17 +46,17 @@
 
   <para>We could compare Linux distributions to a hamburger purchased at
   a fast-food restaurant&mdash;you have no idea what might be in what you
-  are eating. CLFS, on the other hand, does not give you a hamburger.
-  Rather, CLFS provides the recipe to make the exact hamburger desired.
+  are eating. ELFS, on the other hand, does not give you a hamburger.
+  Rather, ELFS provides the recipe to make the exact hamburger desired.
   This allows users to review the recipe, omit unwanted ingredients, and
   add your own ingredients to enhance the flavor of the burger. When you
   are satisfied with the recipe, move on to preparing it. It can be made
   to exact specifications&mdash;broil it, bake it, deep-fry it, or
   barbecue it.</para>
 
-  <para>Another analogy that we can use is that of comparing CLFS with a
-  finished house. CLFS provides the skeletal plan of a house, but it is up
-  to you to build it. CLFS maintains the freedom to adjust plans throughout
+  <para>Another analogy that we can use is that of comparing ELFS with a
+  finished house. ELFS provides the skeletal plan of a house, but it is up
+  to you to build it. ELFS maintains the freedom to adjust plans throughout
   the process, customizing it to the needs and preferences of the user.</para>
 
   <para>Security is an additional advantage of a custom built Linux system.
@@ -67,7 +67,7 @@
   yourself, you have no guarantee that the new binary package was built
   correctly and adequately fixes the problem.</para>
 
-  <para>The goal of Cross Linux From Scratch is to build a complete and
+  <para>The goal of Embedded Linux From Source is to build a complete and
   usable foundation-level system. Readers who do not wish to build their
   own Linux system from scratch may not benefit from the information in this
   book. If you only want to know what happens while the computer boots,
@@ -80,9 +80,9 @@
   Consider your objective. If you wish to build a Linux system and learn
   along the way, this book is your best choice.</para>
 
-  <para>There are too many good reasons to build your own CLFS system to
+  <para>There are too many good reasons to build your own ELFS system to
   list them all here. This section is only the tip of the iceberg. As
-  you continue in your CLFS experience, you will find the power that
+  you continue in your ELFS experience, you will find the power that
   information and knowledge truly bring.</para>
 
 </sect1>

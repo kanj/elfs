@@ -5,12 +5,12 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-workingDir-introduction">
+<sect1 id="ch-createDir-introduction">
   <?dbhtml filename="introduction.html"?>
 
   <title>Introduction</title>
 
-  <para>In this chapter, the working directory where the CLFS system is
+  <para>In this chapter, the working directory where the ELFS system is
   prepared will be created. </para>
 
   

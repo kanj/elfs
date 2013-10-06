@@ -8,7 +8,7 @@
 <sect1 id="ch-bootable-chowning">
   <?dbhtml filename="chowning.html"?>
 
-  <title>Changing the Ownership of the CLFS System</title>
+  <title>Changing the Ownership of the ELFS System</title>
 
   <para>Throughout the book, every package has been compiled and installed as
   the <systemitem class="username">clfs</systemitem> user. The final system
@@ -25,7 +25,7 @@
   </important>
 
   <para>Make <systemitem class="username">root</systemitem> the owner of the
-  entire CLFS system:</para>
+  entire ELFS system:</para>
 
 <screen><userinput>
 

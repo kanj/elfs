@@ -18,26 +18,20 @@
     <title/>
 
     <para>The CLFS-Bootscripts package contains a set of scripts to
-    start/stop the CLFS system at bootup/shutdown.</para>
+    start/stop the ELFS system at bootup/shutdown.</para>
 
   </sect2>
 
   <sect2 role="installation">
     <title>Installation of CLFS-Bootscripts</title>
 
-    <important>
-
-      <para>Unlike other chapters, after installing the bootscripts, do not 
-      delete the bootscripts source directory.  The bootscripts source directory
-      may be needed later.</para>
-
-    </important>
+    
 
     <para>Install the package:</para>
 
 <screen><userinput>make DESTDIR=${CLFS} install-bootscripts</userinput></screen>
 
-    <para>The CLFS startup bootscript is <filename>/etc/rc.d/startup</filename>,
+    <para>The ELFS startup bootscript is <filename>/etc/rc.d/startup</filename>,
     but BusyBox will look for <filename>/etc/init.d/rcS</filename> to use as its
     startup script.  To ensure BusyBox finds the startup script, create the 
     <filename>${CLFS}/etc/init.d</filename> directory and a symlink:</para>

@@ -42,7 +42,7 @@
     Please note that the udev bootscript requires "rtc" and "tmpfs" to be
     enabled and built into the kernel, not as modules. BLFS has
     some information regarding particular kernel configuration requirements of
-    packages outside of CLFS at <ulink
+    packages outside of ELFS at <ulink
     url="&blfs-root;view/svn/longindex.html#kernel-config-index"/>:</para>
 
     <note os="f"><para>Since we are building for an embedded system we need to make sure
@@ -127,7 +127,7 @@
       <para>Some kernel documentation recommends creating a symlink from
       <filename class="symlink">/usr/src/linux</filename> pointing to the
       kernel source directory. This is specific to kernels prior to the
-      2.6 series and <emphasis>must not</emphasis> be created on an CLFS
+      2.6 series and <emphasis>must not</emphasis> be created on an ELFS
       system as it can cause problems for packages you may wish to build
       once your base CLFS system is complete.</para>
 

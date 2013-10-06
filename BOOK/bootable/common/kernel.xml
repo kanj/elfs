@@ -56,7 +56,7 @@
     should be without modules.</para></note>
 
     <screen os="g"><userinput>
-    cp ${CLFS}/boot/config-&linux-version; .config
+    cp ${ELFS}/boot/config-&linux-version; .config
     </userinput></screen>
 
     <para os="h">Alternatively, <command>make menuconfig</command> may be more
@@ -136,9 +136,9 @@
       <para>Some kernel documentation recommends creating a symlink from
       <filename class="symlink">/usr/src/linux</filename> pointing to the
       kernel source directory. This is specific to kernels prior to the
-      2.6 series and <emphasis>must not</emphasis> be created on an CLFS
+      2.6 series and <emphasis>must not</emphasis> be created on an ELFS
       system as it can cause problems for packages you may wish to build
-      once your base CLFS system is complete.</para>
+      once your base ELFS system is complete.</para>
 
     </warning>
 

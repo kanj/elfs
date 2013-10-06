@@ -20,7 +20,7 @@
 
 
   <para os="c">The following table gives the entries for the different ABI's 
-  that CLFS Embedded supports. Make sure you select one for your build, this
+  that ELFS Embedded supports. Make sure you select one for your build, this
   will ensure compatability of your build with your target platform.</para>
 
   <table>

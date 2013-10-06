@@ -10,7 +10,7 @@
 
   <title>Prerequisites</title>
 
-  <para>Building a CLFS system is not a simple task. It requires a certain
+  <para>Building a ELFS system is not a simple task. It requires a certain
   level of existing knowledge of Unix system administration in order to
   resolve problems, and correctly execute the commands listed. In particular,
   as an absolute minimum, the reader should already have the ability to use
@@ -21,13 +21,13 @@
   the Cross LFS process and the host operating systems in use is also
   required.</para>
 
-  <para>Because the CLFS book assumes <emphasis>at least</emphasis> this basic
+  <para>Because the ELFS book assumes <emphasis>at least</emphasis> this basic
   level of skill, the various CLFS support forums are unlikely to be able to
   provide you with much assistance. Your questions regarding such basic knowledge
-  will likely go unanswered, or you will be referred to the CLFS essential
+  will likely go unanswered, or you will be referred to the ELFS essential
   pre-reading list.</para>
 
-  <para>Before building a CLFS system, we recommend reading the following
+  <para>Before building a ELFS system, we recommend reading the following
   HOWTOs:</para>
 
   <itemizedlist>

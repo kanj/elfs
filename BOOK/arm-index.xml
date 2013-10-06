@@ -41,7 +41,7 @@
   <part id="part4">
     <?dbhtml filename="part4.html"?>
 
-    <title>Building the CLFS System</title>
+    <title>Building the ELFS System</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="final-system/arm-chapter.xml"/>
     <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="system-build/arm-chapter.xml"/>

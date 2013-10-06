@@ -52,6 +52,8 @@ sed -i 's/# CONFIG_BLK_DEV_INITRD is not set/CONFIG_BLK_DEV_INITRD=y/g' .config
 
 sed -i 's/# CONFIG_INPUT_KEYBOARD is not set/CONFIG_INPUT_KEYBOARD=y/g' .config 
 
+sed -i -e s/CPU_LITTLE_ENDIAN=/CPU_BIG_ENDIAN=/g -e s/'CPU_BIG_ENDIAN is'/'CPU_LITTLE_ENDIAN is'/g .config
+
 yes "" | make ARCH=${CLFS_ARCH} oldconfig
 
 </userinput></screen>

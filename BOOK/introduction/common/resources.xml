@@ -21,7 +21,7 @@
   <sect2 id="ch-intro-faq">
     <title>FAQ</title>
 
-    <para>If during the building of the CLFS system you encounter any
+    <para>If during the building of the ELFS system you encounter any
     errors, have any questions, or think there is a typo in the book,
     please start by consulting the Frequently Asked Questions (FAQ)
     that is located at <ulink url="&clfs-wiki;"/>.</para>
