@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      14.1.&nbsp;Introduction
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20131006-arm">
+    <div class="navheader">
+      <h4>
+        Embedded Linux from Source - Version GIT-0.0.1-20131006-arm
+      </h4>
+      <h3>
+        Chapter&nbsp;14.&nbsp;Beyond Introduction
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="chapter.html" title=
+          "Beyond Introduction">Prev</a>
+          <p>
+            Beyond Introduction
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="packages.html" title=
+          "BLFS Support Packages">Next</a>
+          <p>
+            BLFS Support Packages
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;14.&nbsp;Beyond Introduction">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20131006-arm">Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-bclfs-introduction" name="ch-bclfs-introduction"></a>14.1.
+        Introduction
+      </h1>
+      <p>
+        Now that we have our base system built, we may add some optional
+        additional functionality.
+      </p>
+      <p>
+        In this section, we explain how to make use of the Beyond Linux From
+        Scratch project to add additional functionality. This will be done by
+        updating the shell environment and by adding (select) packages that
+        are part of the LFS build. Support for additional packages will come
+        thru added support for different build systems, and by supporting
+        pre-requisites that are part of the LFS/CLFS system but not part of
+        the ELFS minimal root system. The most common build system is the GNU
+        Build System (GBS), the next being CMake. For missing pre-requisites
+        we will need to build the libstdc++ library, and ncurses.
+      </p>
+      <p>
+        A build system is a set of tools that facilitates turning source code
+        into an executable. We have been using the GNU Build System for a
+        number of packages alaready. In the next section we will adjust the
+        standard environment so that the same configure and make commands in
+        the BLFS bok have the desired effect when using ELFS.
+      </p>
+      <p>
+        For a list of packages and information about its build system and
+        added pre-requisites see: <a class="ulink" href=
+        "http://kanj.github.io/elfs/book/index.html">http://kanj.github.io/elfs/book/index.html</a>.
+      </p>
+      <p>
+        In the ideal case you would enter the commands as given in BLFS for
+        configuration and compilation. For installation you would execute the
+        commands as the standard user, but then repeat steps in section 12 to
+        create a new image. Results given in the BLFS compatability is based
+        on this approach.
+      </p>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="chapter.html" title=
+          "Beyond Introduction">Prev</a>
+          <p>
+            Beyond Introduction
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="packages.html" title=
+          "BLFS Support Packages">Next</a>
+          <p>
+            BLFS Support Packages
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;14.&nbsp;Beyond Introduction">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20131006-arm">Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      14.3.&nbsp;Cross GCC-4.6.4 - Static
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20130914-arm">
+    <div class="navheader">
+      <h4>
+        Embedded Linux from Source - Version GIT-0.0.1-20130914-arm
+      </h4>
+      <h3>
+        Chapter&nbsp;14.&nbsp;Beyond Introduction
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="updateEnvironment.html" title=
+          "Update .bashrc">Prev</a>
+          <p>
+            Update .bashrc
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="../part7.html" title="Appendices">Next</a>
+          <p>
+            Appendices
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;14.&nbsp;Beyond Introduction">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20130914-arm">Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-BLFS-gcc-static" name="ch-BLFS-gcc-static"></a>14.3. Cross
+        GCC-4.6.4 - Static
+      </h1>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          14.3.1. Installation of Cross GCC Compiler with Static libgcc and
+          no Threads
+        </h2>
+        <div class="admon important">
+          <img alt="[Important]" src="../images/important.png" />
+          <h3>
+            Important
+          </h3>
+          <p>
+            To build a *-*-musl* target apply the following patch:
+          </p>
+          <pre class="userinput">
+<kbd class="command">
+patch -p1 &lt; ../gcc-4.6.4-musl-1.diff
+</kbd>
+</pre>
+        </div>
+        <p>
+          The GCC documentation recommends building GCC outside of the source
+          directory in a dedicated build directory:
+        </p>
+        <pre class="userinput">
+<kbd class="command">mkdir -v ../gcc-build
+cd ../gcc-build</kbd>
+</pre>
+        <p>
+          Prepare GCC for compilation:
+        </p>
+        <pre class="userinput">
+<kbd class="command">AR=ar LDFLAGS="-Wl,-rpath,${CLFS}/cross-tools/lib" \
+  ../gcc-4.6.4/configure --prefix=${CLFS}/cross-tools \
+  --build=${CLFS_HOST} --host=${CLFS_HOST} --target=${CLFS_TARGET} \
+  --with-sysroot=${CLFS} --disable-nls  --disable-shared \
+  --with-mpfr=${CLFS}/cross-tools --with-gmp=${CLFS}/cross-tools \
+  --with-mpc=${CLFS}/cross-tools --without-headers --with-newlib \
+  --disable-decimal-float --disable-libgomp --disable-libmudflap \
+  --disable-libssp --disable-threads --enable-languages=c,c++ \
+  --disable-multilib --with-abi=${CLFS_ABI} --with-arch=${CLFS_ARM_ARCH} \
+  --with-mode=${CLFS_ARM_MODE} --with-float=${CLFS_FLOAT} --with-fpu=${CLFS_FPU}  </kbd>
+</pre>
+        <div class="variablelist">
+          <p class="title">
+            <b>The meaning of the configure options:</b>
+          </p>
+          <dl>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--prefix=${CLFS}/cross-tools</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This tells the configure script to prepare to install the
+                package in the <code class=
+                "filename">${CLFS}/cross-tools</code> directory.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--build=${CLFS_HOST}</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This tells the configure script the triplet to use to build
+                GCC. It will use ${CLFS_HOST} as that's where it's being
+                built.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--host=${CLFS_HOST}</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This tells the configure script the triplet of the machine
+                GCC will be executed on when actually cross compiling. It
+                will use ${CLFS_HOST} as that's where GCC will execute when
+                cross compiling software later.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--target=${CLFS_TARGET}</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This tells the configure script the triplet of the machine
+                GCC will build executables for. It will use ${CLFS_TARGET} so
+                that software compiled with this version of GCC can be
+                executed on the embedded machine target.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--with-sysroot=${CLFS}</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This tells configure that ${CLFS} is going to be the root of
+                our system. It will now use the specified sysroot, ${CLFS},
+                as a prefix of the default search paths.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--disable-nls</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This disables internationalization as i18n is not needed for
+                the cross-compile tools.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--disable-shared</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                Disables the creation of the shared libraries.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--with-mpfr=${CLFS}/cross-tools</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                Tells configure where to find the <code class=
+                "filename">lib</code> and <code class=
+                "filename">include</code> directories that contain MPFR which
+                was built earlier.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--with-gmp=${CLFS}/cross-tools</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                Tells configure where to find the <code class=
+                "filename">lib</code> and <code class=
+                "filename">include</code> directories that contain GMP which
+                was built earlier.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--with-mpc=${CLFS}/cross-tools</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                Tells configure where to find the <code class=
+                "filename">lib</code> and <code class=
+                "filename">include</code> directories that contain MPC which
+                was built earlier.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--without-headers</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                Tells configure to not use any headers from any C libraries.
+                This is needed as we haven't yet built the C library and to
+                prevent influence from the host environment.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--with-newlib</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                Tells configure to build libgcc without needing any C
+                libraries.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--disable-decimal-float</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                Tells configure to disable IEEE 754-2008 decimal floating
+                point support. Decimal floating point support isn't needed
+                yet.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--disable-libgomp</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                Tells configure to not build the GOMP run-time libraries.
+                GOMP is the GNU implementation of OpenMP, a API for
+                shared-memory parallel programming.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--disable-libmudflap</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                Tells configure to not build libmudflap. Mudflap is a library
+                that can be used to help check for proper pointer usage.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--disable-libssp</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                Tells configure not to build run-time libraries for stack
+                smashing detection.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--disable-threads</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This will prevent GCC from looking for the multi-thread
+                include files, since they haven't been created for this
+                architecture yet. GCC will be able to find the multi-thread
+                information after the glib headers are created.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--enable-languages=c</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This option ensures that only the C compiler is built.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--disable-multilib</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This option specifies that multiple target libraries should
+                not be built.
+              </p>
+            </dd>
+          </dl>
+        </div>
+        <div class="variablelist">
+          <dl>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--with-abi=${CLFS_ABI}</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This option sets the ABI selected earlier.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--with-arch=${CLFS_ARM_ARCH}</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This option sets the ARM architecture selected earlier.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--with-mode=${CLFS_ARM_MODE}</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This option sets the ARM mode (arm or thumb) selected
+                earlier.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--with-float=${CLFS_FLOAT}</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This option sets the floating point mode selected earlier.
+              </p>
+            </dd>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--with-fpu=${CLFS_FPU}</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This option sets the hardware floating point (emulation) type
+                selected earlier.
+              </p>
+            </dd>
+          </dl>
+        </div>
+        <p>
+          Continue with compiling the package:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make all-gcc all-target-libgcc</kbd>
+</pre>
+        <p>
+          Install the package:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make install-gcc install-target-libgcc</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <p>
+          Details on this package are located in <a class="xref" href=
+          "../cross-tools/gcc-static.html#contents-gcc" title=
+          "6.10.2.&nbsp;Contents of GCC">Section&nbsp;6.10.2, &ldquo;Contents
+          of GCC.&rdquo;</a>
+        </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="updateEnvironment.html" title=
+          "Update .bashrc">Prev</a>
+          <p>
+            Update .bashrc
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="../part7.html" title="Appendices">Next</a>
+          <p>
+            Appendices
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;14.&nbsp;Beyond Introduction">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20130914-arm">Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

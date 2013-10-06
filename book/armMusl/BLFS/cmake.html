@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content=
+    "application/xhtml+xml; charset=iso-8859-1" />
+    <title>
+      14.4.&nbsp;Installation of CMake-2.8.11.2
+    </title>
+    <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
+    "text/css" media="print" />
+  </head>
+  <body class="clfs" id="clfs-GIT-0.0.1-20131006-arm">
+    <div class="navheader">
+      <h4>
+        Embedded Linux from Source - Version GIT-0.0.1-20131006-arm
+      </h4>
+      <h3>
+        Chapter&nbsp;14.&nbsp;Beyond Introduction
+      </h3>
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="gnuBuild.html" title=
+          "GNU Build System">Prev</a>
+          <p>
+            GNU Build System
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="gcc-final.html" title=
+          "GCC-4.6.4 - Cross Compiler Final">Next</a>
+          <p>
+            GCC-4.6.4 - Cross Compiler Final
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;14.&nbsp;Beyond Introduction">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20131006-arm">Home</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap" lang="en" xml:lang="en">
+      <h1 class="sect1">
+        <a id="ch-BLFS-cmake" name="ch-BLFS-cmake"></a>14.4. Installation of
+        CMake-2.8.11.2
+      </h1>
+      <div class="package" lang="en" xml:lang="en">
+        <p>
+          The CMake package contains a modern toolset used for generating
+          Makefiles. It is a successor of the auto-generated configure script
+          and aims to be platform- and compiler-independent. A significant
+          user of CMake is KDE since version 4.
+        </p>
+      </div>
+      <div class="installation" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          14.4.1. Installation of CMake
+        </h2>
+        <p>
+          CMake can be installed using an existing version of CMake or
+          relying on a bootstrap version. We will use the bootstrap version.
+          Prepare CMake for compilation:
+        </p>
+        <pre class="userinput">
+<kbd class="command">
+
+unset host_alias CC CXX CFLAGS DESTDIR
+
+export DESTDIR=~/cross-tools
+
+
+./bootstrap --prefix=/usr       \
+            --mandir=/share/man \
+            --no-system-libs \
+            --docdir=/share/doc/cmake-2.8.11.2</kbd>
+</pre>
+        <div class="variablelist">
+          <p class="title">
+            <b>The meaning of the configure options:</b>
+          </p>
+          <dl>
+            <dt>
+              <span class="term"><em class=
+              "parameter"><code>--no-system-libs.</code></em></span>
+            </dt>
+            <dd>
+              <p>
+                This switch forces the build system to build versions Zlib,
+                Bzip2, cURL, Expat and libarchive, rather than use the
+                installed version.
+              </p>
+            </dd>
+          </dl>
+        </div>
+        <p>
+          Continue with compiling the package:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make </kbd>
+</pre>
+        <p>
+          Install the package:
+        </p>
+        <pre class="userinput">
+<kbd class="command">make install</kbd>
+</pre>
+        <p>
+          Reset standard environment:
+        </p>
+        <pre class="userinput">
+<kbd class="command">source ~/.bashrc</kbd>
+</pre>
+      </div>
+      <div class="content" lang="en" xml:lang="en">
+        <h2 class="sect2">
+          <a id="contents-CMake" name="contents-CMake"></a>14.4.2. Contents
+          of GCC
+        </h2>
+        <div class="segmentedlist">
+          <div class="seglistitem">
+            <div class="seg">
+              <strong class="segtitle">Installed programs:</strong>
+              <span class="segbody">ccmake, cmake, cmake-gui, cpack and
+              ctest</span>
+            </div>
+            <div class="seg">
+              <strong class="segtitle">Installed libraries:</strong>
+              <span class="segbody">None</span>
+            </div>
+          </div>
+        </div>
+        <div class="variablelist">
+          <h3>
+            Short Descriptions
+          </h3>
+          <table border="0">
+            <col align="left" valign="top" />
+            <tbody>
+              <tr>
+                <td>
+                  <p>
+                    <a id="ccmake" name="ccmake"></a><span class=
+                    "term"><span class=
+                    "command"><strong>ccmake</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    is a curses based interactive frontend to cmake.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    <a id="cmake" name="cmake"></a><span class=
+                    "term"><span class=
+                    "command"><strong>cmake</strong></span></span>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    is the makefile generator.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <ul>
+        <li class="prev">
+          <a accesskey="p" href="gnuBuild.html" title=
+          "GNU Build System">Prev</a>
+          <p>
+            GNU Build System
+          </p>
+        </li>
+        <li class="next">
+          <a accesskey="n" href="gcc-final.html" title=
+          "GCC-4.6.4 - Cross Compiler Final">Next</a>
+          <p>
+            GCC-4.6.4 - Cross Compiler Final
+          </p>
+        </li>
+        <li class="up">
+          <a accesskey="u" href="chapter.html" title=
+          "Chapter&nbsp;14.&nbsp;Beyond Introduction">Up</a>
+        </li>
+        <li class="home">
+          <a accesskey="h" href="../index.html" title=
+          "Embedded Linux from Source - Version GIT-0.0.1-20131006-arm">Home</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
