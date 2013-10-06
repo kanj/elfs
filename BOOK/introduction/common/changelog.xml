@@ -35,6 +35,16 @@
       </itemizedlist>
     </listitem>
 -->
+    <listitem>
+      <para>October 6, 2013</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Updates throughout book to distinguish the ELFS and CLFS projects. Updated kernel to LTS 3.10.x version. Updated Musl to 0.9.14. Added chapter on BLFS support.
+         </para>
+        </listitem>
+      </itemizedlist>
+      </listitem> 
+
 
     <listitem>
       <para>Sept 28, 2013</para>
