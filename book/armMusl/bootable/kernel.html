@@ -5,20 +5,20 @@
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=iso-8859-1" />
     <title>
-      9.3.&nbsp;Linux-2.6.38.2
+      9.3.&nbsp;Linux-3.10.13
     </title>
     <link rel="stylesheet" href="../stylesheets/lfs.css" type="text/css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
     <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
     "text/css" media="print" />
   </head>
-  <body class="clfs" id="clfs-GIT-0.0.1-20130928-arm">
+  <body class="clfs" id="clfs-GIT-0.0.1-20131006-arm">
     <div class="navheader">
       <h4>
-        Embedded Linux from Source - Version GIT-0.0.1-20130928-arm
+        Embedded Linux from Source - Version GIT-0.0.1-20131006-arm
       </h4>
       <h3>
-        Chapter&nbsp;9.&nbsp;Making the CLFS System Bootable
+        Chapter&nbsp;9.&nbsp;Making the ELFS System Bootable
       </h3>
       <ul>
         <li class="prev">
@@ -37,18 +37,18 @@
         </li>
         <li class="up">
           <a accesskey="u" href="chapter.html" title=
-          "Chapter&nbsp;9.&nbsp;Making the CLFS System Bootable">Up</a>
+          "Chapter&nbsp;9.&nbsp;Making the ELFS System Bootable">Up</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130928-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20131006-arm">Home</a>
         </li>
       </ul>
     </div>
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-bootable-kernel" name="ch-bootable-kernel"></a>9.3.
-        Linux-2.6.38.2
+        Linux-3.10.13
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
@@ -102,7 +102,7 @@
         </div>
         <pre class="userinput">
 <kbd class="command">
-cp ${CLFS}/boot/config-2.6.38.2 .config
+cp ${CLFS}/boot/config-3.10.13 .config
 
 </kbd>
 </pre>
@@ -172,7 +172,7 @@ cp ${CLFS}/boot/config-2.6.38.2 .config
         </p>
         <pre class="userinput">
 <kbd class=
-"command">cp arch/${CLFS_ARCH}/boot/zImage ${CLFS}/boot/clfskernel-2.6.38.2</kbd>
+"command">cp arch/${CLFS_ARCH}/boot/zImage ${CLFS}/boot/clfskernel-3.10.13</kbd>
 </pre>
         <p>
           <code class="filename">System.map</code> is a symbol file for the
@@ -182,7 +182,7 @@ cp ${CLFS}/boot/config-2.6.38.2 .config
           map file:
         </p>
         <pre class="userinput">
-<kbd class="command">cp System.map ${CLFS}/boot/System.map-2.6.38.2</kbd>
+<kbd class="command">cp System.map ${CLFS}/boot/System.map-3.10.13</kbd>
 </pre>
         <p>
           If we compiled our kernel with modules and we made sure
@@ -192,8 +192,8 @@ cp ${CLFS}/boot/config-2.6.38.2 .config
         </p>
         <pre class="userinput">
 <kbd class=
-"command">${CLFS}/cross-tools/bin/depmod.pl -F ${CLFS}/boot/System.map-2.6.38.2 \
-    -b ${CLFS}/lib/modules/2.6.38.2</kbd>
+"command">${CLFS}/cross-tools/bin/depmod.pl -F ${CLFS}/boot/System.map-3.10.13 \
+    -b ${CLFS}/lib/modules/3.10.13</kbd>
 </pre>
         <p>
           The kernel configuration file <code class="filename">.config</code>
@@ -203,7 +203,7 @@ cp ${CLFS}/boot/config-2.6.38.2 .config
           is a good idea to keep this file for future reference:
         </p>
         <pre class="userinput">
-<kbd class="command">cp .config ${CLFS}/boot/config-2.6.38.2</kbd>
+<kbd class="command">cp .config ${CLFS}/boot/config-3.10.13</kbd>
 </pre>
         <div class="admon warning">
           <img alt="[Warning]" src="../images/warning.png" />
@@ -215,8 +215,8 @@ cp ${CLFS}/boot/config-2.6.38.2 .config
             <code class="filename">/usr/src/linux</code> pointing to the
             kernel source directory. This is specific to kernels prior to the
             2.6 series and <span class="emphasis"><em>must not</em></span> be
-            created on an CLFS system as it can cause problems for packages
-            you may wish to build once your base CLFS system is complete.
+            created on an ELFS system as it can cause problems for packages
+            you may wish to build once your base ELFS system is complete.
           </p>
         </div>
         <p>
@@ -320,11 +320,11 @@ cp ${CLFS}/boot/config-2.6.38.2 .config
         </li>
         <li class="up">
           <a accesskey="u" href="chapter.html" title=
-          "Chapter&nbsp;9.&nbsp;Making the CLFS System Bootable">Up</a>
+          "Chapter&nbsp;9.&nbsp;Making the ELFS System Bootable">Up</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130928-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20131006-arm">Home</a>
         </li>
       </ul>
     </div>

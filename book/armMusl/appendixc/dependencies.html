@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="../stylesheets/lfs-print.css" type=
     "text/css" media="print" />
   </head>
-  <body class="clfs" id="clfs-GIT-0.0.1-20130928-arm">
+  <body class="clfs" id="clfs-GIT-0.0.1-20131006-arm">
     <div class="navheader">
       <h4>
-        Embedded Linux from Source - Version GIT-0.0.1-20130928-arm
+        Embedded Linux from Source - Version GIT-0.0.1-20131006-arm
       </h4>
       <h3>
         Part&nbsp;VII.&nbsp;Appendices
@@ -41,7 +41,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130928-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20131006-arm">Home</a>
         </li>
       </ul>
     </div>
@@ -50,13 +50,13 @@
         <a id="appendixc" name="appendixc"></a>C. Dependencies
       </h1>
       <p>
-        Every package built in CLFS relies on one or more other packages in
+        Every package built in ELFS relies on one or more other packages in
         order to build and install properly. Some packages even participate
         in circular dependencies, that is, the first package depends on the
         second which in turn depends on the first. Because of these
-        dependencies, the order in which packages are built in CLFS is very
+        dependencies, the order in which packages are built in ELFS is very
         important. The purpose of this page is to document the dependencies
-        of each package built in CLFS. For each package we build, we have
+        of each package built in ELFS. For each package we build, we have
         listed three types of dependencies. The first lists what other
         packages need to be available in order to compile and install the
         package in question. The second lists what packages, in addition to
@@ -67,8 +67,7 @@
         packages will hardcode paths to binaries within their scripts. If not
         built in a certain order, this could result in paths of
         /tools/bin/[binary] being placed inside scripts installed to the
-        final system. This is obviously not desirable. #x{3C} img
-        src="../images/caution.png" #x{3E}
+        final system. This is obviously not desirable.
       </p>
       <h2>
         <a id="binutils-dep" name="binutils-dep"></a>Binutils
@@ -288,7 +287,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Embedded Linux from Source - Version GIT-0.0.1-20130928-arm">Home</a>
+          "Embedded Linux from Source - Version GIT-0.0.1-20131006-arm">Home</a>
         </li>
       </ul>
     </div>
