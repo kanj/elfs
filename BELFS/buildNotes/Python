@@ -1,0 +1,27 @@
+
+Do as regular shell:
+./configure
+
+make python Parser/pgen
+
+mv python hostpython
+
+mv Parser/pgen Parser/hostpgen
+
+make distclean
+
+get patch 
+
+apply patch
+
+patch -p1 < Python-2.7.2-xcompile.patch
+
+do in clfs shell:
+
+./configure  --prefix=/python
+
+make HOSTPYTHON=./hostpython HOSTPGEN=./Parser/hostpgen BLDSHARED="${CLFS_TARGET}-gcc -shared" CROSS_COMPILE=${CLFS_TARGET}- CROSS_COMPILE_TARGET=yes HOSTARCH=${CLFS_TARGET} BUILDARCH=${CLFS_HOST}
+
+make install HOSTPYTHON=./hostpython BLDSHARED="${CLFS_TARGET}-gcc -shared" CROSS_COMPILE=${CLFS_TARGET}- CROSS_COMPILE_TARGET=yes prefix=~/Python-2.7.2/_install
+
+no uninstall grr

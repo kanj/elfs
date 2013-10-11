@@ -1,7 +1,7 @@
 #!/bin/sh
 source `dirname $0`/.bashrc
 
-cd ~/sources/foo-$1
+cd ~/sources/SDL-$1
 ./configure 
 
 case $2 in

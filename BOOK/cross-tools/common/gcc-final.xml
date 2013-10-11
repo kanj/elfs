@@ -16,11 +16,16 @@
     <primary sortas="a-GCC">GCC</primary>
     <secondary>cross tools, final</secondary>
   </indexterm>
+  
+  
+<sect2 role="package">
+    <title>GCC-&gcc-version; - Cross Compiler Final</title>
 
-  <xi:include role="package" xmlns:xi="http://www.w3.org/2003/XInclude"
-  href="gcc-static.xml"
-  xpointer="xpointer(//*[@role='package'])"/>
+    <para>The GCC package contains the GNU compiler collection, which includes
+    the C and C++ compilers.</para>
 
+  </sect2>
+  
   <sect2 role="installation">
     <title>Installation of GCC Cross Compiler</title>
 
@@ -116,17 +121,8 @@
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
-      <varlistentry id="cc">
-        <term><command>cc</command></term>
-        <listitem>
-          <para>The C compiler</para>
-          <indexterm zone="ch-cross-tools-gcc-final cc">
-            <primary sortas="b-cc">cc</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="gcc">
+     
+      <varlistentry id="gcc-final">
         <term><command>gcc</command></term>
         <listitem>
           <para>The C compiler</para>
@@ -136,7 +132,7 @@
         </listitem>
       </varlistentry>
 
-      <varlistentry id="gccbug">
+      <varlistentry id="gccbug-final">
         <term><command>gccbug</command></term>
         <listitem>
           <para>A shell script used to help create useful bug reports</para>
@@ -146,7 +142,7 @@
         </listitem>
       </varlistentry>
 
-      <varlistentry id="gcov">
+      <varlistentry id="gcov-final">
         <term><command>gcov</command></term>
         <listitem>
           <para>A coverage testing tool; it is used to analyze programs to
@@ -157,7 +153,7 @@
         </listitem>
       </varlistentry>
 
-      <varlistentry id="libgcc">
+      <varlistentry id="libgcc-final">
         <term><filename class="libraryfile">libgcc</filename></term>
         <listitem>
           <para>Contains run-time support for <command>gcc</command></para>
@@ -167,7 +163,7 @@
         </listitem>
       </varlistentry>
 
-      <varlistentry id="libmudflap">
+      <varlistentry id="libmudflap-final">
         <term><filename class="libraryfile">libmudflap</filename></term>
         <listitem>
           <para>The libmudflap libraries are used by GCC for instrumenting

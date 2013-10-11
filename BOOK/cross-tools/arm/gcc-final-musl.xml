@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<!-- ARM GCC-final -->
+
+<sect1 id="ch-cross-tools-gcc-final" role="wrap">
+  <?dbhtml filename="gcc-final.html"?>
+
+  <title>Cross GCC-&gcc-version; - final</title>
+
+  <indexterm zone="ch-cross-tools-gcc-final">
+    <primary sortas="a-GCC">GCC</primary>
+    <secondary>cross tools, final</secondary>
+  </indexterm>
+
+   <xi:include  xmlns:xi="http://www.w3.org/2003/XInclude" href="../common/gcc-final.xml"
+  	xpointer="xpointer(//*[@role='package'])"/>
+
+	<sect2 role="install" xmlns:xi="http://www.w3.org/2003/XInclude">
+	<title>Installation of GCC Cross Compiler</title>
+	
+	<para>For triplets ending -linux-gnu* the make file for libstdc++ defaults to a set of headers that conflicts with Musl libc. We will do a quick sed to have the Makefile point to the generic headers:</para>
+	
+	<screen ><userinput> sed -i -e "s#os/gnu-linux#os/generic#g"  libstdc++-v3/configure.host</userinput></screen>
+  	
+  <xi:include   href="../common/gcc-final.xml"
+  xpointer="xpointer(//*[@os='c'])"/>
+
+  <xi:include href="../common/gcc-final.xml"
+  xpointer="xpointer(//*[@os='d'])" />
+ 
+  <xi:include  href="../common/gcc-final.xml"
+  xpointer="xpointer(//*[@os='e'])"/>
+  
+  <xi:include  href="../common/gcc-final.xml"
+  xpointer="xpointer(//*[@os='f'])"/>
+
+   <screen os="ae"><userinput>AR=ar LDFLAGS="-Wl,-rpath,${CLFS}/cross-tools/lib" \
+  ../gcc-&gcc-version;/configure --prefix=${CLFS}/cross-tools \
+  --build=${CLFS_HOST} --target=${CLFS_TARGET} --host=${CLFS_HOST} \
+  --with-sysroot=${CLFS} --disable-nls --enable-shared \
+  --enable-languages=c,c++ --enable-c99 --enable-long-long \
+  --with-mpfr=${CLFS}/cross-tools --with-gmp=${CLFS}/cross-tools \
+  --with-mpc=${CLFS}/cross-tools --disable-multilib \
+  --disable-libmudflap --disable-libgomp --disable-libssp \
+  --with-abi=${CLFS_ABI} --with-arch=${CLFS_ARM_ARCH} \
+  --with-mode=${CLFS_ARM_MODE} --with-float=${CLFS_FLOAT} \
+  --with-fpu=${CLFS_FPU}</userinput></screen>
+  
+  <xi:include  href="../common/gcc-final.xml"
+  xpointer="xpointer(//*[@os='af'])"/>
+ 
+ <xi:include  href="../common/gcc-final.xml"
+  xpointer="xpointer(//*[@os='ah'])"/>
+  
+  <xi:include  href="../common/gcc-final.xml"
+  xpointer="xpointer(//*[@os='ai'])"/>
+  
+  <xi:include  href="../common/gcc-final.xml"
+  xpointer="xpointer(//*[@os='aj'])"/>
+  
+  <xi:include  href="../common/gcc-final.xml"
+  xpointer="xpointer(//*[@os='ak'])"/>
+  
+  <xi:include  href="../common/gcc-final.xml"
+  xpointer="xpointer(//*[@os='al'])"/>
+  
+  <xi:include  href="../common/gcc-final.xml"
+  xpointer="xpointer(//*[@os='am'])"/>
+  
+ </sect2> 
+ 
+
+
+  
+</sect1>

@@ -18,7 +18,7 @@
   </indexterm>
 
   <sect2 role="package">
-    <title/>
+  <title> Cross GCC-&gcc-version; - Static </title>
 
     <para>The GCC package contains the GNU compiler collection, which includes
     the C and C++ compilers.</para>
@@ -249,11 +249,11 @@ cd ../gcc-build</userinput></screen>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
-      <varlistentry id="cc">
+      <varlistentry id="cc_static">
         <term><command>cc</command></term>
         <listitem>
           <para>The C compiler</para>
-          <indexterm zone="ch-cross-tools-gcc-static cc">
+          <indexterm zone="ch-cross-tools-gcc-static cc_static">
             <primary sortas="b-cc">cc</primary>
           </indexterm>
         </listitem>
