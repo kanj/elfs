@@ -45,7 +45,7 @@ may include a bootloader</para>
   <para>To create this directory, execute, the following command before
   starting the download session:</para>
 
-<screen><userinput>mkdir -v ${CLFS}/sources</userinput></screen>
+<screen><userinput>mkdir -pv ${CLFS}/sources</userinput></screen>
 
   <para>Make this directory writable and sticky. When a directory is
   marked <quote>sticky</quote>, that means that even if multiple users have

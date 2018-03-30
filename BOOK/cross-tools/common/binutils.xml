@@ -34,14 +34,14 @@
     <para os="b">The Binutils documentation recommends building Binutils outside of the
     source directory in a dedicated build directory:</para>
 
-<screen os="c"><userinput>mkdir -v ../binutils-build
+<screen os="c"><userinput>mkdir -pv ../binutils-build
 cd ../binutils-build</userinput></screen>
 
     <para os="d">Prepare Binutils for compilation:</para>
 
 <screen os="e"><userinput>../binutils-&binutils-version;/configure --prefix=${CLFS}/cross-tools \
    --target=${CLFS_TARGET} --with-sysroot=${CLFS} --disable-nls \
-   --enable-shared --disable-multilib</userinput></screen>
+   --enable-shared --disable-multilib </userinput></screen>
 
     <variablelist os="f">
       <title>The meaning of the configure options:</title>
@@ -101,7 +101,7 @@ cd ../binutils-build</userinput></screen>
     <para os="g">Compile the package:</para>
 
 <screen os="h"><userinput>make configure-host
-make</userinput></screen>
+make -k </userinput></screen>
 
     <variablelist os="i">
       <title>The meaning of the make options:</title>

@@ -21,7 +21,7 @@
 <!ENTITY libc-home "http://www.musl-libc.org/">
 
 
-<!ENTITY kernel_config "arch/arm/configs/vexpress_defconfig"> 
+<!ENTITY kernel_config "arch/arm/configs/versatile_defconfig"> 
 
 
 <!ENTITY clfs_arch "arm">

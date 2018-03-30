@@ -12,7 +12,7 @@
 
   
 
-<screen os="b"><userinput>export ${CLFS}=/mnt/clfs</userinput></screen>
+<screen os="b"><userinput>export CLFS=/mnt/clfs</userinput></screen>
 
   <para os="c">To ensure a clean separation between host and build environments 
   we will create a custom .bashrc file. This file will be read when invoking a non-login

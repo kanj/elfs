@@ -4,9 +4,9 @@
 
 <!-- Note: For empty *-home entities use " " not "" -->
 
-<!ENTITY binutils-version "2.23.2">
+<!ENTITY binutils-version "2.27">
 <!ENTITY binutils-size "18,304 KB">
-<!ENTITY binutils-url "&gnu;binutils/binutils-&binutils-version;.tar.bz2">
+<!ENTITY binutils-url "&gnu;binutils/binutils-&binutils-version;.tar.gz">
 <!ENTITY binutils-md5 "c84c5acc9d266f1a7044b51c85a823f5">
 <!ENTITY binutils-home "http://sourceware.org/binutils/">
 
