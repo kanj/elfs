@@ -10,7 +10,8 @@ NOCHUNKDIR	:= $(RENDERDIR)/nochunk
 
 FODIR		:= $(RENDERDIR)/fo
 PDFDIR		:= $(RENDERDIR)/pdf
-
+MAKEDIR		:= $(RENDERDIR)/makefile
+SCRIPTDIR		:= $(RENDERDIR)/scripts
 TROUBLEDIR	:= $(RENDERDIR)/trouble
 DUMPDIR		:= $(RENDERDIR)/commands
 DLLISTDIR	:= $(RENDERDIR)/download-list
@@ -236,6 +237,23 @@ help:
 ARCHS_BUILD := $(ARCHS:%=%-build)	
 $(ARCHS_BUILD): override arch = $(@:%-build=%)
 $(ARCHS_BUILD):	
+	make $(arch)-make
+	make -C $(MAKEDIR)/$(arch) all	
+	
+	
+ARCHS_MAKE := $(ARCHS:%=%-make)	
+.PHONY: make $(ARCHS_MAKE)
+$(ARCHS_MAKE): override arch = $(@:%-make=%)
+$(ARCHS_MAKE):	
 	make $(arch)-html
-	../scripts/aCLFS924 $(arch) $(SYSBUILD)/clfs_$(arch)
+	$(Q)mkdir -p $(MAKEDIR)/$(arch)
+	./renderMake $(MAKEDIR)/$(arch)
+
+ARCHS_SCRIPT := $(ARCHS:%=%-script)	
+.PHONY: make $(ARCHS_SCRIPT)
+$(ARCHS_SCRIPT): override arch = $(@:%-script=%)
+$(ARCHS_SCRIPT):	
+	make $(arch)-html
+	$(Q)mkdir -p $(SCRIPTDIR)/$(arch)
+	./renderScript $(SCRIPTDIR)/$(arch)	
 

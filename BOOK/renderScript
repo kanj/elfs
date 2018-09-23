@@ -1,0 +1,32 @@
+#!/bin/bash
+# TODO
+#	Skip empty dirs
+#	indent one tab
+
+grep -Po '(?<=href=")[^"]*' ../render/html/armMusl/index.html  > href.txt
+echo "#!/bin/bash -e" > aMake
+echo "" > allTask
+while read href
+do
+	echo $href":" 
+	xml_grep --html --text_only 'kbd' ../render/html/armMusl/$href > txt.txt
+	
+	if [ -s txt.txt ] 
+	then
+		href=$( echo $href | sed 's/\//\./g' )
+		echo $href"() {" >> aMake
+		echo $href"()" >> allTask
+		while read aLine
+		do
+			echo -e '\t' "$aLine" >> aMake
+		done < txt.txt		
+	echo "} " >> aMake 	
+	echo " " >> aMake
+	else
+	 	echo "Empty"
+	fi 		
+done < href.txt
+
+cat  aMake allTask > $1/elfs.sh
+
+chmod +x $1/elfs.sh

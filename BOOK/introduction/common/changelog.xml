@@ -36,6 +36,16 @@
     </listitem>
 -->
 <listitem>
+      <para>September 23, 2018</para>
+      <itemizedlist>
+        <listitem>
+          <para>[kanj] - Added a render to makefile option. Usage: make armMusl-make. The make file option to build a system now uses the geenrated makefile. A significant overhaul to the book is required to make the process yield a working system. The biggest issue is how to handle environmental variables.          
+         </para>
+        </listitem>
+      </itemizedlist>
+      </listitem> 
+
+<listitem>
       <para>March 30, 2018</para>
       <itemizedlist>
         <listitem>
